@@ -429,30 +429,6 @@ class Kama_Breadcrumbs {
 
 
 
-if( function_exists('acf_add_options_page') ) {
-	
-	acf_add_options_page(array(
-		'page_title' 	=> 'Настройка темы', 
-		'menu_title'	=> 'Настройка темы',
-		'post_id' => 'options',
-		'menu_slug' 	=> 'theme-general-settings',
-		'capability'	=> 'edit_posts',
-		'redirect'		=> false
-	));
-	
-	acf_add_options_page(array(
-		'page_title' 	=> 'Стили', 
-		'menu_title'	=> 'Стили',
-		'post_id' => 'styleset',
-		'menu_slug' 	=> 'theme-general-settings-2',
-		'capability'	=> 'edit_posts',
-		'redirect'		=> false
-	));
-	
-
-	 
-}
-
 
 // добавляет поддержку миниатюр в записях
 add_theme_support( 'post-thumbnails' ); // для всех типов постов

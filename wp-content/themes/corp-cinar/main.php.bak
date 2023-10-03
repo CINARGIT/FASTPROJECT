@@ -12,7 +12,7 @@
 <? stylePart('blog_select', 'section-blog'); ?>
 <? stylePart('section-uslugi', 'section-uslugi'); ?>
 <? stylePart('blog_select', 'section-blog', $params = ['blog_type' => 'news']); ?>
-<? stylePart('section-vopros-otvet', 'section-vopros-otvet', $params = ['sclass' => 'excludem colored ']); ?>
+<? stylePart('section-vopros-otvet', 'section-vopros-otvet', $params = ['sclass' => 'excludem colored']); ?>
 <? stylePart('vyberite_stili_form_2', 'section-form-2'); ?>
 
 <?php get_footer();	?> 

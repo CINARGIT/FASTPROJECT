@@ -1,0 +1,63 @@
+<?
+function create_custom_post_type() {
+    $labels = array(
+        'name'               => _x( 'Секции', 'post type general name', 'textdomain' ),
+        'singular_name'      => _x( 'Секция', 'post type singular name', 'textdomain' ),
+        'add_new'            => _x( 'Добавить новую', 'book', 'textdomain' ),
+        'add_new_item'       => __( 'Добавить новую', 'textdomain' ),
+        'edit_item'          => __( 'Редактировать', 'textdomain' ),
+        'new_item'           => __( 'Новый', 'textdomain' ),
+        'all_items'          => __( 'Все', 'textdomain' ),
+        'view_item'          => __( 'Посмотреть', 'textdomain' ),
+        'search_items'       => __( 'Поиск', 'textdomain' ),
+        'not_found'          => __( 'не найдены', 'textdomain' ),
+        'not_found_in_trash' => __( 'В корзине не найдены', 'textdomain' ),
+        'menu_name'          => __( 'Секции', 'textdomain' )
+    );
+
+    $args = array(
+        'labels'        => $labels,
+        'description'   => 'Секции для предварительного просмотра',
+        'public'        => true,
+        'menu_position' => 155,
+        'supports'      => array( 'title', 'page-attributes'),
+        'has_archive'   => true,
+        'show_in_rest'  => true, // Если вы хотите использовать Gutenberg редактор
+        'hierarchical'  => false, // Измените на true, если это должна быть иерархическая структура, как у страниц
+        'rewrite'       => array( 'slug' => 'section_preview' ),
+    );
+
+    register_post_type( 'section_preview', $args );
+}
+add_action( 'init', 'create_custom_post_type' );
+
+
+function load_cpt_template($template) {
+    global $post;
+
+    // Если это не ваш CPT, возвратите оригинальный шаблон
+    if ($post->post_type !== 'section_preview') {
+        return $template;
+    }
+
+    // Путь к папке с шаблонами
+    $template_path = get_stylesheet_directory() . '/parts/preview/';
+
+    // Если пользователь выбрал конкретный шаблон для записи
+    $custom_template = get_page_template_slug($post->ID);
+    if ($custom_template) {
+        if (file_exists($template_path . $custom_template)) {
+            return $template_path . $custom_template;
+        }
+    }
+
+    // Если шаблон по умолчанию (preview) существует для CPT в папке
+    if (file_exists($template_path . 'preview_' . $post->post_type . '.php')) {
+        return $template_path . 'preview_' . $post->post_type . '.php';
+    }
+
+    // Верните оригинальный шаблон, если ничего не найдено
+    return $template;
+}
+
+add_filter('single_template', 'load_cpt_template');

@@ -19,7 +19,6 @@ wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.mi
 wp_enqueue_style( 'config', get_template_directory_uri() . '/css/config.css', array( 'cinar-corp' ),  '20181230' );
 wp_enqueue_style( 'cinarmode', get_template_directory_uri() . '/css/cinar-mode.css', array( 'cinar-corp' ),  '2302324333181230' );
 wp_enqueue_style( 'cinarstyles', get_template_directory_uri() . '/css/cinar-styles.css', array( 'cinar-corp' ),  '2302324333181230' );
-wp_enqueue_style( 'cinarstyles-senergo', get_template_directory_uri() . '/css/cinar-senergo.css', array( 'cinar-corp' ),  '14' );
 wp_enqueue_style( 'blocks', get_template_directory_uri() . '/css/cinar-common-blocks.css', array( 'cinar-corp' ),  '2302324333181230' );
 wp_enqueue_style( 'cinar-corp', get_stylesheet_uri(), '2230181230' );
 wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ), '20181230', true );
@@ -440,18 +439,7 @@ if( function_exists('acf_add_options_page') ) {
 		'capability'	=> 'edit_posts',
 		'redirect'		=> false
 	));
-	
-	acf_add_options_page(array(
-		'page_title' 	=> 'Стили', 
-		'menu_title'	=> 'Стили',
-		'post_id' => 'styleset',
-		'menu_slug' 	=> 'theme-general-settings-2',
-		'capability'	=> 'edit_posts',
-		'redirect'		=> false
-	));
-	
 
-	 
 }
 
 
