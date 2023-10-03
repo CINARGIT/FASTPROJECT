@@ -14,7 +14,7 @@
 		foreach (get_field('menu_option', 'option') as $name => $value) {
 			if(!$value) $value = 0;
 				if (!is_array($value)) {
-					echo "--bl_header_menu_" . $name . ": " . $value . "\n";
+					echo "--bl_header_menu_" . $name . ": " . $value . ";\n";
 				}
 		}
 		foreach (get_field('menu_option', 'option')['menu_sizes'] as $name => $value) {
@@ -23,6 +23,21 @@
 				echo "--bl_header_menu_" . $name . ": " . $value . "px;\n";
 			}
 		}
+		
+		foreach (get_field('titles_option', 'option') as $name => $value) {
+			if(!$value) $value = 0;
+				if (!is_array($value)) {
+					echo "--bl_titles_" . $name . ": " . $value . ";\n";
+				}
+		}
+		
+		foreach (get_field('titles_option', 'option')['titles_sizes'] as $name => $value) {
+			if(!$value) $value = 0;
+			if (!is_array($value)) {
+				echo "--bl_titles_" . $name . ": " . $value . "px;\n";
+			}
+		}
+		
 		?>
 		
 	}

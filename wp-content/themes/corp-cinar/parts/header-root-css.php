@@ -10,6 +10,7 @@
 		--bl_header_button_width: <?=get_field('main_header_data_content', 'option')['button_set']['button_width']?>px;
 		--bl_header_bottom-margin-top: <?=get_field('main_header_data_content', 'option')['margin-top']?>px;
 		--bl_header_bottom-margin-bottom: <?=get_field('main_header_data_content', 'option')['margin-bottom']?>px;
+		
 		<?
 		foreach (get_field('menu_option', 'option') as $name => $value) {
 			if(!$value) $value = 0;
@@ -23,6 +24,21 @@
 				echo "--bl_header_menu_" . $name . ": " . $value . "px;\n";
 			}
 		}
+		
+		foreach (get_field('titles_option', 'option') as $name => $value) {
+			if(!$value) $value = 0;
+				if (!is_array($value)) {
+					echo "--bl_titles_" . $name . ": " . $value . ";\n";
+				}
+		}
+		
+		foreach (get_field('titles_option', 'option')['titles_sizes'] as $name => $value) {
+			if(!$value) $value = 0;
+			if (!is_array($value)) {
+				echo "--bl_titles_" . $name . ": " . $value . "px;\n";
+			}
+		}
+		
 		?>
 		
 	}

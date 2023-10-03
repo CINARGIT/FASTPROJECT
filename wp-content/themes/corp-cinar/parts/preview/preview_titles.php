@@ -1,6 +1,6 @@
 <?
 /*
-Template Name: Меню
+Template Name: Заголовки
 Template Post Type: section_preview
 */
 ?> 
@@ -18,7 +18,11 @@ Template Post Type: section_preview
 	<? get_template_part( 'parts/header-root-css'); ?>
 </head>
 <div class="wrapper">
-	<? get_template_part( 'parts/sections/main-menu'); ?>
+	<div class="sc_exmp_t">Начало секции</div>
+	<section class="section-common">
+		<h2>Тестовый <span>заголовок</span></h2>
+	</section>
+	<div class="sc_exmp_t">Конец секции</div>
 </div>
 <?php wp_footer(); ?>
 </body>

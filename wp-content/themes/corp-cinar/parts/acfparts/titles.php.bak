@@ -163,7 +163,7 @@ acf_add_local_field_group(array(
             ),
 		),
 		
-		array(
+			array(
             'key' => 'field_titles_font_size',
             'label' => 'Размер шрифта',
             'name' => 'font_size',
@@ -171,7 +171,8 @@ acf_add_local_field_group(array(
             'wrapper' => array(
                 'width' => '20%',
             ),
-		),
+	 
+	 ),
 		
 		array(
             'key' => 'field_section_padding_top',

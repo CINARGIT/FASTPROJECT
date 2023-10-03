@@ -756,10 +756,39 @@ body textarea{
 }
 
 
+/** exmp **/
+
+.sc_exmp_t{
+	border-bottom:1px dotted #333;
+}
+
+/** section **/
+
+.section-common {
+	padding-top:var(--bl_titles_section_padding_top);
+	padding-bottom:var(--bl_titles_section_padding_bottom);
+}
+
+/** titles **/
+
+.section-common h2{
+	color:var(--bl_titles_color_text);
+	font-weight:var(--bl_titles_font_weight);
+	text-transform:var(--bl_titles_titles_transform);
+	text-align:var(--bl_titles_titles_align);
+	margin-bottom:var(--bl_titles_margin_bottom);
+	margin-top:var(--bl_titles_margin_top);
+	font-size:var(--bl_titles_font_size);
+}
+
+.section-common h2 span{
+	color:var(--bl_titles_color_text_2);	
+}
+
 /** .bl_header_menu **/
 
 .bl_header_menu{
-	background-color:var(--bl_header_menu_color_menu_item_bg);
+	background-color:var(--bl_header_menu_color_bg);
 }
 
 .bl_header_menu.shadow_menu{

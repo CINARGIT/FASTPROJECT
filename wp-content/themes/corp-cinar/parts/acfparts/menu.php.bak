@@ -1,7 +1,31 @@
 <?
+if( function_exists('acf_add_options_sub_page') ) {
+	// Добавляем подстраницу к главной странице "Настройки темы"
+    acf_add_options_sub_page(array(
+        'page_title' 	=> 'Меню',
+        'menu_title'	=> 'Меню',
+		'menu_slug' 	=> 'menu_set',
+        'parent_slug'	=> 'theme-general-settings',
+    ));
+}
 
-//Настройка меню
-
+function insert_iframe_into_acf_message() {
+    ?>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        // Ищем наше поле "Сообщение" по уникальному идентификатору
+        var messageField = $('#iframe_placeholder');
+        
+        if (messageField.length) {
+            // Вставляем iframe
+            var iframe = '<iframe src="/section_preview/10933/" width="100%" height="<?=get_field("menu_option", "option")["height"]?>"></iframe>';
+            messageField.html(iframe);
+        }
+    });
+    </script>
+    <?php
+}
+add_action('admin_footer', 'insert_iframe_into_acf_message');
 
 acf_add_local_field_group(array(
     'key' => 'group_menu_set',
@@ -16,9 +40,6 @@ acf_add_local_field_group(array(
             'type' => 'tab',
         ),
 		
-		
-		
-     
 	
 		array(
             'key' => 'field_menu_option',
@@ -33,7 +54,7 @@ acf_add_local_field_group(array(
                 'label' => 'Предварительный просмотр',
                 'name' => 'message_iframe',
                 'type' => 'message',
-                'message' => 'sd <p></p><iframe></iframe>',
+                 'message' => '<div id="iframe_placeholder"></div>',
                 'new_lines' => 'wpautop', // это преобразует переносы строк в теги <br> и <p>
                 'esc_html' => 0, // это позволит вам вставлять HTML, как например <iframe>
             ),

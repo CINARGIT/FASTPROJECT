@@ -32,24 +32,78 @@ function create_custom_post_type() {
 add_action( 'init', 'create_custom_post_type' );
 
 
-function custom_cpt_template_location($template) {
+function custom_single_template($template) {
     global $post;
 
-    // Проверяем, является ли это нашим произвольным типом записи
+    // Если это наш тип записи
     if ($post->post_type == 'section_preview') {
-        // Путь к папке с шаблонами
-        $template_path = get_stylesheet_directory() . '/cpt-templates/';
-
-        // Проверка наличия выбранного шаблона
-        $custom_template = get_post_meta($post->ID, '_wp_page_template', true);
-
-        // Если пользователь выбрал конкретный шаблон для записи
-        if ($custom_template && file_exists($template_path . $custom_template)) {
-            return $template_path . $custom_template;
+        
+        // Получаем значение метаполя с именем шаблона
+        $custom_template_name = get_post_meta($post->ID, '_wp_page_template', true);
+        
+        if ($custom_template_name) {
+            
+            // Указываем путь к папке с шаблонами
+            $custom_template_path = get_stylesheet_directory() . '/parts/preview/' . $custom_template_name;
+            
+            // Если файл существует, то используем его
+            if (file_exists($custom_template_path)) {
+                return $custom_template_path;
+            }
         }
     }
-
+    
+    // Возвращаем оригинальный шаблон, если наши условия не выполнены
     return $template;
 }
 
-add_filter('template_include', 'custom_cpt_template_location');
+add_filter('single_template', 'custom_single_template');
+
+
+function custom_add_metabox() {
+    add_meta_box(
+        'custom_template_metabox',      // ID метабокса
+        'Выбор шаблона',                // Заголовок метабокса
+        'custom_template_metabox_cb',   // Callback функция для вывода содержимого метабокса
+        'section_preview',              // Тип записи, для которой добавляется метабокс
+        'side',                         // Местоположение метабокса
+        'default'                       // Приоритет
+    );
+}
+
+add_action('add_meta_boxes', 'custom_add_metabox');
+
+
+function custom_template_metabox_cb($post) {
+    $value = get_post_meta($post->ID, '_wp_page_template', true);
+    
+    echo '<select name="custom_page_template" id="custom_page_template">';
+    
+    // Исходное значение
+    echo '<option value="">— Выберите шаблон —</option>';
+
+    // Получение списка файлов из папки parts/preview
+    $template_directory = get_stylesheet_directory() . '/parts/preview/';
+    $files = array_diff(scandir($template_directory), array('.', '..'));
+    
+    foreach ($files as $file) {
+        // Фильтруем только .php файлы
+        if (strpos($file, '.php') !== false) {
+            echo '<option value="' . $file . '" ' . selected($value, $file, false) . '>' . $file . '</option>';
+        }
+    }
+
+    echo '</select>';
+}
+
+function custom_save_metabox_data($post_id) {
+    if (array_key_exists('custom_page_template', $_POST)) {
+        update_post_meta(
+            $post_id,
+            '_wp_page_template',
+            $_POST['custom_page_template']
+        );
+    }
+}
+
+add_action('save_post_section_preview', 'custom_save_metabox_data');
