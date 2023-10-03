@@ -1,0 +1,171 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Contact Form 7 Drag and Drop FIles Upload  - Multiple "
+"Files Upload\n"
+"POT-Creation-Date: 2018-07-27 23:07+0700\n"
+"PO-Revision-Date: 2018-07-11 17:04+0700\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: index.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: backend/index.php:50
+msgid "Sorry, this file type is not permitted for security reasons."
+msgstr ""
+
+#: backend/index.php:54
+msgid ""
+"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
+"the HTML form."
+msgstr ""
+
+#: backend/index.php:244
+msgid "Drag & Drop Files Here"
+msgstr ""
+
+#: backend/index.php:245
+msgid "or"
+msgstr ""
+
+#: backend/index.php:246
+msgid "Browse Files"
+msgstr ""
+
+#: backend/index.php:314 backend/index.php:315
+msgid "Count files are smaller than the minimum allowed"
+msgstr ""
+
+#: backend/index.php:319 backend/index.php:320
+msgid "Count files are smaller than the maximum allowed"
+msgstr ""
+
+#: backend/index.php:327
+msgid "Drop files"
+msgstr ""
+
+#: backend/index.php:335
+#, php-format
+msgid ""
+"Generate a form-tag for a file uploading field. For more details, see %s."
+msgstr ""
+
+#: backend/index.php:337
+msgid "https://contactform7.com/file-uploading-and-attachment/"
+msgstr ""
+
+#: backend/index.php:337
+msgid "File Uploading and Attachment"
+msgstr ""
+
+#: backend/index.php:347 backend/index.php:350
+msgid "Field type"
+msgstr ""
+
+#: backend/index.php:351
+msgid "Required field"
+msgstr ""
+
+#: backend/index.php:357
+msgid "Name"
+msgstr ""
+
+#: backend/index.php:364
+msgid "File size limit (bytes)"
+msgstr ""
+
+#: backend/index.php:369
+msgid "Acceptable file types"
+msgstr ""
+
+#: backend/index.php:374
+msgid "Min files"
+msgstr ""
+
+#: backend/index.php:379
+msgid "Max files"
+msgstr ""
+
+#: backend/index.php:384
+msgid "Id attribute"
+msgstr ""
+
+#: backend/index.php:389
+msgid "Class attribute"
+msgstr ""
+
+#: backend/index.php:402
+msgid "Insert Tag"
+msgstr ""
+
+#: backend/settings.php:22
+msgid "Drag and Drop Settings"
+msgstr ""
+
+#: backend/settings.php:33
+msgid "Attachment"
+msgstr ""
+
+#: backend/settings.php:38
+msgid "Only email (max size 25m)"
+msgstr ""
+
+#: backend/settings.php:39
+msgid "Send url local and send attachment"
+msgstr ""
+
+#: backend/settings.php:40
+msgid "Send url local "
+msgstr ""
+
+#: frontend/index.php:28
+msgid "Error: POST Content-Length limit"
+msgstr ""
+
+#: frontend/index.php:29
+msgid "Remove"
+msgstr ""
+
+#: frontend/index.php:30
+msgid "Abort"
+msgstr ""
+
+#: frontend/index.php:31
+msgid "You can only upload a maximum of"
+msgstr ""
+
+#: index.php:38
+msgid "Plugin need active plugin Contact Form 7"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Contact Form 7 Drag and Drop FIles Upload  - Multiple Files Upload"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "https://codecanyon.net/user/rednumber/portfolio"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Allows you to add powerful Drag & Drop or choose Multiple Files Uploading "
+"area to your Form. It automatic Attachments in the email, you don’t need to "
+"do anything!"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Rednumber"
+msgstr ""

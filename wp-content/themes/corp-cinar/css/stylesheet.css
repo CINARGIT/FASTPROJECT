@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'NEXT ART';
+    src: url('NEXTART-Light.eot');
+    src: local('NEXT ART Light'), local('NEXTART-Light'),
+        url('NEXTART-Light.eot?#iefix') format('embedded-opentype'),
+        url('NEXTART-Light.woff2') format('woff2'),
+        url('NEXTART-Light.woff') format('woff'),
+        url('NEXTART-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NEXT ART';
+    src: url('NEXTART-Bold.eot');
+    src: local('NEXT ART Bold'), local('NEXTART-Bold'),
+        url('NEXTART-Bold.eot?#iefix') format('embedded-opentype'),
+        url('NEXTART-Bold.woff2') format('woff2'),
+        url('NEXTART-Bold.woff') format('woff'),
+        url('NEXTART-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NEXT ART';
+    src: url('NEXTART-SemiBold.eot');
+    src: local('NEXT ART SemiBold'), local('NEXTART-SemiBold'),
+        url('NEXTART-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('NEXTART-SemiBold.woff2') format('woff2'),
+        url('NEXTART-SemiBold.woff') format('woff'),
+        url('NEXTART-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NEXT ART';
+    src: url('NEXTART.eot');
+    src: local('NEXT ART'), local('NEXTART'),
+        url('NEXTART.eot?#iefix') format('embedded-opentype'),
+        url('NEXTART.woff2') format('woff2'),
+        url('NEXTART.woff') format('woff'),
+        url('NEXTART.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NEXT ART';
+    src: url('NEXTART-Heavy.eot');
+    src: local('NEXT ART Heavy'), local('NEXTART-Heavy'),
+        url('NEXTART-Heavy.eot?#iefix') format('embedded-opentype'),
+        url('NEXTART-Heavy.woff2') format('woff2'),
+        url('NEXTART-Heavy.woff') format('woff'),
+        url('NEXTART-Heavy.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+

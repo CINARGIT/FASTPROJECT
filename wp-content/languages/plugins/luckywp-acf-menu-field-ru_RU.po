@@ -1,0 +1,87 @@
+# Translation of Plugins - LuckyWP ACF Menu Field - Stable (latest release) in Russian
+# This file is distributed under the same license as the Plugins - LuckyWP ACF Menu Field - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2021-10-20 08:19:23+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: ru\n"
+"Project-Id-Version: Plugins - LuckyWP ACF Menu Field - Stable (latest release)\n"
+
+#: core/pluginRate/notice.php:26
+msgid "Thank you very much!"
+msgstr "Большое спасибо!"
+
+#: core/pluginRate/notice.php:23
+msgid "Don't show again"
+msgstr "Больше не показывать"
+
+#: core/pluginRate/notice.php:22
+msgid "Remind later"
+msgstr "Напомнить позже"
+
+#: core/pluginRate/notice.php:21
+msgid "Rate the plugin"
+msgstr "Оценить плагин"
+
+#: core/pluginRate/notice.php:18
+msgid "Please rate plugin. It will help us a lot."
+msgstr "Пожалуйста, оцените плагин. Это нам очень поможет."
+
+#. translators: %s: LuckyWP ACF Menu Field
+#: core/pluginRate/notice.php:14
+msgid "We are very pleased that you by now have been using the %s plugin a few days."
+msgstr "Мы очень рады, что вы уже несколько дней используете плагин %s."
+
+#: core/pluginRate/notice.php:10
+msgid "Hello!"
+msgstr "Привет!"
+
+#: admin/Plugins.php:16 admin/Plugins.php:23 admin/Plugins.php:24
+#: admin/Plugins.php:62
+msgid "LuckyWP Plugins"
+msgstr "Плагины LuckyWP"
+
+#: plugin/AcfMenuField.php:121
+msgid "Menu HTML"
+msgstr "HTML меню"
+
+#: plugin/AcfMenuField.php:120
+msgid "Menu Object"
+msgstr "Объект меню"
+
+#: plugin/AcfMenuField.php:119
+msgid "Menu ID"
+msgstr "ID меню"
+
+#: plugin/AcfMenuField.php:60
+msgctxt "verb"
+msgid "Select"
+msgstr "Выбрать"
+
+#: plugin/AcfMenuField.php:54
+msgid "Navigation menus not exists."
+msgstr "Меню навигации не существует."
+
+#: plugin/AcfMenuField.php:16
+msgid "Menu"
+msgstr "Меню"
+
+#. Author URI of the plugin
+msgid "https://theluckywp.com/"
+msgstr "https://theluckywp.com/"
+
+#. Author of the plugin
+msgid "LuckyWP"
+msgstr "LuckyWP"
+
+#. Description of the plugin
+msgid "Add navigation menu field type to Advanced Custom Fields"
+msgstr "Добавьте тип поля меню навигации в расширенные пользовательские поля"
+
+#. Plugin Name of the plugin
+msgid "LuckyWP ACF Menu Field"
+msgstr "LuckyWP ACF Menu Field"

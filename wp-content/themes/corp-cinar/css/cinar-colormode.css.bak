@@ -1,0 +1,27 @@
+/** общее **/
+
+body{
+	color: var(--text-color);
+}
+
+/** верхняя шапка **/
+
+/** синяя тема **/
+
+
+.bl_header_top.bluemode{
+	background: var(--main-color);
+	color: var(--alter-text-color);
+}
+
+.bl_header_top.bluemode a{
+	color:  var(--alter-text-color);
+}
+
+.bl_header_bottom_item_order.order_button{
+	background-color: var(--alter-color);
+}
+
+.order_button{
+	
+}

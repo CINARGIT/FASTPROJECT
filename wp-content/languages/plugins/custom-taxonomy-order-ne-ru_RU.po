@@ -1,0 +1,112 @@
+# Translation of Plugins - Custom Taxonomy Order - Stable (latest release) in Russian
+# This file is distributed under the same license as the Plugins - Custom Taxonomy Order - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2023-05-30 10:42:17+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
+"X-Generator: GlotPress/4.0.0-alpha.4\n"
+"Language: ru\n"
+"Project-Id-Version: Plugins - Custom Taxonomy Order - Stable (latest release)\n"
+
+#: taxonomies.php:69
+msgid "No taxonomies found"
+msgstr "Таксономий не найдено"
+
+#: admin-customtaxorder.php:42 taxonomies.php:20 taxonomies.php:38
+msgid "Order Taxonomies"
+msgstr "Порядок таксономий"
+
+#: admin-customtaxorder.php:40
+msgid "Term Order"
+msgstr "Сортировка Рубрик"
+
+#: admin-customtaxorder.php:69 page-customtaxorder.php:127
+msgid "Order "
+msgstr "Сортировать "
+
+#: page-customtaxorder.php:93
+msgid "Order by ID (default)."
+msgstr "По ID (по умолчанию)."
+
+#: page-customtaxorder.php:95
+msgid "Custom Order as defined above."
+msgstr "Уникальный порядок, как отсортировано выше."
+
+#: taxonomies.php:39
+msgid "Order the taxonomies by dragging and dropping them into the desired order."
+msgstr "Отсортируйте рубрики перетаскивая и устанавливая их в необходимом порядке."
+
+#: page-customtaxorder.php:167
+msgid "Return to Parent"
+msgstr "Вернуться к родителю"
+
+#: page-customtaxorder.php:172 taxonomies.php:60
+msgid "Update Order"
+msgstr "Сохранить порядок"
+
+#: page-customtaxorder.php:173
+msgid "Sort Alphabetical"
+msgstr "Сортировать по алфавиту"
+
+#: page-customtaxorder.php:187
+msgid "Sub-"
+msgstr "Вложенные "
+
+#: page-customtaxorder.php:192
+msgid "Order Sub-terms"
+msgstr "Сортировать Вложенные рубрики"
+
+#: page-customtaxorder.php:198
+msgid "No terms found"
+msgstr "Рубрики не найдены"
+
+#: page-customtaxorder.php:214
+msgid "Auto-Sort Queries of this Taxonomy"
+msgstr "Как сортировать эти рубрики?"
+
+#: page-customtaxorder.php:221
+msgid "Save Settings"
+msgstr "Сохранить настройки"
+
+#: taxonomies.php:106
+msgid "Order updated successfully."
+msgstr "Порядок сохранен."
+
+#: page-customtaxorder.php:300 taxonomies.php:108
+msgid "An error occured, order has not been saved."
+msgstr "Ошибка, порядок не сохранен."
+
+#: admin-customtaxorder.php:316 page-customtaxorder.php:211
+msgid "Settings"
+msgstr "Настройки"
+
+#. Author of the plugin
+msgid "Marcel Pol"
+msgstr "Marcel Pol"
+
+#: admin-customtaxorder.php:72
+msgid "About"
+msgstr "Про плагин"
+
+#: page-customtaxorder.php:58 page-customtaxorder.php:60
+msgid "Taxonomies"
+msgstr "Таксономии"
+
+#: admin-customtaxorder.php:277
+msgid "About Custom Taxonomy Order NE"
+msgstr "О Custom Taxonomy Order NE"
+
+#: admin-customtaxorder.php:288
+msgid "Review this plugin."
+msgstr "Оставить отзыв о плагине."
+
+#. Description of the plugin
+msgid "Allows for the ordering of categories and custom taxonomy terms through a simple drag-and-drop interface."
+msgstr "Позволяет вам отсортировать категории и термины таксономий, с помощью простого интерфейса путем перетаскивания."
+
+#. Plugin Name of the plugin
+msgid "Custom Taxonomy Order"
+msgstr "Custom Taxonomy Order"

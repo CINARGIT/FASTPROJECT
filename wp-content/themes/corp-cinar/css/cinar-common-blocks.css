@@ -1,0 +1,14 @@
+/** верхняя шапка **/
+
+.bl_header_top img{
+	width:24px;
+	height:24px;
+	margin-right:11px;
+	background-size:24px 24px;
+}
+
+.blht_item{
+	display:flex;	
+}
+	
+	

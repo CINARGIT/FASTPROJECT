@@ -1,0 +1,7 @@
+	<div class="col-xs-12 col-md-<?=$args['col']?> sb_item_col">
+		<div class="item_col_wrap">
+		<a href="">
+			
+		</a>
+		</div>
+	</div>

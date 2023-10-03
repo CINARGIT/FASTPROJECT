@@ -1,0 +1,128 @@
+body{
+	color: var(--text-color);
+	font-family: var(--main_font);
+}
+
+/** common **/
+
+.mobile_tool{
+	background-color:var(--vtoroj_czvet);
+}
+.mobile_tool .order_button{
+	background: var(--main-color-hover);
+}
+
+.slick-arrow path{
+	stroke:var(--main-color);
+}
+
+
+/** Шапка **/
+
+.bl_header_top{
+	background: var(--main-color);
+	color: var(--alter-text-color);
+}
+
+.order_button{
+	background: var(--czvet_knopok_na_fone_osnovnogo_czvet);
+	color: var(--alter-text-color);
+}
+
+.order_button:hover{
+	color: var(--alter-text-color);
+	background: var(--btn-hover-color);
+}
+
+.alter_style_btn{
+	color: var(--main-color);
+	border-color: var(--main-color);
+}
+
+.alter_style_btn:hover{
+	color:var(--alter-text-color);
+	background-color: var(--main-color);
+}
+
+.bl_header_top a{
+	color:  var(--alter-text-color);
+}
+
+.bl_header_bottom_item_order.order_button{
+	background-color: var(--czvet_knopok_na_fone_osnovnogo_czvet);
+}
+
+.bl_header_bottom_item_order.order_button:hover{
+	background-color: var(--btn-hover-color);
+}
+
+.order_button, body input[type="text"], .alter_style_btn, .littleform_item_selector{
+	height:var(--main-h-button);
+}
+
+.main_section_overlay{
+	background-color:var(--overlay);
+}
+
+.main_section h1{
+	font-size:var(--razmer_shrifta_h1);
+}
+
+
+.main_section.lada-armenia .main_section_item_form{
+	color:var(--text-color);
+}
+
+.main_section_preimushhestva_item_name {
+	color: var(--czvet_zagolovkov_preimushhestv);
+}
+
+.section-common h2, .def_title, .section-common h1{
+	font-size:var(--razmer_shrifta_zagolovkov_sekczij);
+	text-transform:var(--transformacziya_zagolovkov_sekczij);
+	font-weight:var(--tolshhina_shrifta_zagolovkov);
+	margin-bottom:var(--otstup_zagolovkov_snizu);
+	text-align:var(--poziczionirovanie_zagolovkov);
+}
+
+.section-common h2, .def_title, .section-common h1{
+	color: var(--title-main-color);
+}
+
+.main_section .main_section_item_form,
+.main_section.lada-armenia .main_section_social a,
+.bl_header_top,
+.section-uslugi.lada-armenia .spec_bg, .spec_bg_true
+{
+	box-shadow: var(--global-boxshadow);
+}
+
+/** формы **/
+
+
+
+.section-form .form-content .def_title{
+	color:var(--alter-text-color);
+}
+
+.section-form .form-content .def_title span{
+	color: var(--alternativnyj_czvet_zagolovkov_na_fone_s_osnovnym_czvetom);
+}
+
+.section-form .form-content .order_button{
+	background-color: var(--czvet_knopok_na_fone_osnovnogo_czvet);
+	color: var(--main-color);
+}
+
+.section-form .def_title_des, .section-form  .confid_box, .section-form .confid_box a{
+	color:var(--alter-text-color);
+}
+
+.littleform_item_selector svg path{
+    stroke:var(--main-color);
+}
+
+body .section-form input[type="text"], body .section-form textarea{
+	border-color:var(--alter-text-color);
+	border-width:2px;
+}
