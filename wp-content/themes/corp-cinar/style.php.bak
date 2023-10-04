@@ -23,6 +23,7 @@ function custom_page_template($templates) {
 }
 
 add_filter('theme_page_templates', 'custom_page_template');
+
 add_filter( "litespeed_media_ignore_remote_missing_sizes", "__return_true" );
 
 function mytheme_tinymce_settings($settings) {
@@ -101,6 +102,7 @@ if( function_exists('acf_add_options_page') ) {
 }
 
 get_template_part( 'parts/cpt'); 
+get_template_part( 'parts/acfparts/main_header'); 
 get_template_part( 'parts/acfparts/titles'); 
 get_template_part( 'parts/acfparts/menu'); 
 get_template_part( 'parts/acfparts/buttonsandinputs'); 

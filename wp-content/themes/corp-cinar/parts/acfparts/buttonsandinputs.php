@@ -1,10 +1,39 @@
 <?
+function insert_iframe_buttonsandinputs() {
+    ?>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        // Ищем наше поле "Сообщение" по уникальному идентификатору
+        var messageField = $('#iframe_buttonsandinputs');
+        
+        if (messageField.length) {
+            // Вставляем iframe
+            var iframe = '<iframe src="/section_preview/knopki-i-polya/" width="100%" height="300"></iframe>';
+            messageField.html(iframe);
+        }
+    });
+    </script>
+    <?php
+}
+
+add_action('admin_footer', 'insert_iframe_buttonsandinputs');
+
+
 acf_add_local_field_group(array(
     'key' => 'group_custom',
     'title' => 'Настройка кнопок и полей',
     'fields' => array(
-     
-	        // Вкладка
+		array(
+                'key' => 'field_iframe_buttonsandinputs',
+                'label' => 'Предварительный просмотр',
+                'name' => 'iframe_buttonsandinputs',
+                'type' => 'message',
+                 'message' => '<div id="iframe_buttonsandinputs"></div>',
+                'new_lines' => 'wpautop', // это преобразует переносы строк в теги <br> и <p>
+                'esc_html' => 0, // это позволит вам вставлять HTML, как например <iframe>
+            ),
+
+		 // Вкладка
         array(
             'key' => 'field_tab1',
             'label' => 'Кнопки',
@@ -71,55 +100,48 @@ acf_add_local_field_group(array(
         ),
 		
 		array(
-            'key' => 'field_border_size',
-            'label' => 'Размер рамки в PX',
-            'name' => 'border_size',
-            'type' => 'number',
+            'key' => 'field_border_color_hover',
+            'label' => 'Цвет рамки при наведение',
+            'name' => 'border_color_hover',
+            'type' => 'color_picker',
             'wrapper' => array(
                 'width' => '20%',
             ),
-	 
-		),
+        ),
 		
 		
-		  array(
-            'key' => 'field_weight',
-            'label' => 'Ширина по умолчанию в PX',
-            'name' => 'weight',
-            'type' => 'number',
-            'wrapper' => array(
+		array(
+            'key' => 'field_button_transform',
+            'label' => 'Трансформация текста',
+            'name' => 'transform',
+            'type' => 'select',
+            'choices' => array(
+                'uppercase' => 'ВСЕ ЗАГЛАВНЫЕ',
+                'none' => 'Стандартно',
+            ),
+			'wrapper' => array(
                 'width' => '20%',
             ),
-		),
-
+        ),
 		
-		  array(
-            'key' => 'field_height',
-            'label' => 'Высота по умолчанию в PX',
-            'name' => 'height',
-            'type' => 'number',
-            'wrapper' => array(
+		 array(
+            'key' => 'field_align',
+            'label' => 'Выравнивание',
+            'name' => 'align',
+            'type' => 'select',
+            'choices' => array(
+                'left' => 'По левому краю',
+                'center' => 'По центру',
+                'right' => 'По правому краю',
+            ),
+			'wrapper' => array(
                 'width' => '20%',
             ),
-	 
-	 ),
-	 		
- 	 array(
-            'key' => 'field_font_size',
-            'label' => 'Размер шрифта в PX',
-            'name' => 'font_size',
-            'type' => 'number',
-            'wrapper' => array(
-                'width' => '20%',
-            ),
-	 
-	 ),
-	
+        ),
 		
-
         // Поле с выбором из списка
         array(
-            'key' => 'field_font_weight',
+            'key' => 'field_button_font_weight',
             'label' => 'Толщина шрифта',
             'name' => 'font_weight',
             'type' => 'select',
@@ -137,6 +159,71 @@ acf_add_local_field_group(array(
             ),
         ),
 		
+		array(
+            'key' => 'field_button_sizes',
+            'label' => 'Размеры в PX',
+            'name' => 'titles_sizes',
+            'type' => 'group',
+            'sub_fields' => array(	
+		
+		array(
+            'key' => 'field_border_size',
+            'label' => 'Размер рамки',
+            'name' => 'border_size',
+            'type' => 'number',
+            'wrapper' => array(
+                'width' => '20%',
+            ),
+	 
+		),
+		
+		
+		  array(
+            'key' => 'field_weight',
+            'label' => 'Ширина по умолчанию',
+            'name' => 'weight',
+            'type' => 'number',
+            'wrapper' => array(
+                'width' => '20%',
+            ),
+		),
+
+		
+		  array(
+            'key' => 'field_button_height',
+            'label' => 'Высота по умолчанию',
+            'name' => 'height',
+            'type' => 'number',
+            'wrapper' => array(
+                'width' => '20%',
+            ),
+	 
+	 ),
+	 
+	  array(
+            'key' => 'field_button_border_radius',
+            'label' => 'Загругление углов',
+            'name' => 'border_radius',
+            'type' => 'number',
+            'wrapper' => array(
+                'width' => '20%',
+            ),
+	 
+	 ),
+	 		
+ 	 array(
+            'key' => 'field_font_size',
+            'label' => 'Размер шрифта',
+            'name' => 'font_size',
+            'type' => 'number',
+            'wrapper' => array(
+                'width' => '20%',
+            ),
+	 
+	 ),
+	 ),
+	 ),
+	
 		
     ),
 	

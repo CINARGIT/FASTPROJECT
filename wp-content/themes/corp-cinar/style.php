@@ -102,6 +102,7 @@ if( function_exists('acf_add_options_page') ) {
 }
 
 get_template_part( 'parts/cpt'); 
+get_template_part( 'parts/acfparts/main_theme_editor'); 
 get_template_part( 'parts/acfparts/titles'); 
 get_template_part( 'parts/acfparts/menu'); 
 get_template_part( 'parts/acfparts/buttonsandinputs'); 

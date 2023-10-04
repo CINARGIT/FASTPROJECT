@@ -3,8 +3,8 @@
 
 if( function_exists('acf_add_options_sub_page') ) {
     acf_add_options_sub_page(array(
-        'page_title' 	=> 'Заголовки и секции',
-        'menu_title'	=> 'Заголовки и секции',
+        'page_title' 	=> 'Типографика',
+        'menu_title'	=> 'Типографика',
 		'menu_slug' 	=> 'titles_set',
         'parent_slug'	=> 'theme-general-settings',
     ));
@@ -37,7 +37,7 @@ acf_add_local_field_group(array(
 	        // Вкладка
         array(
             'key' => 'field_tab_menu',
-            'label' => 'Заголовки и секции',
+            'label' => 'Заголовки h2 внутри базовых секций',
             'name' => 'my_tab',
             'type' => 'tab',
         ),
@@ -122,7 +122,7 @@ acf_add_local_field_group(array(
 		     // Поле с выбором из списка
         array(
             'key' => 'field_titles_align',
-            'label' => 'Толщина шрифта',
+            'label' => 'Выравнивание',
             'name' => 'titles_align',
             'type' => 'select',
             'choices' => array(
