@@ -90,6 +90,7 @@ if( function_exists('acf_add_local_field_group') ):
 
 if( function_exists('acf_add_options_page') ) {
 	
+	
 	acf_add_options_page(array(
 		'page_title' 	=> 'Настройка темы', 
 		'menu_title'	=> 'Настройка темы',
@@ -98,9 +99,14 @@ if( function_exists('acf_add_options_page') ) {
 		'capability'	=> 'edit_posts',
 		'redirect'		=> false
 	));
+	
+	
 
 }
 
+
+
+get_template_part( 'parts/acffunctions/common-setting'); 
 get_template_part( 'parts/cpt'); 
 get_template_part( 'parts/acfparts/main_theme_editor'); 
 get_template_part( 'parts/acfparts/titles'); 

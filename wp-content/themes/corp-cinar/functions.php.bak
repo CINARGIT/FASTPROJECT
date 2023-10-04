@@ -429,19 +429,6 @@ class Kama_Breadcrumbs {
 
 
 
-if( function_exists('acf_add_options_page') ) {
-	
-	acf_add_options_page(array(
-		'page_title' 	=> 'Настройка темы', 
-		'menu_title'	=> 'Настройка темы',
-		'post_id' => 'options',
-		'menu_slug' 	=> 'theme-general-settings',
-		'capability'	=> 'edit_posts',
-		'redirect'		=> false
-	));
-
-}
-
 
 // добавляет поддержку миниатюр в записях
 add_theme_support( 'post-thumbnails' ); // для всех типов постов
@@ -617,44 +604,6 @@ function remove_blank_lines( $mail ) {
 add_filter('acf/format_value/type=textarea', 'do_shortcode');
 add_filter('acf/format_value/type=text', 'do_shortcode');
 
-function hex2rgba($color, $opacity = false) {
- 
-	$default = 'rgb(0,0,0)';
- 
-	//Return default if no color provided
-	if(empty($color))
-          return $default; 
- 
-	//Sanitize $color if "#" is provided 
-        if ($color[0] == '#' ) {
-        	$color = substr( $color, 1 );
-        }
- 
-        //Check if color has 6 or 3 characters and get values
-        if (strlen($color) == 6) {
-                $hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
-        } elseif ( strlen( $color ) == 3 ) {
-                $hex = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
-        } else {
-                return $default;
-        }
- 
-        //Convert hexadec to rgb
-        $rgb =  array_map('hexdec', $hex);
- 
-        //Check if opacity is set(rgba or rgb)
-        if($opacity){
-			
-			$opacity = str_replace(",",".",$opacity);
-        
-        	$output = 'rgba('.implode(",",$rgb).','.$opacity.')';
-        } else {
-        	$output = 'rgb('.implode(",",$rgb).')';
-        }
- 
-        //Return rgb(a) color string
-        return $output;
-}
 
 
 class fluent_themes_custom_walker_nav_menu extends Walker_Nav_Menu {
@@ -1007,3 +956,62 @@ function redirect_to_profile_page() {
         return '/sitelogin/';
     }
 }
+
+
+function hex2rgba($color, $opacity = false) {
+    $default = 'rgb(0,0,0)';
+
+    // Return default if no color provided
+    if(empty($color))
+          return $default; 
+
+    // Check if color has hash symbol and remove it
+    if ($color[0] == '#') {
+        $color = substr($color, 1);
+    }
+
+    // Check if color is RGB(A)
+    if (strlen($color) == 8 || strlen($color) == 6) {
+        $hex = $color;
+    } else {
+        return $default;
+    }
+
+    // Break down HEX to RGB values
+    $rgba = array();
+    if(strlen($hex) == 8){
+        $rgba[] = (int)hexdec(substr($hex, 0, 2));
+        $rgba[] = (int)hexdec(substr($hex, 2, 2));
+        $rgba[] = (int)hexdec(substr($hex, 4, 2));
+        $rgba[] = (int)hexdec(substr($hex, 6, 2)) / 255;
+    }else{
+        $rgba[] = (int)hexdec(substr($hex, 0, 2));
+        $rgba[] = (int)hexdec(substr($hex, 2, 2));
+        $rgba[] = (int)hexdec(substr($hex, 4, 2));
+        if( $opacity ){
+            $rgba[] = $opacity;
+        }
+    }
+
+    return 'rgba('.implode(",",$rgba).')';
+}
+
+function get_acfcss_root($field_group_name) {
+   $group_fields = get_field($field_group_name, 'option');
+if ($group_fields) {
+    foreach ($group_fields as $namearray => $valuearray) {
+        foreach ($valuearray as $name => $value) {
+            $field_object = acf_get_field($name);
+            
+            $append_value = '';
+            if ($field_object && isset($field_object['append'])) {
+                $append_value = $field_object['append'];
+            }
+            
+            echo "--bl_button_" . $name . ": " . $value . $append_value . ";\n";
+        }
+    }
+}
+}
+
+

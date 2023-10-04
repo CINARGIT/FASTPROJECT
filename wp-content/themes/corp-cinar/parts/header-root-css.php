@@ -11,6 +11,7 @@
 		--bl_header_bottom-margin-top: <?=get_field('main_header_data_content', 'option')['margin-top']?>px;
 		--bl_header_bottom-margin-bottom: <?=get_field('main_header_data_content', 'option')['margin-bottom']?>px;
 		
+		
 		<?
 		foreach (get_field('menu_option', 'option') as $name => $value) {
 			if(!$value) $value = 0;
@@ -37,10 +38,13 @@
 			if (!is_array($value)) {
 				echo "--bl_titles_" . $name . ": " . $value . "px;\n";
 			}
-		}
+		}	
+	
 		
-		?>
-		
+		get_acfcss_root('button_option');
+		get_acfcss_root('input_option');
+
+?>
 	}
 </style>
 

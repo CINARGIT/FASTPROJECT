@@ -138,6 +138,6 @@
 		</div>
 	</div>
 	
-	<? get_template_part( 'parts/main-menu'); ?>
+	<? get_template_part( 'parts/sections/main-menu'); ?>
 	
 </header>

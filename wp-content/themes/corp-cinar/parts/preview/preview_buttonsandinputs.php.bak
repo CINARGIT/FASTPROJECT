@@ -22,8 +22,7 @@ Template Post Type: section_preview
 			margin:0 auto;
 		}
 		
-		.exp_littleform_item_wrapper input,
-		.exp_littleform_item_wrapper button
+		.exp_littleform_item_wrapper input
 		{
 			width:100%;
 		}
@@ -31,14 +30,14 @@ Template Post Type: section_preview
 	</style>
 </head>
 <div class="wrapper">
-	<section class="section-common">
+	<section class="section-common" style="background-color:<?=get_field('bg_exp_color', 'option')?>">
 		<div class="exp_littleform_item_wrapper">
 		<div class="littleform_item">
 			<span class="wpcf7-form-control-wrap" data-name="your-name">
 				<input size="40" class="wpcf7-form-control wpcf7-text" aria-invalid="false" placeholder="Поле ввода" value="" type="text" name="your-name">
 			</span>
 		</div>
-		<button class="order_button">Оставить заявку</button>
+		<button class="order_button">Кнопка на сайте</button>
 		
 		</div>
 	</section>
