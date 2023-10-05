@@ -7,80 +7,91 @@ if(!is_archive()) {
 	$id_cat = $maincategory->term_id;
 }
 
-if(empty($args['category'])){
-	$mainTitle = get_field('zagolovok', $id_page_field);
-	if(empty($mainTitle)) {
-		$mainTitle = get_the_title();
-	}
-	$mainSubtitle = get_field('kratoe_opisanie', $id_page_field);
-	$mainBg = get_field('izobrazhenie_na_fone', $id_page_field)['url'];
-	$mainformTitle = get_field('zagolovok_formy', $id_page_field);
+$mainBg = get_field('image_main_section_group', 'option')['selected_image']['url'];
+$mainSectionContent = get_field('main_section_content_set', $id_page_field);
+$mainSectionContentDefault = get_field('main_section_content_set', get_option('page_on_front'));
+
+if(!empty($mainSectionContent['main_section_h1'])){
+	$mainSectionContentH1 = $mainSectionContent['main_section_h1'];
 } else {
-	$mainTitle = get_field('mainsectionset', $id_page_field)['zagolovok'];
-	if(empty($mainTitle)) {
-		$mainTitle = get_cat_name($id_cat);
-	}
-	$mainSubtitle = get_field('mainsectionset', $id_page_field)['podzagolovok'];
-	$mainBg = get_field('mainsectionset', $id_page_field)['image']['url'];
-	
-	if(empty($mainBg)) {
-		$mainBg = get_field('izobrazhenie_na_fone', get_option('page_on_front'))['url'];
-	}
-	
-	$mainformTitle = get_field('mainsectionset', $id_page_field)['zagolovok_formy'];
+	$mainSectionContentH1 = $mainSectionContentDefault['main_section_h1'];
 }
 
-if(empty($mainformTitle)){
-	$mainformTitle = get_field('zagolovok_formy', get_option('page_on_front'));
+if(!empty($mainSectionContent['aftertitle'])){
+	$mainSectionContentAfterTitle = $mainSectionContent['aftertitle'];
+} else {
+	$mainSectionContentAfterTitle = $mainSectionContentDefault['aftertitle'];
 }
-if(empty($mainformafterTitle)){
-	$mainformafterTitle = get_field('podzagolovok_formy', get_option('page_on_front'));
+
+if(!empty($mainSectionContent['zagolovok_formy'])){
+	$mainSectionContentFormTitle = $mainSectionContent['zagolovok_formy'];
+} else {
+	$mainSectionContentFormTitle = $mainSectionContentDefault['zagolovok_formy'];
 }
 
+if(!empty($mainSectionContent['podzagolovok_formy'])){
+	$mainSectionContentFormAfterTitle = $mainSectionContent['podzagolovok_formy'];
+} else {
+	$mainSectionContentFormAfterTitle = $mainSectionContentDefault['podzagolovok_formy'];
+}
 
-$title = $mainTitle;
-
+if(!empty($mainSectionContent['form_main_select'])){
+	$mainSectionContentFormID = $mainSectionContent['form_main_select'];
+} else {
+	$mainSectionContentFormID = $mainSectionContentDefault['form_main_select'];
+}
 
 ?>
-<section class="main_section <?=get_field('vyberite_stili_glavnogo_ekrana', 'styleset')?> <? if($args['inside']) { echo 'inside-main'; }?>" style="background-image:url(<?=$mainBg?>)">
+<section class="main_section" style="background-image:url(<?=$mainBg?>)">
 	<div class="main_section_overlay">
 		<div class="container">
 			<div class="flex_row">
-				<div class="main_section_item">
-<?
-if($args['inside']) {
-if(get_field('selectbreadcrumb', 'option')) { 
-	get_template_part( 'parts/'.get_field('selectbreadcrumb', 'option').'/breadcrumbs');
-} 
-}
-?>
-					<h1><?=$title?></h1>
-						<? if($mainSubtitle) { ?><div class="main_section_kratoe_opisanie"><?=$mainSubtitle?></div><? } ?>
-						<?php if( have_rows('preimushhestva', get_option('page_on_front')) ): ?>
-						<div class="main_section_preimushhestva">
-						<?php while( have_rows('preimushhestva', get_option('page_on_front')) ): the_row(); 
-						$image = get_sub_field('izobrazhenie');
-						?>
-						<div class="main_section_preimushhestva_item">
-						<div class="main_section_preimushhestva_item_in">
-							<img src="<?=$image['url']?>" alt="<?=get_sub_field('zagolovok')?>">
-						<div class="main_section_preimushhestva_item_info">
-							<div class="main_section_preimushhestva_item_name <? if(!$image['url']) { ?>fixed_no_image<? } ?>"><?=get_sub_field('zagolovok')?></div>
-							<div class="main_section_preimushhestva_item_tekst <? if(!$image['url']) { ?>fixed_no_image<? } ?>"><?=get_sub_field('tekst')?></div>
+				<div class="main_section_item main_section_item_left">
+					<? if(!empty($mainSectionContentH1)) { ?>
+						<h1><?=$mainSectionContentH1?></h1>
+					<? } ?>
+					<? if(!empty($mainSectionContentAfterTitle)) { ?>
+						<div class="main_section_kratoe_opisanie"><?=$mainSectionContentAfterTitle?></div>
+					<? } ?>
+		<?	
+		$preimushhestva = $mainSectionContentDefault['preimushhestva'];
+		if( $preimushhestva ): ?>
+		<div class="main_section_preimushhestva">
+        <?php foreach( $preimushhestva as $item ): 
+            $image = $item['izobrazhenie'];
+        ?>
+            <div class="main_section_preimushhestva_item">
+                <div class="main_section_preimushhestva_item_in_wrap">
+                <div class="main_section_preimushhestva_item_in">
+                    <?php if( $image ): ?>
+						<div class="main_section_preimushhestva_item_icon">
+							<img src="<?=esc_url($image['url']) ?>" alt="<?= esc_attr($item['zagolovok']) ?>">
 						</div>
-						</div>
-						</div>
-						<?php endwhile; ?>
-						</div>
-					<?php endif; ?>
+                    <?php endif; ?>
+                    <div class="main_section_preimushhestva_item_info">
+                        <div class="main_section_preimushhestva_item_name <?php if(!$image) echo 'fixed_no_image'; ?>">
+                            <?=$item['zagolovok']?>
+                        </div>
+                        <div class="main_section_preimushhestva_item_tekst <?php if(!$image) echo 'fixed_no_image'; ?>">
+                            <?=$item['tekst']?>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+		</div>
+		<?php endif; ?>
 				</div>
-				<div class="main_section_item main_section_item_form_wrap">
+				
+				<div class="main_section_item main_section_item_form_wrap main_section_item_right">
+					<div class="main_section_quote">
+					
+					</div>
 					<div class="main_section_item_form">
-						<div class="main_section_title"><?=$mainformTitle?></div>
-						<div class="main_section_aftertitle"><?=$mainformafterTitle?></div>
-						<div class="main_section_form_in"><?=do_shortcode('[contact-form-7 id="'.get_field('form_main_select', get_option('page_on_front')).'"]')?>
-						
-						</div>
+						<div class="main_section_title"><?=$mainSectionContentFormTitle?></div>
+						<div class="main_section_aftertitle"><?=$mainSectionContentFormAfterTitle?></div>
+						<div class="main_section_form_in"><?=do_shortcode('[contact-form-7 id="'.$mainSectionContentFormID.'"]')?></div>
 					</div>
 				</div>
 				</div>

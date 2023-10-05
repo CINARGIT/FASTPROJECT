@@ -104,27 +104,13 @@ if( function_exists('acf_add_options_page') ) {
 
 }
 
-function get_acf_key_by_name($name) {
-    global $wpdb;
-
-    $meta = $wpdb->get_row($wpdb->prepare(
-        "SELECT post_name FROM $wpdb->posts WHERE post_excerpt=%s AND post_type=%s",
-        $name, 'acf-field'
-    ));
-
-    if (isset($meta->post_name)) {
-        return $meta->post_name;
-    }
-
-    return false;
-}
-
 get_template_part( 'parts/acffunctions/common-setting'); 
 get_template_part( 'parts/cpt'); 
 get_template_part( 'parts/acfparts/main_theme_editor'); 
+get_template_part( 'parts/acfparts/buttonsandinputs'); 
+get_template_part( 'parts/acfparts/main_section'); 
 get_template_part( 'parts/acfparts/titles'); 
 get_template_part( 'parts/acfparts/menu'); 
-get_template_part( 'parts/acfparts/buttonsandinputs'); 
 
 endif;
 

@@ -43,6 +43,7 @@
 		
 		get_acfcss_root('button_option');
 		get_acfcss_root('input_option');
+		get_acfcss_root('main_section_h1_option');
 
 ?>
 	}

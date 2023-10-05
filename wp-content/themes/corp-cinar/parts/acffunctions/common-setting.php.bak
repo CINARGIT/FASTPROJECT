@@ -1,8 +1,127 @@
 <?
+
+function get_text_common_settings($groupkey) {
+return array(
+            'key' => 'field_button_common',
+            'label' => 'Общие параметры',
+            'name' => 'button_сommon',
+            'type' => 'group',
+            'sub_fields' => array(	
+		array(
+            'key' => 'field_' . $groupkey . '_font_size',
+            'label' => 'Размер шрифта',
+            'name' => 'font_size',
+            'type' => 'number',
+			'append' => 'px',
+            'wrapper' => array(
+                'width' => '25%',
+            ),
+            ),
+		array(
+            'key' => 'field_button_transform_сommon',
+            'label' => 'Трансформация текста',
+            'name' => 'transform',
+            'type' => 'select',
+            'choices' => array(
+                'uppercase' => 'ВСЕ ЗАГЛАВНЫЕ',
+                'none' => 'Стандартно',
+            ),
+			'wrapper' => array(
+                'width' => '25%',
+            ),
+        ),
+		
+		 array(
+            'key' => 'field_button_align_сommon',
+            'label' => 'Выравнивание текста',
+            'name' => 'align',
+            'type' => 'select',
+            'choices' => array(
+                'left' => 'По левому краю',
+                'center' => 'По центру',
+                'flex-end' => 'По правому краю',
+            ),
+			'wrapper' => array(
+                'width' => '25%',
+            ),
+        ),
+		
+		
+		array(
+            'key' => 'field_button_object_align_сommon',
+            'label' => 'Выравнивание объекта',
+            'name' => 'object_align',
+            'type' => 'select',
+            'choices' => array(
+                'flex-start' => 'По левому краю',
+                'center' => 'По центру',
+                'flex-end' => 'По правому краю',
+            ),
+			'wrapper' => array(
+                'width' => '25%',
+            ),
+        ),
+		
+        // Поле с выбором из списка
+        array(
+            'key' => 'field_button_font_weight_сommon',
+            'label' => 'Толщина шрифта',
+            'name' => 'font_weight',
+            'type' => 'select',
+            'choices' => array(
+                '300' => 'Тонкий (300)',
+                '400' => 'Нормальный (400)',
+                '500' => 'Средний (500)',
+                '600' => 'Полужирный (600)',
+                '700' => 'Жирный (700)',
+                '800' => 'Полутяжелый (800)',
+                '900' => 'Тяжелый (900)'
+            ),
+			'wrapper' => array(
+                'width' => '25%',
+            ),
+        ),
+        ),
+        );
+}
+
+
+
+function get_color_mini_settings($groupkey) {
+	  return array(
+            'key' => 'field_' . $groupkey . '_main_color',
+            'label' => 'Настройка основных цветов',
+            'name' => 'color',
+            'type' => 'group',
+            'sub_fields' => array(	
+        // цвет 1
+        array(
+            'key' => 'field_' . $groupkey . '_color_text',
+            'label' => 'Цвет текста',
+            'name' => 'color_text',
+            'type' => 'color_picker',
+            'wrapper' => array(
+                'width' => '25%',
+            ),
+        ),
+		// цвет 2 через span
+        array(
+            'key' => 'field_' . $groupkey . '_color_text_2',
+            'label' => 'Цвет текста 2 (в span)',
+            'name' => 'color_text_2',
+            'type' => 'color_picker',
+            'wrapper' => array(
+                'width' => '25%',
+            ),
+        ),
+		),
+		);
+}
+
 function get_color_settings($groupkey) {
 	  return array(
             'key' => 'field_' . $groupkey . '_main_color',
-            'label' => 'Настройка цветов',
+            'label' => 'Настройка основных цветов',
             'name' => 'color',
             'type' => 'group',
             'sub_fields' => array(	
