@@ -1,4 +1,7 @@
 <?
+
+
+
 function custom_page_template($templates) {
     $theme_directory = get_stylesheet_directory();
     $new_templates = array();

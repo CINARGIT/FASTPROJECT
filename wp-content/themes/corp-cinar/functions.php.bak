@@ -21,6 +21,7 @@ wp_enqueue_style( 'cinarmode', get_template_directory_uri() . '/css/cinar-mode.c
 wp_enqueue_style( 'cinarstyles', get_template_directory_uri() . '/css/cinar-styles.css', array( 'cinar-corp' ),  '2302324333181230' );
 wp_enqueue_style( 'blocks', get_template_directory_uri() . '/css/cinar-common-blocks.css', array( 'cinar-corp' ),  '2302324333181230' );
 wp_enqueue_style( 'cinar-corp', get_stylesheet_uri(), '2230181230' );
+wp_enqueue_script( 'rgba_picker', get_template_directory_uri() . '/js/rgba_picker.js', array( 'jquery' ), '20181230', true );
 wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ), '20181230', true );
 wp_enqueue_script( 'sweet-alert', get_template_directory_uri() . '/js/sweet-alert.js', array( 'jquery' ), '20181230', true );
 wp_enqueue_script( 'slick', get_template_directory_uri() . '/js/slick.min.js', array( 'jquery' ), '20181230', true );
@@ -1008,7 +1009,7 @@ if ($group_fields) {
                 $append_value = $field_object['append'];
             }
             
-            echo "--bl_button_" . $name . ": " . $value . $append_value . ";\n";
+            echo "--bl_".$field_group_name."_" . $name . ": " . $value . $append_value . ";\n";
         }
     }
 }

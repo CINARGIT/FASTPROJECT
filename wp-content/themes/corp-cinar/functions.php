@@ -21,6 +21,7 @@ wp_enqueue_style( 'cinarmode', get_template_directory_uri() . '/css/cinar-mode.c
 wp_enqueue_style( 'cinarstyles', get_template_directory_uri() . '/css/cinar-styles.css', array( 'cinar-corp' ),  '2302324333181230' );
 wp_enqueue_style( 'blocks', get_template_directory_uri() . '/css/cinar-common-blocks.css', array( 'cinar-corp' ),  '2302324333181230' );
 wp_enqueue_style( 'cinar-corp', get_stylesheet_uri(), '2230181230' );
+wp_enqueue_script( 'rgba_picker', get_template_directory_uri() . '/js/rgba_picker.js', array( 'jquery' ), '20181230', true );
 wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ), '20181230', true );
 wp_enqueue_script( 'sweet-alert', get_template_directory_uri() . '/js/sweet-alert.js', array( 'jquery' ), '20181230', true );
 wp_enqueue_script( 'slick', get_template_directory_uri() . '/js/slick.min.js', array( 'jquery' ), '20181230', true );
@@ -502,14 +503,6 @@ function wp_corenavi() {
   echo paginate_links( $a );
   if ( $total > 1 ) echo '</nav>';
 }
-
-
-
-// Добавляет шорткод поиска
-function pokaz_formy_poiska() {
- return get_search_form(false);
- }
- add_shortcode('search_form', 'pokaz_formy_poiska');
 
 
 

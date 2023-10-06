@@ -209,20 +209,42 @@ function get_shadow_settings($groupkey) {
             ),
         ),
 		
+		array(
+			'show_column_filter' => false,
+			'allow_bulkedit' => 0,
+			'allow_quickedit' => 0,
+			'show_column' => 0,
+			'show_column_weight' => 1000,
+			'show_column_sortable' => false,
+		  'key' => 'field_' . $groupkey . '_shadow_color',
+		   'label' => 'Цвет тени',
+			 'name' => 'shadow_color',
+			'aria-label' => '',
+			'type' => 'color_picker',
+			  'instructions' => 'Выберите цвет тени',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'enable_opacity' => 1,
+			'return_format' => 'string',
+			'display' => 'default',
+			'button_label' => 'Цвет',
+			'color_picker' => 1,
+			'absolute' => 0,
+			'input' => 1,
+			'allow_null' => 1,
+			'theme_colors' => 0,
+			'colors' => array(
+			),
+			'acfe_field_group_condition' => 0,
+		),
+	
 		
-	array(
-    'key' => 'field_' . $groupkey . '_shadow_opacity',
-    'label' => 'Прозрачность тени',
-    'name' => 'shadow_opacity',
-    'type' => 'number',
-    'instructions' => 'Между 0 (полностью прозрачный) и 1 (непрозрачный)',
-    'min' => '0',
-    'max' => '1',
-    'step' => '0.01',
-	'wrapper' => array(
-                'width' => '25%',
-       ),
-),
 		
         array(
             'key' => 'field_' . $groupkey . '_shadow_horizontal_offset',

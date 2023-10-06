@@ -30,10 +30,15 @@ Swal.fire(
 
 document.addEventListener('DOMContentLoaded', function(){
 
-jQuery(document).ready(function($) {
-    
-   
 
+	$('.search_show').on('click', function() {
+        $('.searchform').removeClass('closed');
+    });	
+
+	$('.close_search').on('click', function() {
+        $('.searchform').addClass('closed');
+    });	
+	
     $("#load-more").click(function() {
 		var offset = 6;
 		var cat = $(this).attr('data-cat');
@@ -51,7 +56,7 @@ jQuery(document).ready(function($) {
             }
         });
     });
-});
+
 
    // Если ширину окна меньше 768 пикселей
     if ($(window).width() < 768) {
