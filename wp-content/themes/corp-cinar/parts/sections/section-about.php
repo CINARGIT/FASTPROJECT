@@ -15,14 +15,9 @@ if(!$args['field_group']) {
 ?>
 
 
-<section class="section-common section-about <?=get_field('vyberite_stil_bloka_o_kompanii', 'styleset')?>">
+<section class="section-common section-about">
 	<div class="about_box_wrap">
 		<div class="container">
-			<? if(empty($args['title'])) { ?>
-				<h2><?=$about_set['about_head']?></h2>
-			<? } else { ?>
-				<?=$args['title'];?>
-			<? } ?>
 			<div class="about_box">
 		
 				<? if(empty($args['content'])) { ?>
@@ -31,23 +26,7 @@ if(!$args['field_group']) {
 					<?=apply_filters('the_content', $args['content']);?>
 				<? } ?>
 				
-				
-<?php				
-$numberOdds = $about_set['links']; 
-if($numberOdds): ?>	
-			
-	<div class="numOddsbtns_row">
-    <?php $i = 0; foreach($numberOdds as $row): $i++;
-        $name = $row['name']; 
-        $link = $row['link']; 
-		$class = ($i % 2 == 0) ? 'numOdd_btn_alter' : '';
-    ?>
-		<div class="numOdd_btn_item <? echo $class;  ?>">
-			<a href="<?php echo esc_html($link); ?>" class="numOdd_btn"><?php echo esc_html($name); ?></a>
-		</div>
-     <?php endforeach; ?>
-    </div>		
-<?php endif; ?>	
+
 			<div class="clearfix"></div>	
 		</div>
 	</div>

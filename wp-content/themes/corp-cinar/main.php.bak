@@ -6,7 +6,8 @@
 <?php get_header(); ?>
 
 <? get_template_part( 'parts/sections/main-section'); ?>
-
+<? get_template_part( 'parts/sections/section-about'); ?>
+<? get_template_part( 'parts/sections/section-uslugi'); ?>
 
 <?php get_footer();	?> 
 

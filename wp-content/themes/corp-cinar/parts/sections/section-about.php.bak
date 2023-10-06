@@ -1,4 +1,11 @@
-
+<? 
+if(!is_archive()) { 
+	$id_page_field = get_the_id();
+} else {
+	global $maincategory;
+	$id_page_field = $maincategory;
+}
+?>
 <? 
 if(!$args['field_group']) {
 	$about_set = get_field('about_set',  get_option('page_on_front'));
@@ -8,14 +15,9 @@ if(!$args['field_group']) {
 ?>
 
 
-<section class="section-common section-about <?=get_field('vyberite_stil_bloka_o_kompanii', 'styleset')?>">
+<section class="section-common section-about">
 	<div class="about_box_wrap">
 		<div class="container">
-			<? if(empty($args['title'])) { ?>
-				<h2><?=$about_set['about_head']?></h2>
-			<? } else { ?>
-				<?=$args['title'];?>
-			<? } ?>
 			<div class="about_box">
 		
 				<? if(empty($args['content'])) { ?>

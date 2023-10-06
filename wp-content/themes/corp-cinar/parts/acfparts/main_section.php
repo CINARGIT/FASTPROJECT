@@ -1,19 +1,12 @@
-<?
-if( function_exists('acf_add_options_sub_page') ) {
+<? if( function_exists('acf_add_options_sub_page') ) {
     acf_add_options_sub_page(array(
         'page_title' 	=> 'Главный экран',
         'menu_title'	=> 'Главный экран',
 		'menu_slug' 	=> 'main_section_set',
         'parent_slug'	=> 'theme-general-settings',
     ));
-}
-
-
-?>
-
-<?
-function insert_iframe_main_section() {
-    ?>
+} 
+function insert_iframe_main_section() { ?>
     <script type="text/javascript">
     jQuery(document).ready(function($) {
         // Ищем наше поле "Сообщение" по уникальному идентификатору
@@ -26,7 +19,7 @@ function insert_iframe_main_section() {
         }
     });
     </script>
-    <?php
+<?php
 }
 add_action('admin_footer', 'insert_iframe_main_section');
 acf_add_local_field_group(array(

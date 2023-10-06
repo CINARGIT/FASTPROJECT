@@ -6,48 +6,41 @@ if(!is_archive()) {
 	$id_page_field = $maincategory;
 }
 
-$sOption = get_field('servise_options');
-
+$term_name = get_term(get_field('ustanovite_glavnuyu_straniczu_uslug', 'option'))->name;
 ?>
 
-<section class="section-common section-uslugi colored <?=get_field('section-uslugi', 'styleset')?>">
+<section class="section-common section-uslugi <?=get_field('vyberite_stili_uslug', 'styleset')?>">
 	<div class="container">
-	<? if($sOption['title']) { ?>
-		<h2><?=$sOption['title']?></h2>
+	<? if($term_name) { ?>
+		<h2><?=highlightLastWord($term_name)?></h2>
 	<? } ?>
-	<?php if($sOption['servises'] ): ?>
-		<div class="row su_item_row tab-content">
-			<div class="col-xs-12 col-md-4 su_items_btns">
-			<ul class="su_items_btns_ul tab-links">
-			<?php $i = 0; foreach($sOption['servises'] as $sOptionItem): $i++; ?>
-				<li class="su_item_title <? if($i == 1) echo 'active'; ?>">
-					<a class="su_item_title_in" href="#tab<?=$i?>">
-					<span><?=$sOptionItem['title']?></span>
-					<div class="su_item_icon">
-					<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M8.16675 19.8334L19.8334 8.16669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-						<path d="M8.16675 8.16669H19.8334V19.8334" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-					</svg>
-					</div>
-					</a>
-					
-				</li>
-             <?php endforeach; ?>
-			</ul>
-			</div>
-			<div class="col-xs-12 col-md-8 su_items_texts">
-			<ul class="su_items_texts_wrap">
-			<?php $i = 0; foreach($sOption['servises'] as $sOptionItem): $i++;?>
-				<li class="su_item_text tab <? if($i == 1) echo 'active'; ?>" id="tab<?=$i?>">
-					<?=$sOptionItem['text']?>
-					<div class="su_item_text_more">
-						<a href="<?=$sOptionItem['link']?>">Узнать подробнее</a>
-					</div>
-				</li>
-             <?php endforeach; ?>
-			</ul>			 
-			</div>
+	<div class="row su_row">
+	<?php
+	$i = 0;
+	$terms = get_terms( 'category', array( 'parent' => get_field('ustanovite_glavnuyu_straniczu_uslug', 'option'), 'orderby' => 'slug', 'hide_empty' => false ) );
+    foreach ( $terms as $term ) {
+	$i++;
+	?>
+	<div class="col-xs-12 col-md-3 su_item">
+		<div class="su_item_wrap">
+			<div class="su_item_show_side">
+				<a href="<?=get_term_link($term)?>" title="<?=$term->name?>" class="su_item_link">
+					<span class="su_item_img">
+						<img src="<?=get_field('miniatyura_rubriki', $term)['url']?>" alt="<?=$term->name?>">
+					</span>
+					<span class="su_item_info">
+						<span class="su_item_title">
+							<?=$term->name?>
+						</span>
+						<span class="su_item_price">
+							<?=get_field('price', $term)?>
+						</span>
+					</span>
+				</a>
+			</div>		 
 		</div>
-	<?php endif; ?>
+     </div>
+	<? } ?>	
     </div>
+	</div>
 </section>

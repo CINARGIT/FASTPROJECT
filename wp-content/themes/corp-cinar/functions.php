@@ -464,6 +464,12 @@ add_action('admin_head', 'my_custom_fonts');
 
 function my_custom_fonts() {
   echo '<style>
+	#col-left {
+		width: 50%;
+	}
+	#col-right{
+		width:50%;
+	}
     .wp-editor-wrap {
       max-width:990px;
 	  margin:0 auto;
@@ -685,89 +691,6 @@ function start_lvl( &$output, $depth = 0, $args = Array() ) {
 
 
 
-
-function get_acf_list() {
-	global $post;
-	if( have_rows('spisok_form', get_option('page_on_front')) ): 
-	$i = 0;
-	$content = '
-	<div class="littleform_item_selector_wpap">
-	<div class="littleform_item_selector"><span>'.get_field('nazvanie_spiska', get_option('page_on_front')).'</span>
-<svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M1 1.5L8 8.5L15 1.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-	</div>
-	<div class="littleform_item_selector_list">';
-	while( have_rows('spisok_form', get_option('page_on_front')) ): the_row(); 
-		$content .= '<div class="littleform_item_selector_item">'.get_sub_field("naimenovanie").'</div>';
-	endwhile; 
-	$content .=  '</div>
-	<input type="text" style="display:none;" value="'.$content1.'" class="littleform_item_inp" name="your-select1">
-	</div>
-	';		
-	endif; 	
-	return $content;
-}
-
-add_shortcode('acf_list', 'get_acf_list');
-
-
-function get_acf_list2() {
-	global $post;
-	if( have_rows('spisok_form2', get_option('page_on_front')) ): 
-	$i = 0;
-	$content = '
-	<div class="littleform_item_selector_wpap">
-	<div class="littleform_item_selector"><span>'.get_field('nazvanie_spiska2', get_option('page_on_front')).'</span>
-<svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M1 1.5L8 8.5L15 1.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-	</div>
-	<div class="littleform_item_selector_list">';
-	while( have_rows('spisok_form', get_option('page_on_front')) ): the_row(); 
-		$content .= '<div class="littleform_item_selector_item">'.get_sub_field("naimenovanie").'</div>';
-	endwhile; 
-	$content .=  '</div>
-	<input type="text" style="display:none;" value="'.$content1.'" class="littleform_item_inp" name="your-select2">
-	</div>
-	';		
-	endif; 	
-	return $content;
-}
-
-add_shortcode('acf_list2', 'get_acf_list2');
-
-
-
-
-function get_acf_list3() {
-	global $post;
-	global $maincategory;
-
-	$i = 0;
-	$content = '
-	<div class="littleform_item_selector_wpap">
-	<div class="littleform_item_selector"><span>'.get_field('catrevset', $maincategory)['nazvanie_spiska3'].'</span>
-<svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M1 1.5L8 8.5L15 1.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-	</div>
-	<div class="littleform_item_selector_list">';
-	
-foreach (get_field('catrevset', $maincategory)['spisok_form3'] as $row) { 
-		$content .= '<div class="littleform_item_selector_item">'.$row["naimenovanie"].'</div>';
-} 
-	
-	$content .=  '</div>
-	<input type="text" style="display:none;" value="'.$content1.'" class="littleform_item_inp" name="your-select3">
-	</div>
-	';		
-
-	return $content;
-}
-
-add_shortcode('acf_list3', 'get_acf_list3');
 
 
 

@@ -1,5 +1,23 @@
 <?
+function refresh_on_new_category() {
+    if ( 'edit-category' === get_current_screen()->id ) {
+        echo '<script>
+            jQuery(document).ready(function($) {
+                $("#addtag").on("submit", function(e) {
+                    var form = $(this);
+                    e.preventDefault();
 
+                    $.post(ajaxurl, form.serialize(), function(response) {
+                        if (response) {
+                            location.reload();
+                        }
+                    });
+                });
+            });
+        </script>';
+    }
+}
+add_action('admin_footer', 'refresh_on_new_category');
 
 
 function custom_page_template($templates) {
@@ -29,22 +47,6 @@ add_filter('theme_page_templates', 'custom_page_template');
 
 add_filter( "litespeed_media_ignore_remote_missing_sizes", "__return_true" );
 
-function mytheme_tinymce_settings($settings) {
-    $opt = array(
-        'extended_valid_elements' => 'h2[style|class|id|span],span[style|class|id]',
-    );
-
-    $settings = array_merge($settings, $opt);
-
-    return $settings;
-}
-add_filter('tiny_mce_before_init', 'mytheme_tinymce_settings');
-
-
-function hide_term_description() {
-    echo '<style>.term-description-wrap { display:none; }</style>';
-}
-add_action( 'admin_head-term.php', 'hide_term_description' );
 
 
 function remove_ls_characters($value, $post_id, $field) {
