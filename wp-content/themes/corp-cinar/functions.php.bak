@@ -21,7 +21,6 @@ wp_enqueue_style( 'cinarmode', get_template_directory_uri() . '/css/cinar-mode.c
 wp_enqueue_style( 'cinarstyles', get_template_directory_uri() . '/css/cinar-styles.css', array( 'cinar-corp' ),  '2302324333181230' );
 wp_enqueue_style( 'blocks', get_template_directory_uri() . '/css/cinar-common-blocks.css', array( 'cinar-corp' ),  '2302324333181230' );
 wp_enqueue_style( 'cinar-corp', get_stylesheet_uri(), '2230181230' );
-wp_enqueue_script( 'rgba_picker', get_template_directory_uri() . '/js/rgba_picker.js', array( 'jquery' ), '20181230', true );
 wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ), '20181230', true );
 wp_enqueue_script( 'sweet-alert', get_template_directory_uri() . '/js/sweet-alert.js', array( 'jquery' ), '20181230', true );
 wp_enqueue_script( 'slick', get_template_directory_uri() . '/js/slick.min.js', array( 'jquery' ), '20181230', true );
@@ -464,14 +463,15 @@ add_action('admin_head', 'my_custom_fonts');
 
 function my_custom_fonts() {
   echo '<style>
+	
 	#col-left {
-    width: 50%;
+		width: 50%;
 	}
 	#col-right{
 		width:50%;
 	}
     .wp-editor-wrap {
-      max-width:990px;
+      max-width:1330px;
 	  margin:0 auto;
     } 
 	
@@ -860,7 +860,21 @@ function filter_ptags_on_images($content) {
 }
 add_filter('the_content', 'filter_ptags_on_images');
 
+function add_alignment_to_image_link( $html, $id, $caption, $title, $align, $url, $size, $alt ) {
 
+    // Если в HTML есть классы alignright, alignleft или aligncenter для изображения
+    if ( preg_match( '/<img.*?class=".*?(alignright|alignleft|aligncenter).*?".*?>/', $html, $matches ) ) {
+        $align_class = $matches[1];
+        
+        // Если изображение обернуто ссылкой
+        if ( strpos( $html, '<a' ) !== false ) {
+            $html = str_replace( '<a ', '<a class="' . $align_class . '" ', $html );
+        }
+    }
+
+    return $html;
+}
+add_filter( 'image_send_to_editor', 'add_alignment_to_image_link', 10, 8 );
 
 function redirect_to_profile_page() {
     if ( is_user_logged_in() ) {

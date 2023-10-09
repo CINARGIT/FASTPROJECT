@@ -1,6 +1,14 @@
-/*! jQuery UI - v1.13.2 - 2023-06-27
-* http://jqueryui.com
-* Copyright jQuery Foundation and other contributors; Licensed MIT */
+img[data-lazyloaded]{
+    opacity: 0;
+}
+
+img.litespeed-loaded{
+    -webkit-transition: opacity .5s linear 0.2s;
+    -moz-transition: opacity .5s linear 0.2s;
+    transition: opacity .5s linear 0.2s;
+    opacity: 1;
+}
+
 
 .ui-helper-hidden{display:none}
 .ui-helper-hidden-accessible{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}
@@ -305,7 +313,7 @@ body input[type="text"].wpcf7-not-valid{
 	margin-top:-6px;
     width: 12px;
     height: 12px;
-    border-radius: 50%;
+    border-radius: 0%;
     background: #fff;
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
@@ -383,29 +391,17 @@ ul.slick-dots, ul.slick-dots li{
 }
 
 ul.slick-dots li{
-	margin-left:8px;
-	margin-right:8px;
+	margin:0px;
 }
 
 ul.slick-dots li button{
-	background-color:transparent;
-	border: 1px solid var(--main-color);
-	border-radius:6.5px;
-	font-size:0px;
-	color:transparent;
-	width:13px;
-	outline:none !important;
-	height:13px;
+	padding:0px;
+	margin:0px;
 }
 
 ul.slick-dots li button:before{
 	display:none;
 }
-
-ul.slick-dots li.slick-active button{
-	background-color:var(--main-color);
-}
-
 
 .mobile_tool, .mobile_menu_overlay, .mobile_menu{
 	display:none;
@@ -574,9 +570,10 @@ ul.slick-dots li.slick-active button{
 		color:#fff;
 		position:absolute;
 		top:0px;
-		right:77px;
-		width:170px;
+		right:0px;
+		width:180px;
 		height:100%;
+		font-size:14px;
 		border-radius:0px;
 	}
 	

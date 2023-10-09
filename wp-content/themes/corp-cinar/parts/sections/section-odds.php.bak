@@ -6,34 +6,41 @@ if(!is_archive()) {
 	$id_page_field = $maincategory;
 }
 ?>
-<section class="section-common section-odds colored <?=get_field('odds_style_select', 'styleset')?>">
-			<div class="container">
-			<h2><?=get_field('title_odds', get_option('page_on_front'))?></h2>
-				<?php if( have_rows('odds', get_option('page_on_front')) ): ?>
-					<?php
-						$i = 0;
-						$count = 0;
-						while( have_rows('odds', get_option('page_on_front')) ): the_row(); 
-						$image = get_sub_field('image')['url'];
-						?>
-						<div class="so_wrap so_item row">
-						<div class="so_item_wrap col-xs-12 col-md-4">
-							
-								<div class="so_item_img">
-									<img src="<?=$image?>" alt="<?=get_sub_field('nazvanie')?>">
-								</div>
-							
-						</div>
-						<div class="so_item_wrap_text col-xs-12 col-md-8">
-							<div class="so_item_name">
-								<?=get_sub_field('nazvanie')?>
-							</div>
-							<div class="so_item_text">
-								<?=get_sub_field('text')?>
-							</div>
-						</div>
-						</div>
-				<?php endwhile; ?>
-				<?php endif; ?>
-			</div>
+<?php 
+	$section = get_field('odds', get_option('page_on_front'));
+	if( $section ): 
+	$sectionclass = 'odds';
+?>
+<section class="section-common section-<?=$sectionclass?>">
+    <div class="container">
+    <div class="row row_<?=$sectionclass?>">
+        <h2><?=highlightLastWord($section['title'])?></h2>
+        <?php
+		$countitems = count($section['items']);
+		$i = 0;
+        foreach( $section['items'] as $item ):  $i++;
+            $photo = $item['photo']['url'];
+        ?>
+        <div class="<?=$sectionclass?>_item col-xs-12 col-md-4 <? if($i == $countitems) echo 'last_item'; ?>">
+            <div class="<?=$sectionclass?>_item_show_side">
+				<div class="<?=$sectionclass?>_item_in">
+					<div class="<?=$sectionclass?>_item_img">
+						<img src="<?=$photo?>" alt="<?=$sectionclass?> <?=$i?>">
+					</div>
+					<div class="<?=$sectionclass?>_item_num">
+						#<?=$i?>
+					</div>
+					<div class="<?=$sectionclass?>_item_wrap_title">
+						<?=$item['title'] ?>
+					</div>
+					<div class="<?=$sectionclass?>_item_wrap_text">
+						<?=$item['text'] ?>
+					</div>
+				</div>
+            </div>
+        </div>
+        <?php endforeach; ?>
+    </div>
+    </div>
 </section>
+<?php endif; ?>

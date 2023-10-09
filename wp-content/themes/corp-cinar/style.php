@@ -1,4 +1,28 @@
-<?
+<? function my_theme_add_editor_styles() {
+    add_editor_style( get_template_directory_uri() . '/css/editor-style.css' );
+}
+add_action( 'admin_init', 'my_theme_add_editor_styles' );
+
+ function my_custom_tinymce_button($buttons) {
+    array_push($buttons, "|", "mybutton");
+    return $buttons;
+}
+
+function my_custom_tinymce_plugin($plugin_array) {
+    $plugin_array['mybutton'] = get_template_directory_uri() . '/js/my_button.js';
+    return $plugin_array;
+}
+
+function my_custom_tinymce() {
+    if (!current_user_can('edit_posts') && !current_user_can('edit_pages')) return;
+
+    if (get_user_option('rich_editing') == 'true') {
+        add_filter('mce_external_plugins', 'my_custom_tinymce_plugin');
+        add_filter('mce_buttons', 'my_custom_tinymce_button');
+    }
+}
+add_action('init', 'my_custom_tinymce');
+
 function refresh_on_new_category() {
     if ( 'edit-category' === get_current_screen()->id ) {
         echo '<script>

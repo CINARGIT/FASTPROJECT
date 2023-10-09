@@ -14,7 +14,7 @@ $voSet = get_field('vo_set',  $maincategory);
 <section class="section-common section-vopros-otvet <?=$args['sclass']?> <?=get_field('section-vopros-otvet', 'styleset')?>">
 	<div class="container">
 	<? if(!empty($voSet['title'])) { ?>
-		<h2><?=$voSet['title']?></h2>
+		  <h2><?=highlightLastWord($voSet['title'])?></h2>
 	<? } ?>
 			<div class="q_wrap">
 			<? foreach ($voSet['vo'] as $row) { ?>
@@ -22,8 +22,7 @@ $voSet = get_field('vo_set',  $maincategory);
 				<div class="q_item noselect">
 					<div class="q_item_question">
 						<?=$row['vopros']?>
-						<div class="plusminus_label">Раскрыть ответ</div>
-						<div class="plusminus"></div>
+						<div class="plusminus_wrap"><div class="plusminus"></div></div>
 					</div>
 					<div class="q_item_answer">
 						<div class="q_item_answer_in">

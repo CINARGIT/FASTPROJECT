@@ -7,6 +7,7 @@ $form1_bg = $form1['formbg-1']['url'];
 $form1_bg = $form1['formbg-1']['url'];
 ?>
 <section class="section-common colored section-form <?=get_field('vyberite_stili_form', 'styleset')?>" style="background-image:url(<?=$form1_bg?>);">
+	
 	<div class="container">
 		<div class="form-content">
 			<div class="def_title">
@@ -18,5 +19,7 @@ $form1_bg = $form1['formbg-1']['url'];
 			<div class="form-content-form-in">			
 				<?=do_shortcode('[contact-form-7 id="'.$form1_id.'"]')?>
 			</div>
+		</div>
 	</div>
+	
 </section>

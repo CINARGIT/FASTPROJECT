@@ -7,6 +7,7 @@ $form1_bg = $form1['formbg-1']['url'];
 $form1_bg = $form1['formbg-1']['url'];
 ?>
 <section class="section-common colored section-form <?=get_field('vyberite_stili_form', 'styleset')?>" style="background-image:url(<?=$form1_bg?>);">
+	<div class="section-form-overlay">
 	<div class="container">
 		<div class="form-content">
 			<div class="def_title">
@@ -18,25 +19,7 @@ $form1_bg = $form1['formbg-1']['url'];
 			<div class="form-content-form-in">			
 				<?=do_shortcode('[contact-form-7 id="'.$form1_id.'"]')?>
 			</div>
-			
-		<div class="quote_box">
-			<div class="quote_text">
-				<?=$form1['tekst_czitaty']?>
-			</div>
-			
-			<div class="quote_info">
-				<div class="quote_info_data">
-					<div class="quote_info_name">
-						<?=$form1['avtor']?>
-					</div>
-					<div class="quote_info_dolzhnost">
-						<?=$form1['dolzhnost']?>
-					</div>
-				</div>
-				<div class="quote_info_photo">
-					<img src="<?=$form1['foto_avtora']['url']?>" alt="<?=$form1['avtor']?>">
-				</div>
-			</div>
 		</div>
+	</div>
 	</div>
 </section>

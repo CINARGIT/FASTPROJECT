@@ -214,26 +214,7 @@ $( ".su_item_wrap" ).hover(
 	$('.idphone').mask('+7(999) 999-9999',{autoclear: true});
 
 
-$('.sv_video_cur').slick({
-  centerMode: false,
-  lazyLoad: 'ondemand',
-  fade: true,
-  slidesToShow: 1,
-  arrows: true,
-  dots: true,
-  prevArrow:'<div class="arrow_c arrow_prev_slick"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.5833 13H5.41667" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 5.4165L5.41667 12.9998L13 20.5832" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>',
-  nextArrow:'<div class="arrow_c arrow_next_slick"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.41663 13H20.5833" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 5.4165L20.5833 12.9998L13 20.5832" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>',
-   responsive: [
-    {
-      breakpoint: 990,
-      settings: {
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		arrows: false,
-      }
-    },
-	]
-});
+
 
 
 $('.vpr_gallery').slick({
@@ -261,6 +242,27 @@ $('.main-rev-wrap').slick({
     },
 ]
 });
+
+
+$('.clients_row_cur').slick({
+  centerMode: false,
+  lazyLoad: 'ondemand',
+  slidesToShow: 1,
+  arrows: false,
+  dots: true,
+  responsive: [
+    {
+      breakpoint: 990,
+      settings: {
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		arrows: false,
+      }
+    },
+]
+});
+
+
 
 
 
@@ -355,7 +357,6 @@ $('.gallery_content').slick({
 ]
 });
 
-
 $('.single-gallery-slick').slick({
   centerMode: false,
   lazyLoad: 'ondemand',
@@ -375,15 +376,38 @@ $('.single-gallery-slick').slick({
 ]
 });
 
+$('.row_consist').slick({
+  centerMode: false,
+  lazyLoad: 'ondemand',
+  slidesToShow: 4,
+  arrows: true,      
+  infinite: false,
+  dots: true,
+  prevArrow:'<div class="arrow_c arrow_prev_slick"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.3334 16H6.66669" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 25.3334L6.66669 16.0001L16 6.66675" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>',
+  nextArrow:'<div class="arrow_c arrow_next_slick"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.66665 16H25.3333" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 25.3334L25.3333 16.0001L16 6.66675" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>',
+	responsive: [
+    {
+      breakpoint: 990,
+      settings: {
+		slidesToShow: 2,
+		slidesToScroll: 2,
+		arrows: true,
+      }
+    },
+	]
+});
 
-$('.video_row').slick({
+
+
+$('.row_reviews').slick({
   centerMode: false,
   lazyLoad: 'ondemand',
   slidesToShow: 2,
-  arrows: true,
-  dots: false,
-  prevArrow:'<div class="arrow_c arrow_prev_slick"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.5833 13H5.41667" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 5.4165L5.41667 12.9998L13 20.5832" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>',
-  nextArrow:'<div class="arrow_c arrow_next_slick"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.41663 13H20.5833" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 5.4165L20.5833 12.9998L13 20.5832" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>',
+  arrows: true,      
+  infinite: false,
+  dots: true,  
+  prevArrow:'<div class="arrow_c arrow_prev_slick"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.3334 16H6.66669" stroke="#121E2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 25.3334L6.66669 16.0001L16 6.66675" stroke="#121E2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>',
+  nextArrow:'<div class="arrow_c arrow_next_slick"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.66665 16H25.3333" stroke="#121E2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 25.3334L25.3333 16.0001L16 6.66675" stroke="#121E2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>',
 	responsive: [
     {
       breakpoint: 990,
@@ -391,48 +415,29 @@ $('.video_row').slick({
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		arrows: false,
-		dots: true,
       }
     },
 ]
 });
 
 
+// Обновление счетчика при инициализации и при перелистывании
+$('.row_consist').on('init reInit afterChange', function(event, slick, currentSlide, nextSlide) {
+    // Текущий слайд
+    var currentStart = (currentSlide ? currentSlide : 0) + 1;
+    
+    // Определение последнего показанного слайда на основе настроек
+    var currentEnd = currentStart + slick.options.slidesToShow - 1;
+    if (currentEnd > slick.slideCount) {
+        currentEnd = slick.slideCount;
+    }
 
-
-$('.cur_list_row_wrap .row').slick({
-  mobileFirst: true,
-  lazyLoad: 'ondemand',
-  slidesToShow: 1,
-  centerMode: true,
-  arrows: false,
-  dots: true,
-   responsive: [
-          {
-                  breakpoint: 990,
-                  settings: 'unslick',
-          }
-    ]
+    // Обновление текста счетчика
+    $('.slide-counter').text(currentEnd + ' мероприятия из ' + slick.slideCount);
 });
 
-
-$('.section-clients .row').slick({
-  mobileFirst: true,
-  lazyLoad: 'ondemand',
-  slidesToShow: 1,
-  autoplay: true,
-  autoplaySpeed: 5000,
-  centerMode: true,
-  arrows: false,
-  dots: true,
-   responsive: [
-          {
-                  breakpoint: 990,
-                  settings: 'unslick',
-          }
-    ]
-});
-
+// Запуск события 'init' после инициализации слайдера
+$('.row_consist').slick('setPosition');
 
 
 
