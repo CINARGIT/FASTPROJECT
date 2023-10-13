@@ -4,20 +4,33 @@ if(!is_archive()) {
 } else {
 	global $maincategory;
 	$id_page_field = $maincategory;
+	$id_cat = $maincategory->term_id;
 }
 
 $term_name = get_term(get_field('ustanovite_glavnuyu_straniczu_uslug', 'option'))->name;
+$section = get_field('services', $id_page_field);
+$sectionDefault = get_field('services', get_option('page_on_front'));
+
+if(!empty($section['items'])) {
+	$terms = get_terms( 'category', array( 'include' => $section['items'], 'orderby' => 'slug', 'hide_empty' => false ) );
+} else {
+	$terms = get_terms( 'category', array( 'parent' => $id_cat, 'orderby' => 'slug', 'hide_empty' => false ) );	
+}
+
+if(!empty($terms)) {
 ?>
 
-<section class="section-common section-uslugi <?=get_field('vyberite_stili_uslug', 'styleset')?>">
+<section class="section-common section-uslugi">
 	<div class="container">
-	<? if($term_name) { ?>
-		<h2><?=highlightLastWord($term_name)?></h2>
+	<? if(!empty($section['title'])) { ?>
+		<h2><?=highlightLastWord($section['title'])?></h2>
+	<? } else { ?>
+		<h2><?=highlightLastWord($sectionDefault['title'])?></h2>
 	<? } ?>
 	<div class="row su_row">
 	<?php
 	$i = 0;
-	$terms = get_terms( 'category', array( 'parent' => get_field('ustanovite_glavnuyu_straniczu_uslug', 'option'), 'orderby' => 'slug', 'hide_empty' => false ) );
+	
     foreach ( $terms as $term ) {
 	$i++;
 	?>

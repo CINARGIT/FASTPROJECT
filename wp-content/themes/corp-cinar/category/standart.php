@@ -1,13 +1,18 @@
 <? global $maincategory; ?>
-<? stylePart('vyberite_stili_glavnogo_ekrana', 'main-section', $params = [ 'category' => 1, 'inside' => 1]); ?>
-<? stylePart('vyberite_stil_bloka_o_kompanii', 'section-text'); ?>
-<? get_template_part( 'parts/senergo/section-properties'); ?>
-<? get_template_part( 'parts/senergo/section-factors'); ?>
-<? get_template_part( 'parts/senergo/section-docs');  ?>
-<? stylePart('vyberite_stili_uslug', 'section-uslugi-mini', $params = [ 'depth' => 2]); ?>
-<? if(empty(get_field('news_off', $maincategory))) {  stylePart('blog_select', 'section-blog', $params = ['blog_type' => 'news']); } ?>
-<? stylePart('vyberite_stili_form', 'section-form'); ?>
-<? stylePart('blog_select', 'section-blog'); ?>
-<? stylePart('vyberite_stil_bloka_o_kompanii', 'section-text', $params = [ 'field_group' => 'text_set_2']); ?>
-<? stylePart('section-vopros-otvet', 'section-vopros-otvet', $params = ['sclass' => 'excludem colored']); ?>
-<? stylePart('vyberite_stili_form_2', 'section-form-2'); ?>
+<? get_template_part( 'parts/sections/main-section', null, $params = [ 'category' => 1, 'inside' => 1]); ?>
+<? get_template_part( 'parts/sections/section-custom-calc', null, $params = ['bgcolor' => '#121E2D']); ?>
+<? get_template_part( 'parts/sections/section-text', null ,$args = ['field_group' => 'text_set']); ?>
+<? get_template_part( 'parts/sections/section-uslugi'); ?>
+<? get_template_part( 'parts/sections/section-steps'); ?>
+<? get_template_part( 'parts/sections/section-text', null ,$args = ['field_group' => 'text_set_2']); ?>
+<? get_template_part( 'parts/sections/section-form'); ?>
+<? get_template_part( 'parts/sections/section-text', null ,$args = ['field_group' => 'text_set_3']); ?>
+<? get_template_part( 'parts/sections/section-odds'); ?>
+<? get_template_part( 'parts/sections/section-text', null ,$args = ['field_group' => 'text_set_4']); ?>
+<? get_template_part( 'parts/sections/section-projects'); ?>
+<? get_template_part( 'parts/sections/section-text', null ,$args = ['field_group' => 'text_set_5']); ?>
+<? get_template_part( 'parts/sections/section-employees'); ?>
+<? get_template_part( 'parts/sections/section-reviews'); ?>
+<? get_template_part( 'parts/sections/section-vopros-otvet'); ?>
+<? get_template_part( 'parts/sections/section-form-2'); ?>
+<? get_template_part( 'parts/sections/section-text', null ,$args = ['field_group' => 'text_set_6']); ?>

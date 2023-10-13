@@ -3,7 +3,7 @@
         init: function(ed, url) {
             ed.addButton('mybutton', {
                 title: 'Insert Row and Columns',
-                text: 'Колонки 50%',
+                text: 'Колонки 2 в ряд',
                 onclick: function() {
                     var return_text = '<div class="row-editor"><div class="col-6-editor">Вставьте текст...</div><div class="col-6-editor">Вставьте текст...</div></div>';
                     ed.execCommand('mceInsertContent', 0, return_text);

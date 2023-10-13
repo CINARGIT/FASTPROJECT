@@ -10,7 +10,7 @@ $voSet = get_field('vo_set',  $maincategory);
 
 ?>
 
-<? if($voSet['vo']) {?>
+<? if(!empty($voSet['vo'])) { ?>
 <section class="section-common section-vopros-otvet <?=$args['sclass']?> <?=get_field('section-vopros-otvet', 'styleset')?>">
 	<div class="container">
 	<? if(!empty($voSet['title'])) { ?>

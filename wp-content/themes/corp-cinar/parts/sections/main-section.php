@@ -12,15 +12,17 @@ $mainBg = get_field('image_main_section_group', 'option')['selected_image']['url
 $mainSectionContent = get_field('main_section_content_set', $id_page_field);
 $mainSectionContentDefault = get_field('main_section_content_set', get_option('page_on_front'));
 
-if(!empty($mainSectionContent['selected_image'])) {
-	$mainBg = $mainSectionContent['selected_image'];
+if(!empty($mainSectionContent['selected_image']['url'])) {
+	$mainBg = $mainSectionContent['selected_image']['url'];
 }
 
 if(!empty($mainSectionContent['main_section_h1'])){
 	$mainSectionContentH1 = $mainSectionContent['main_section_h1'];
+} elseif(!is_archive()) {
+	$mainSectionContentH1 = get_the_title();
 } else {
-	$mainSectionContentH1 = $mainSectionContentDefault['main_section_h1'];
-}
+	$mainSectionContentH1 = get_cat_name($id_cat);
+} 
 
 if(!empty($mainSectionContent['aftertitle'])){
 	$mainSectionContentAfterTitle = $mainSectionContent['aftertitle'];
@@ -47,9 +49,16 @@ if(!empty($mainSectionContent['form_main_select'])){
 }
 
 ?>
-<section class="main_section" style="background-image:url(<?=$mainBg?>)">
+<section class="main_section <? if(!empty($args['inside'])) { echo 'main_section_inside'; }?>" style="background-image:url(<?=$mainBg?>)">
 	<div class="main_section_overlay">
 		<div class="container">
+<?
+if(!empty($args['inside'])) {
+if(get_field('selectbreadcrumb', 'option')) { 
+	get_template_part( 'parts/sections/breadcrumbs');
+} 
+}
+?>
 			<div class="flex_row">
 				<div class="main_section_item main_section_item_left">
 					<? if(!empty($mainSectionContentH1)) { ?>

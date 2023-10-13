@@ -32,16 +32,16 @@
                 if (node && node.nodeName === 'IMG') {
                     var parent = node.parentElement;
                     if (parent && parent.nodeName === 'A') {
-                        $(parent).removeClass('alignright alignleft aligncenter'); // Удалите предыдущие классы выравнивания
+                        $(parent).removeClass('alignright-wrap-a alignleft-wrap-a aligncenter-wrap-a'); // Удалите предыдущие классы выравнивания
                         switch (e.command) {
                             case 'JustifyRight':
                                 $(parent).addClass('alignright-wrap-a');
                                 break;
                             case 'JustifyLeft':
-                                $(parent).addClass('alignleft');
+                                $(parent).addClass('alignleft-wrap-a');
                                 break;
                             case 'JustifyCenter':
-                                $(parent).addClass('aligncenter');
+                                $(parent).addClass('aligncenter-wrap-a');
                                 break;
                         }
                     }

@@ -12,8 +12,8 @@ $employees = get_field('employees', get_option('page_on_front'));
 if( $employees ): ?>
 <section class="section-common section-employees">
     <div class="container">
+    <h2><?=highlightLastWord($employees['title_employees'])?></h2>
     <div class="row row_emp">
-        <h2><?=highlightLastWord($employees['title_employees'])?></h2>
         <?php
         foreach( $employees['employees_list'] as $employee ): 
             $photo = $employee['photo']['url'];

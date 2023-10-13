@@ -15,17 +15,15 @@ if(!$args['field_group']) {
 ?>
 
 
-<section class="section-common section-about">
+<section class="section-common section-about colored">
 	<div class="about_box_wrap">
 		<div class="container">
 			<div class="about_box">
 		
 				<? if(empty($args['content'])) { ?>
 					<?=$about_set['about_text']?>
-				<? } else { ?>
-					<?=apply_filters('the_content', $args['content']);?>
-				<? } ?>
-				
+				<? }  ?>
+					
 
 			<div class="clearfix"></div>	
 		</div>

@@ -20,7 +20,7 @@ if(!$args['field_group']) {
 <section class="section-common section-text">
 	<div class="container">
 		<? if(!empty($text_set['title'])) { ?>
-			<h2><?=$text_set['title']?></h2>
+			<h2><?=highlightLastWord($text_set['title'])?></h2>
 		<? } ?>
 			<div class="text_box">
 				<? if(!empty($text_set['text'])) { ?>
@@ -28,6 +28,12 @@ if(!$args['field_group']) {
 				<? } ?>
 			<div class="clearfix"></div>	
 		</div>
+		
+		<? if($text_set['contact_form_btn_switcher'])) {?>
+		<div class="text_box_contact_form_btn_wrap">
+			<a class="order_button datatextcopy" href="#fancy-modal-order-call" data-text="<?=$text_set['contact_form_btn']['title']?>" data-fancybox="modal"><span><?=$text_set['contact_form_btn']['title']?></span></a>
+		</div>
+		<? } ?>
 	</div>
 </section>
 <?php } ?>	

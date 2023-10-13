@@ -12,7 +12,7 @@ if(!is_archive()) {
 	$sectionclass = 'reviews';
 	$countitems = count($section['items']);
 ?>
-<section class="section-common section-<?=$sectionclass?>">
+<section class="section-common colored section-<?=$sectionclass?>">
     <div class="container">
     
         <h2><?=highlightLastWord($section['title'])?></h2>
@@ -49,7 +49,7 @@ if(!is_archive()) {
         </div>
         <?php endforeach; ?>
 		</div>
-		<div class="<?=$sectionclass?>_more_link_box">
+		<div class="more_link_box">
 			<a href="<?=$section['link_more']?>"><?=$section['text_more']?></a>
 		</div>
     </div>

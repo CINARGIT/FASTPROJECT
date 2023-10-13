@@ -8,7 +8,10 @@ if(!is_archive()) {
 ?>
 <?php 
 	$section = get_field('odds', get_option('page_on_front'));
-	if( $section ): 
+	if(!empty(get_field('odds', $id_page_field))) {
+		$section = get_field('odds', $id_page_field);	
+	}
+	if(!empty($section['items'])): 
 	$sectionclass = 'odds';
 ?>
 <section class="section-common section-<?=$sectionclass?>">
@@ -27,14 +30,16 @@ if(!is_archive()) {
 					<div class="<?=$sectionclass?>_item_img">
 						<img src="<?=$photo?>" alt="<?=$sectionclass?> <?=$i?>">
 					</div>
-					<div class="<?=$sectionclass?>_item_num">
-						#<?=$i?>
-					</div>
-					<div class="<?=$sectionclass?>_item_wrap_title">
-						<?=$item['title'] ?>
-					</div>
-					<div class="<?=$sectionclass?>_item_wrap_text">
-						<?=$item['text'] ?>
+					<div class="<?=$sectionclass?>_item_info">
+						<div class="<?=$sectionclass?>_item_num">
+							#<?=$i?>
+						</div>
+						<div class="<?=$sectionclass?>_item_wrap_title">
+							<?=$item['title'] ?>
+						</div>
+						<div class="<?=$sectionclass?>_item_wrap_text">
+							<?=$item['text'] ?>
+						</div>
 					</div>
 				</div>
             </div>

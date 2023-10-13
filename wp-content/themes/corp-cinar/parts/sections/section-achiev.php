@@ -12,7 +12,7 @@ if(!is_archive()) {
 	$sectionclass = 'achiev';
 	$countitems = count($section['achiev']);
 ?>
-<section class="section-common section-<?=$sectionclass?>">
+<section class="section-common colored section-<?=$sectionclass?>">
     <div class="container">
     
         <h2><?=highlightLastWord($section['title'])?></h2>
@@ -31,15 +31,17 @@ if(!is_archive()) {
             $photo_full = $item['sizes']['large'];
         ?>
         <div class="<?=$sectionclass?>_item">
+			<div class="<?=$sectionclass?>_item_img_wrap">
 			<div class="<?=$sectionclass?>_item_img">
                 <a href="<?=$photo_full?>" data-fancybox="<?=$sectionclass?>">
 					<img src="<?=$photo?>" alt="<?=$item['name'] ?>">
 				</a>
              </div>
+             </div>
         </div>
         <?php endforeach; ?>
 		</div>
-		<div class="<?=$sectionclass?>_more_link_box">
+		<div class="more_link_box">
 			<a href="<?=$section['link_more']?>"><?=$section['text_more']?></a>
 		</div>
     </div>

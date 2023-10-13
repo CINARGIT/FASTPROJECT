@@ -25,7 +25,6 @@ if(!is_archive()) {
 		
 		<div class="row_<?=$sectionclass?> countitems-<?=floor($countitems/2)?>">
         <?php
-		$countitems = count($section['items']);
 		$i = 0;
         foreach($section['items'] as $item ):  $i++;
             $photo = $item['photo']['sizes']['medium'];
@@ -50,7 +49,7 @@ if(!is_archive()) {
         </div>
         <?php endforeach; ?>
 		</div>
-		<div class="<?=$sectionclass?>_more_link_box">
+		<div class="more_link_box">
 			<a href="<?=$section['link_more']?>"><?=$section['text_more']?></a>
 		</div>
     </div>

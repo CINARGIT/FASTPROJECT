@@ -11,7 +11,7 @@ if(!is_archive()) {
 	if( $section ): 
 	$sectionclass = 'steps';
 ?>
-<section class="section-common section-<?=$sectionclass?>">
+<section class="section-common section-<?=$sectionclass?> colored">
     <div class="container">
     <div class="row row_<?=$sectionclass?>">
         <h2><?=highlightLastWord($section['title'])?></h2>

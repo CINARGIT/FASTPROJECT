@@ -8,7 +8,10 @@ if(!is_archive()) {
 ?>
 <?php 
 	$section = get_field('odds', get_option('page_on_front'));
-	if( $section ): 
+	if(!empty(get_field('odds', $id_page_field)['items'])) {
+		$section = get_field('odds', $id_page_field);	
+	}
+	if(!empty($section['items'])): 
 	$sectionclass = 'odds';
 ?>
 <section class="section-common section-<?=$sectionclass?>">

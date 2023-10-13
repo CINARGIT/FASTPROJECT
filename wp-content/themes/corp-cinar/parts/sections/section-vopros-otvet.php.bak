@@ -22,7 +22,7 @@ $voSet = get_field('vo_set',  $maincategory);
 				<div class="q_item noselect">
 					<div class="q_item_question">
 						<?=$row['vopros']?>
-						<div class="plusminus"></div>
+						<div class="plusminus_wrap"><div class="plusminus"></div></div>
 					</div>
 					<div class="q_item_answer">
 						<div class="q_item_answer_in">

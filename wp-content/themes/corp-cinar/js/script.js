@@ -30,6 +30,36 @@ Swal.fire(
 
 document.addEventListener('DOMContentLoaded', function(){
 
+jQuery(document).ready(function($) {
+    let page = 1;
+
+    $('#loadMoreBtn').on('click', function() {
+        page++;
+
+        $.get('/wp-json/loadmore/v1/posts?page=' + page, function(data) {
+            if (data.length > 0) {
+                data.forEach(function(postHtml) {
+                    $('.sb_items_row').append(postHtml);
+                });
+                
+                if(data.length < 12) {
+                    $('#loadMoreBtn').hide(); // скрываем кнопку, если возвращено постов меньше, чем запрошено
+                }
+            } else {
+                $('#loadMoreBtn').hide(); // также скрываем кнопку, если больше нет постов
+            }
+        });
+    });
+});
+
+  $('.showMoreBtn').click(function() {
+        $(this).parents('section').find('.hidden-item').each(function(i) {
+            $(this).delay(300 * i).css('display', 'block'); // Показать элемент, чтобы начать анимацию
+        });
+        
+        // скрываем кнопку "Показать еще"
+        $(this).addClass('disabled');
+    });
 
 	$('.search_show').on('click', function() {
         $('.searchform').removeClass('closed');
@@ -419,6 +449,28 @@ $('.row_reviews').slick({
     },
 ]
 });
+
+$('.row_achiev').slick({
+  centerMode: false,
+  lazyLoad: 'ondemand',
+  slidesToShow: 4,
+  arrows: true,      
+  infinite: false,
+  dots: true,  
+  prevArrow:'<div class="arrow_c arrow_prev_slick"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.3334 16H6.66669" stroke="#121E2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 25.3334L6.66669 16.0001L16 6.66675" stroke="#121E2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>',
+  nextArrow:'<div class="arrow_c arrow_next_slick"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.66665 16H25.3333" stroke="#121E2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 25.3334L25.3333 16.0001L16 6.66675" stroke="#121E2D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>',
+	responsive: [
+    {
+      breakpoint: 990,
+      settings: {
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		arrows: false,
+      }
+    },
+]
+});
+
 
 
 // Обновление счетчика при инициализации и при перелистывании

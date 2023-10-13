@@ -1,5 +1,6 @@
 <?php
 include get_template_directory() . '/style.php';
+include get_template_directory() . '/parts/show_more_category.php';
 
 function customtheme_add_woocommerce_support()
  {

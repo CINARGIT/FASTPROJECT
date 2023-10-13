@@ -10,6 +10,7 @@
 <? get_template_part( 'parts/sections/section-uslugi'); ?>
 <? get_template_part( 'parts/sections/section-projects'); ?>
 <? get_template_part( 'parts/sections/section-employees'); ?>
+<? get_template_part( 'parts/sections/section-custom-calc'); ?>
 <? get_template_part( 'parts/sections/section-text', null ,$args = ['field_group' => 'text_set']); ?>
 <? get_template_part( 'parts/sections/section-steps'); ?>
 <? get_template_part( 'parts/sections/section-odds'); ?>

@@ -28,6 +28,12 @@ if(!$args['field_group']) {
 				<? } ?>
 			<div class="clearfix"></div>	
 		</div>
+		
+		<? if($text_set['contact_form_btn_switcher']) {?>
+		<div class="text_box_contact_form_btn_wrap">
+			<a class="order_button datatextcopy" href="#fancy-modal-order-call" data-text="<?=$text_set['contact_form_btn']['title']?>" data-fancybox="modal"><span><?=$text_set['contact_form_btn']['title']?></span></a>
+		</div>
+		<? } ?>
 	</div>
 </section>
 <?php } ?>	

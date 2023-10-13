@@ -64,7 +64,7 @@ if ( has_post_thumbnail() ) {
 <?  } wp_reset_postdata(); ?>
 
 	<div class="links_more_wrap">
-		<a href="<?=get_category_link($project_set['projects_cat'][0])?>"><?=$project_set['projects_cat']?> (<?=$countq?>)</a>
+		<a href="<?=get_category_link($project_set['projects_cat'][0])?>"><?=$project_set['more_button']?> (<?=$countq?>)</a>
     </div>
    
 <? } ?> 

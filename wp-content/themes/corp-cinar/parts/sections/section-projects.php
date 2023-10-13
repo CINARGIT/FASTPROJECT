@@ -8,7 +8,7 @@ if(!is_archive()) {
 $project_set = get_field('projects_set', get_option('page_on_front'));
 ?>
 
-<section class="section-common section-projects">
+<section class="section-common colored section-projects">
 	<div class="container">
 	<? if(!empty($project_set)) { ?>
 		<h2><?=highlightLastWord($project_set['title'])?></h2>

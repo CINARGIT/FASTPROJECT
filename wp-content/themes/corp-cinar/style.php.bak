@@ -1,15 +1,50 @@
 <? function my_theme_add_editor_styles() {
-    add_editor_style( get_template_directory_uri() . '/editor-style.css' );
+    add_editor_style( get_template_directory_uri() . '/css/editor-style.css?v=75' );
 }
+
 add_action( 'admin_init', 'my_theme_add_editor_styles' );
 
- function my_custom_tinymce_button($buttons) {
+add_filter( 'tiny_mce_before_init', 'disable_table_styles_tinymce' );
+
+function disable_table_styles_tinymce( $init ) {
+    // Запрещаем добавление inline стилей
+    $init['valid_styles'] = [ '*' => '' ];
+
+    // Запрещаем добавление классов к таблицам
+    $init['table_class_list'] = [];
+
+    return $init;
+}
+
+function wp_truncate_string($text, $max_chars, $append = '...') {
+    if (mb_strlen($text) <= $max_chars) {
+        return $text;
+    }
+    
+    $text = mb_substr($text, 0, $max_chars);
+    $last_space = mb_strrpos($text, ' ');
+
+    // Обрезаем до последнего пробела
+    if ($last_space !== false) {
+        $text = mb_substr($text, 0, $last_space);
+    }
+    
+    return $text . $append;
+}
+
+function my_custom_tinymce_button($buttons) {
     array_push($buttons, "|", "mybutton");
+    array_push($buttons, "|", "mybutton2");
+    array_push($buttons, "|", "mybutton3");
+    array_push($buttons, "|", "mybutton4");
     return $buttons;
 }
 
 function my_custom_tinymce_plugin($plugin_array) {
-    $plugin_array['mybutton'] = get_template_directory_uri() . '/js/my_button.js';
+    $plugin_array['mybutton'] = get_template_directory_uri() . '/js/my_button.js?v=533';
+    $plugin_array['mybutton2'] .= get_template_directory_uri() . '/js/my_button_2.js?v=533';
+    $plugin_array['mybutton3'] .= get_template_directory_uri() . '/js/my_button_3.js?v=5363';
+    $plugin_array['mybutton4'] .= get_template_directory_uri() . '/js/my_button_4.js?v=5363';
     return $plugin_array;
 }
 
