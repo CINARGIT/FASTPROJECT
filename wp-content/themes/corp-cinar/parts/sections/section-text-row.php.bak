@@ -6,7 +6,7 @@ if(!is_archive()) {
 	$id_page_field = $maincategory;
 }
 ?>
-<? $section = get_field('text_set_row',  $id_page_field); var_dump($section); ?>
+<? $section = get_field('text_set_row',  $id_page_field); ?>
 
 <? if(!empty($section)) {  ?>
 

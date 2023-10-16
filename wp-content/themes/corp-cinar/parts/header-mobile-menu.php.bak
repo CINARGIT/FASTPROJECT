@@ -20,69 +20,58 @@ wp_nav_menu(
 <div class="mobile_menu_overlay"></div>
 <div class="mobile_tool">
 <div class="mobile_tool_container">
-	<div class="m_tool_item">
-		<div href="#" class="menu-toggle" id="menu-toggle"><span></span></div>
-	</div>
+	
 	
 	<div class="bl_header_bottom_item bl_header_bottom_item_logo_wrap">
-			<div class="bl_header_bottom_item_logo">
-					<a href="/"><img src="<?=get_field('logo', 'option')['url']?>" alt="<?php bloginfo('name'); ?>"></a>
-			</div>
-			<div class="bl_header_bottom_item_logo_description">
-					<?=get_field('logo_description', 'option')?>
-			</div>
+		<div class="bl_header_bottom_item_logo">
+			<a href="/"><img src="<?=get_field('logo', 'option')['url']?>" alt="<?php bloginfo('name'); ?>"></a>
+		</div>
 	</div>
 
-<? if(0) { ?>
-	<div class="mt_item_wrap">	
-	
-					<div class="mt_item">	
-					
-						<div class="mt_item_value">
-						
-							<a href="<?=get_field('telegram', 'option')?>">
-<svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_434_3723)">
-<path d="M20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 0 20 0C8.9543 0 0 8.9543 0 20C0 31.0457 8.9543 40 20 40Z" fill="#00A1EC"></path>
-<path d="M9.15064 19.567L28.434 12.132C29.329 11.8087 30.1106 12.3503 29.8206 13.7037L29.8223 13.702L26.539 29.1703C26.2956 30.267 25.644 30.5337 24.7323 30.017L19.7323 26.332L17.3206 28.6553C17.054 28.922 16.829 29.147 16.3123 29.147L16.6673 24.0587L25.934 15.687C26.3373 15.332 25.844 15.132 25.3123 15.4853L13.8606 22.6953L8.92397 21.1553C7.85231 20.8153 7.82897 20.0837 9.15064 19.567Z" fill="white"></path>
-</g>
-<defs>
-<clipPath id="clip0_434_3723">
-<rect width="40" height="40" fill="white"></rect>
-</clipPath>
-</defs>
-</svg>
-							</a>
-							
-					
-						</div>
-						</div>
-							<div class="mt_item">	
-			<div class="mt_item_value">				
-
-										<a href="<?=get_field('whatsapp', 'option')?>">
-<svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_434_3719)">
-<path d="M20.005 0H19.995C8.9675 0 0 8.97 0 20C0 24.375 1.41 28.43 3.8075 31.7225L1.315 39.1525L9.0025 36.695C12.165 38.79 15.9375 40 20.005 40C31.0325 40 40 31.0275 40 20C40 8.9725 31.0325 0 20.005 0Z" fill="#51C85D"></path>
-<path d="M31.6434 28.2422C31.1609 29.6047 29.2459 30.7347 27.7184 31.0647C26.6734 31.2872 25.3084 31.4647 20.7134 29.5597C14.8359 27.1247 11.0509 21.1522 10.7559 20.7647C10.4734 20.3772 8.38086 17.6022 8.38086 14.7322C8.38086 11.8622 9.83836 10.4647 10.4259 9.86472C10.9084 9.37222 11.7059 9.14722 12.4709 9.14722C12.7184 9.14722 12.9409 9.15972 13.1409 9.16972C13.7284 9.19472 14.0234 9.22972 14.4109 10.1572C14.8934 11.3197 16.0684 14.1897 16.2084 14.4847C16.3509 14.7797 16.4934 15.1797 16.2934 15.5672C16.1059 15.9672 15.9409 16.1447 15.6459 16.4847C15.3509 16.8247 15.0709 17.0847 14.7759 17.4497C14.5059 17.7672 14.2009 18.1072 14.5409 18.6947C14.8809 19.2697 16.0559 21.1872 17.7859 22.7272C20.0184 24.7147 21.8284 25.3497 22.4759 25.6197C22.9584 25.8197 23.5334 25.7722 23.8859 25.3972C24.3334 24.9147 24.8859 24.1147 25.4484 23.3272C25.8484 22.7622 26.3534 22.6922 26.8834 22.8922C27.4234 23.0797 30.2809 24.4922 30.8684 24.7847C31.4559 25.0797 31.8434 25.2197 31.9859 25.4672C32.1259 25.7147 32.1259 26.8772 31.6434 28.2422Z" fill="white"></path>
-</g>
-<defs>
-<clipPath id="clip0_434_3719">
-<rect width="40" height="40" fill="white"></rect>
-</clipPath>
-</defs>
-</svg>
-							</a>	
-							</div>
-					</div>
-				
-	
+	<div class="m_tool_item">
+		<div href="#" class="menu-toggle" id="menu-toggle"><span></span><div class="menu_mobile_text">Меню</div></div>
+	</div>
+</div>
+</div>
+<div class="mobile_tool_contact">
+	<div class="container">
+	<div class="row">
+		<div class="mobile_tool_contact_item_left">
+			<a class="mobile_tool_phone" href="tel:<?=get_field('phone', 'option')?>"><?=get_field('phone', 'option')?></a>
+			<a class="mobile_tool_order datatextcopy" href="#fancy-modal-order-call" data-text="Перезвоним в течение 15 минут" data-fancybox="modal">Заказать звонок</a>
 		</div>
-<? } ?>	
 		
-		
-	<a href="#fancy-modal-order-call" class="bl_header_bottom_item_order order_button datatextcopy" data-text="Заказать звонок" data-fancybox="modal-mobile"><span>Заказать звонок</span></a>
-	<? if(get_field('lang-swithcer', 'option')) { echo '<div class="gtranslate_template gtranslate_template_mobile">' . do_shortcode('[gtranslate]') . '</div>';  }?>
+		<div class="mobile_tool_contact_item_right">
+			<a href="<?=get_field('telegram', 'option')?>" target="_blank">
+			<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<g clip-path="url(#clip0_367_1545)">
+				<path d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="#039BE5"/>
+				<path d="M7.32132 15.6536L22.748 9.70561C23.464 9.44694 24.0893 9.88028 23.8573 10.9629L23.8587 10.9616L21.232 23.3363C21.0373 24.2136 20.516 24.4269 19.7867 24.0136L15.7867 21.0656L13.8573 22.9243C13.644 23.1376 13.464 23.3176 13.0507 23.3176L13.3347 19.2469L20.748 12.5496C21.0707 12.2656 20.676 12.1056 20.2507 12.3883L11.0893 18.1563L7.13998 16.9243C6.28265 16.6523 6.26398 16.0669 7.32132 15.6536Z" fill="white"/>
+				</g>
+				<defs>
+				<clipPath id="clip0_367_1545">
+				<rect width="32" height="32" fill="white"/>
+				</clipPath>
+				</defs>
+			</svg> 
+			</a>
+			
+			<a href="<?=get_field('whatsapp', 'option')?>" target="_blank">
+	<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_367_1548)">
+<path d="M16.004 0H15.996C7.174 0 0 7.176 0 16C0 19.5 1.128 22.744 3.046 25.378L1.052 31.322L7.202 29.356C9.732 31.032 12.75 32 16.004 32C24.826 32 32 24.822 32 16C32 7.178 24.826 0 16.004 0Z" fill="#4CAF50"/>
+<path d="M25.314 22.5944C24.928 23.6844 23.396 24.5884 22.174 24.8524C21.338 25.0304 20.246 25.1724 16.57 23.6484C11.868 21.7004 8.83998 16.9224 8.60398 16.6124C8.37798 16.3024 6.70398 14.0824 6.70398 11.7864C6.70398 9.49036 7.86998 8.37236 8.33998 7.89236C8.72598 7.49836 9.36398 7.31836 9.97598 7.31836C10.174 7.31836 10.352 7.32836 10.512 7.33636C10.982 7.35636 11.218 7.38436 11.528 8.12636C11.914 9.05636 12.854 11.3524 12.966 11.5884C13.08 11.8244 13.194 12.1444 13.034 12.4544C12.884 12.7744 12.752 12.9164 12.516 13.1884C12.28 13.4604 12.056 13.6684 11.82 13.9604C11.604 14.2144 11.36 14.4864 11.632 14.9564C11.904 15.4164 12.844 16.9504 14.228 18.1824C16.014 19.7724 17.462 20.2804 17.98 20.4964C18.366 20.6564 18.826 20.6184 19.108 20.3184C19.466 19.9324 19.908 19.2924 20.358 18.6624C20.678 18.2104 21.082 18.1544 21.506 18.3144C21.938 18.4644 24.224 19.5944 24.694 19.8284C25.164 20.0644 25.474 20.1764 25.588 20.3744C25.7 20.5724 25.7 21.5024 25.314 22.5944Z" fill="white"/>
+</g>
+<defs>
+<clipPath id="clip0_367_1548">
+<rect width="32" height="32" fill="white"/>
+</clipPath>
+</defs>
+</svg> 
+			</a>
+		</div>
+	</div>
+	</div>
 </div>
-</div>
+
 

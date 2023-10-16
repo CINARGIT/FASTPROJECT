@@ -13,7 +13,7 @@ $clientsSet = get_field('clients_set', get_option('page_on_front'));
 	<? if(!empty($clientsSet['title'])) { ?>
 		<h2><?=highlightLastWord($clientsSet['title'])?></h2>
 	<? } ?>
-	<div class="clients_row_cur simple-dots">
+	<div class="clients_row_cur simple_dots">
 <?
 if ($clientsSet['gallery']) {
     $chunks = array_chunk($clientsSet['gallery'], 8);

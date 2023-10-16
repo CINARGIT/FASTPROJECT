@@ -120,7 +120,7 @@
 					</div>
 					<? } ?>
 				<? } elseif($mhdcitem['object_type'] == 'modal_form_buttom') { ?>
-					<a class="bl_header_button order_button datatextcopy" href="#fancy-modal-order-call" data-text="<?=$mhdcitem['button']['text']?>" data-fancybox="modal"><span><?=$mhdcitem['button']['text']?></span></a>
+					<a class="bl_header_button datatextcopy" href="#fancy-modal-order-call" data-text="Перезвоним в течение 15 мину" data-fancybox="modal"><span><?=$mhdcitem['button']['text']?></span></a>
 				<? } ?>	
 				</div>
 			<?php } ?>

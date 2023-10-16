@@ -13,7 +13,7 @@ if(!is_archive()) {
 	<?php
 		$i = 0; foreach( $section as $item ):  $i++;
      ?>
-	<section class="section-common section-text">
+	<section class="section-common section-text section-text-big">
 	<div class="container">
 		<? if(!empty($item['text_set']['title'])) { ?>
 			<h2><?=highlightLastWord($item['text_set']['title'])?></h2>

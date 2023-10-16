@@ -22,13 +22,13 @@ if(!$args['field_group']) {
 		<? if(!empty($text_set['title'])) { ?>
 			<h2><?=highlightLastWord($text_set['title'])?></h2>
 		<? } ?>
-			<div class="text_box">
+		<div class="text_box">
 				<? if(!empty($text_set['text'])) { ?>
 					<?=$text_set['text']?>
 				<? } ?>
 			<div class="clearfix"></div>	
 		</div>
-		
+		<div class="c_page_text_more">Читать весь текст</div>
 		<? if($text_set['contact_form_btn_switcher']) {?>
 		<div class="text_box_contact_form_btn_wrap">
 			<a class="order_button datatextcopy" href="#fancy-modal-order-call" data-text="<?=$text_set['contact_form_btn']['title']?>" data-fancybox="modal"><span><?=$text_set['contact_form_btn']['title']?></span></a>

@@ -1,11 +1,9 @@
 <?
-if(get_field('selectbreadcrumb', 'option')) { 
-	get_template_part( 'parts/'.get_field('selectbreadcrumb', 'option').'/breadcrumbs');
-} 
 $cat_name = $maincategory->name;
 if(!empty(get_field('alternativnyj_zagolovok', $maincategory))){
 	$cat_name = get_field('alternativnyj_zagolovok', $maincategory);
 }
+
 ?>
 
 <? get_template_part( 'parts/sections/main-section-mini', null, $params = ['inside' => 1]); ?>
@@ -74,8 +72,12 @@ if( is_category() ){
 	
 	<div class="row sb_items_row">
 			<? 
+			$i= 0;
 			if (have_posts()) : while (have_posts()) : the_post(); 
-				get_template_part( 'category/item/project-item');
+			$i++;
+				$post_content = get_post_field('post_content', get_the_ID());
+				get_template_part('category/item/project-item');
+				get_template_part('parts/sections/section-projects-modal-item', null, $params = ['post_content' => $post_content]); 
 			endwhile; 
 			else: 
 				echo '<div class="no-posts">Нет записей</div>'; 
@@ -83,7 +85,9 @@ if( is_category() ){
 			?>
      </div>
 	 
-	 <button id="loadMoreBtn" class="loadMoreBtn_style">Показать больше проектов</button>
+	 <? if($maincategory->count > 12) { ?>
+		<button id="loadMoreBtn" class="loadMoreBtn_style">Показать больше проектов</button>
+	 <? } ?>
 	 
 	</div>
             

@@ -78,6 +78,7 @@ body .section-castum-calc input[type="text"]{
 	border-color:#E2EAFC !important;
 }
 #calc_wrap ul{
+	margin:0px;
 	padding-left:20px;
 }
 

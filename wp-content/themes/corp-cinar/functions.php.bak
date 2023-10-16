@@ -1,5 +1,6 @@
 <?php
 include get_template_directory() . '/style.php';
+include get_template_directory() . '/parts/show_more_category.php';
 
 function customtheme_add_woocommerce_support()
  {
@@ -12,19 +13,19 @@ add_action( 'after_setup_theme', 'customtheme_add_woocommerce_support' );
 	// Add custom fonts, used in the main stylesheet.
 
 
-
-wp_enqueue_style( 'fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css', array( 'cinar-corp' ),  '20181230' );
+wp_enqueue_style( 'fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css', array( 'cinar-corp' ),  '20181230' );
 wp_enqueue_style( 'slick', get_template_directory_uri() . '/css/slick.css', array( 'cinar-corp' ),  '20181230' );
 wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array( 'cinar-corp' ),  '20181230' );
 wp_enqueue_style( 'config', get_template_directory_uri() . '/css/config.css', array( 'cinar-corp' ),  '20181230' );
 wp_enqueue_style( 'cinarmode', get_template_directory_uri() . '/css/cinar-mode.css', array( 'cinar-corp' ),  '2302324333181230' );
+wp_enqueue_style( 'cinarstyles', get_template_directory_uri() . '/css/calc.css', array( 'cinar-corp' ),  '2302324333181230' );
 wp_enqueue_style( 'cinarstyles', get_template_directory_uri() . '/css/cinar-styles.css', array( 'cinar-corp' ),  '2302324333181230' );
 wp_enqueue_style( 'blocks', get_template_directory_uri() . '/css/cinar-common-blocks.css', array( 'cinar-corp' ),  '2302324333181230' );
 wp_enqueue_style( 'cinar-corp', get_stylesheet_uri(), '2230181230' );
 wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ), '20181230', true );
 wp_enqueue_script( 'sweet-alert', get_template_directory_uri() . '/js/sweet-alert.js', array( 'jquery' ), '20181230', true );
 wp_enqueue_script( 'slick', get_template_directory_uri() . '/js/slick.min.js', array( 'jquery' ), '20181230', true );
-wp_enqueue_script( 'fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js', array( 'jquery' ), '20181230', true );
+wp_enqueue_script( 'fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js', array( 'jquery' ), '20181230', true );
 wp_enqueue_script( 'script', get_template_directory_uri() . '/js/script.js', array( 'jquery' ), '20181230', true );
 
 	
@@ -945,3 +946,29 @@ if ($group_fields) {
 }
 
 
+
+
+
+function custom_404_for_specific_category($template) {
+    global $post;
+
+    // Укажите ID категории, для которой вы хотите вернуть 404 ошибку
+    $blocked_category_id = get_field('404_cat', 'option'); // замените 123 на ID вашей категории
+
+    // Получите все подкатегории для этой категории
+    $child_terms = get_term_children($blocked_category_id, 'category');
+    $child_terms[] = $blocked_category_id; // Добавьте основную категорию в список
+
+    foreach($child_terms as $term_id) {
+        if (is_single() && has_term($term_id, 'category', $post)) {
+            global $wp_query;
+            $wp_query->set_404();
+            status_header(404);
+            $template = get_404_template();
+            break; // Если нашли совпадение, выходим из цикла
+        }
+    }
+
+    return $template;
+}
+add_filter('template_include', 'custom_404_for_specific_category');

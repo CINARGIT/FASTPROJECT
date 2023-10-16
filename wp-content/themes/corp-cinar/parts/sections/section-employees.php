@@ -13,7 +13,7 @@ if( $employees ): ?>
 <section class="section-common section-employees">
     <div class="container">
     <h2><?=highlightLastWord($employees['title_employees'])?></h2>
-    <div class="row row_emp">
+    <div class="row row_emp <? if ( wp_is_mobile() ) echo 'mobile_cur_style_1 row_emp_cur simple_dots';  ?>">
         <?php
         foreach( $employees['employees_list'] as $employee ): 
             $photo = $employee['photo']['url'];

@@ -9,14 +9,16 @@ $clientsSet = get_field('clients_set', get_option('page_on_front'));
 ?>
 <? if(!empty($clientsSet['gallery'])) { ?>
 <section class="section-common <?=get_field('clients_style', 'styleset')?> section-clients">
-	<div class="container">
-	<? if(!empty($clientsSet['title'])) { ?>
-		<h2><?=highlightLastWord($clientsSet['title'])?></h2>
-	<? } ?>
-	<div class="clients_row_cur simple_dots">
-<?
+    <div class="container">
+    <? if(!empty($clientsSet['title'])) { ?>
+        <h2><?=highlightLastWord($clientsSet['title'])?></h2>
+    <? } ?>
+    <div class="clients_row_cur simple_dots">
+<?php
+$itemsPerRow = wp_is_mobile() ? 2 : 8;  // Если на мобильном устройстве, то каждые 2 элемента, иначе каждые 8
+
 if ($clientsSet['gallery']) {
-    $chunks = array_chunk($clientsSet['gallery'], 8);
+    $chunks = array_chunk($clientsSet['gallery'], $itemsPerRow);
 
     foreach ($chunks as $chunk) {
         echo '<div class="clients_row_wrap">';
@@ -37,7 +39,7 @@ if ($clientsSet['gallery']) {
     }
 }
 ?>
-	</div>
-	</div>
+    </div>
+    </div>
 </section>
 <? } ?>

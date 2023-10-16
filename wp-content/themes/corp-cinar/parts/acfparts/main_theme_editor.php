@@ -1987,7 +1987,7 @@ add_action( 'acf/include_fields', function() {
 		),
 		array(
 			'key' => 'field_64d106ded1558',
-			'label' => 'Реквезиты',
+			'label' => 'Реквизиты',
 			'name' => 'rekvezity',
 			'aria-label' => '',
 			'type' => 'textarea',

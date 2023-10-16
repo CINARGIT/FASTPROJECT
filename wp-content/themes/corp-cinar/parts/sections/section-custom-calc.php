@@ -1,7 +1,6 @@
 <section class="section-common section-castum-calc colored" style="<? if(!empty($args['bgcolor'])) { echo 'background-color:' . $args['bgcolor'] . ';'; } ?>">
 	<div class="container">
 	<h2>Расчет стоимости обследования</h2>
-<link rel="stylesheet" href="<?=get_template_directory_uri()?>/css/calc.css" type="text/css" media="all" />
 <script type="text/javascript" src="<?=get_template_directory_uri()?>/calc.js"></script>
 <div class="calc_wrap container" id="calc_wrap">
 	<form class="calc_form">
@@ -37,20 +36,24 @@
 					<div class="pseudora" data-val="0.8">Промышленное</div>
 					<input type="hidden" name="naznage" value="">
 				</div>
-				<div class="calc_itemwrap frow">
+				<div class="calc_itemwrap frow frow-100pr">
 					<div class="calc_itemzag">Каркасность</div>
-					<div class="pseudora" data-val="1">Каркасное</div>
-					<div class="pseudora" data-val="2">Бескаркасное</div>
+					<div class="pseudora_wrap">
+						<div class="pseudora" data-val="1">Каркасное</div>
+					</div>
+					<div class="pseudora_wrap">
+						<div class="pseudora" data-val="2">Бескаркасное</div>
+					</div>
 					<input type="hidden" name="carcage" value="">
 				</div>
-				<div class="calc_itemwrap frow">
+				<div class="calc_itemwrap frow ">
 					<div class="calc_itemzag ques"><a href="#calc_info_1" data-fancybox="calc_info_1" class="info_link">Категория сложности здания</a></div>
 					<div class="pseudora" data-val="1">Первая</div>
 					<div class="pseudora" data-val="2">Вторая</div>
 					<div class="pseudora" data-val="3">Третья</div>
 					<input type="hidden" name="caslozhda" value="">
 				</div>
-				<div class="calc_itemwrap frow">&nbsp;</div>
+				<div class="calc_itemwrap frow hidden-mobile">&nbsp;</div>
 				<div class="calc_itemwrap frow">
 					<div class="calc_itemzag ques"><a href="#calc_info_2" data-fancybox="calc_info_2" class="info_link">Категория сложности работ</a></div>
 					<div class="pseudora" data-val="1">Первая</div>
@@ -190,7 +193,7 @@
 				<div class="calc_ott">Ориентировочная стоимость составит <span>0</span> рублей</div>
 				<input type="hidden" name="summ">
 			</div>
-			<div class="calc_itemzag">Расчетом не учтена стоимость следующих работ</div>
+			<div class="calc_itemzag calc_itemzag_center">Расчетом не учтена стоимость следующих работ</div>
 			<div class="calc_subwrap">
 				<div class="calc_itemwrap">
 					<ul>

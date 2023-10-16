@@ -533,7 +533,7 @@ ul.slick-dots li button:before{
 }
 
 
-.mobile_menu ul li, .mobile_menu ul{
+	.mobile_menu ul li, .mobile_menu ul{
 		list-style-type:none;
 		margin:0px;
 		padding:0px;
@@ -543,12 +543,12 @@ ul.slick-dots li button:before{
 		display:flex;
 		position:fixed;
 		top:0px;
-		box-shadow:var(--global-boxshadow);
 		left:0px;
 		width:100%;
 		z-index:2000;
+		background-color:#fff;
 		justify-content:center;
-		height: 55px;
+		height: 72px;
 	}
 	
 	.mobile_tool .mt_item_wrap{
@@ -602,7 +602,7 @@ ul.slick-dots li button:before{
 	}
 	
 	body{
-		margin-top:55px;
+		margin-top:72px;
 	}
 	
 	

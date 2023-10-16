@@ -11,7 +11,7 @@ if(!empty($docs['items'])) {
 ?>
 <section class="section-common section-docs colored">
 		<div class="container">
-			<? if($docs['title']) { ?>
+			<? if(!empty($docs['title'])) { ?>
 				<h2><?=highlightLastWord($docs['title'])?></h2>
 			<? } ?>
 		

@@ -29,6 +29,8 @@ $argsall = array(
 $queryall = new WP_Query($argsall);
 $query = new WP_Query($args);
 
+$i = 0;
+
 if ($query->have_posts()) {
 	$countq = count($queryall->posts);
     foreach ($query->posts as $post) {
@@ -39,11 +41,12 @@ if ( has_post_thumbnail() ) {
 } else {
 	$thumbnail_url = '';
 }
-
+$i++;
+$post_content = get_post_field('post_content', get_the_ID());
 ?>   
 	<div class="col-xs-12 col-md-6 projects_item">
 			<div class="projects_show_side">
-				<a href="<?=get_the_permalink($post)?>" title="" class="projects_item_link">
+				<a href="#project_modal_<?=get_the_ID()?>" class="projects_item_link" data-fancybox="projects">
 					<span class="projects_item_img">
 						<img src="<?=$thumbnail_url?>" alt="<?=get_the_title($post)?>">
 					</span>
@@ -54,11 +57,11 @@ if ( has_post_thumbnail() ) {
 						<span class="projects_item_text">
 							<?=get_field('des_short' , get_the_ID())?>
 						</span>
-						<span class="projects_item_atr">
-							<strong>Субъект:</strong> <?=get_field('subject' , get_the_ID())?>
-						</span>
 					</span>
 				</a>
+				
+				<? get_template_part('parts/sections/section-projects-modal-item', null, $params = ['post_content' => $post_content]); ?>
+				
 			</div>	
      </div>
 <?  } wp_reset_postdata(); ?>

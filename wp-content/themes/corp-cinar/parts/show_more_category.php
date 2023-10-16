@@ -26,7 +26,9 @@ function loadmore_posts($data) {
         $query->the_post();
 
         ob_start(); // начинаем буферизацию
-        get_template_part('category/item/project-item'); 
+		$post_content = get_post_field('post_content', get_the_ID());
+		get_template_part('category/item/project-item');
+		get_template_part('parts/sections/section-projects-modal-item', null, $params = ['post_content' => $post_content]); 
         $posts[] = ob_get_clean(); // заканчиваем буферизацию и записываем вывод в массив
     }
 

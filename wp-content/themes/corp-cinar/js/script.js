@@ -30,6 +30,10 @@ Swal.fire(
 
 document.addEventListener('DOMContentLoaded', function(){
 
+$('.text_box table').each(function() {
+   $(this).wrap('<div class="table-overflow"></div>');
+});
+
 jQuery(document).ready(function($) {
     let page = 1;
 
@@ -59,6 +63,12 @@ jQuery(document).ready(function($) {
         
         // скрываем кнопку "Показать еще"
         $(this).addClass('disabled');
+    });
+	
+	
+
+	$('.scm_open_content').on('click', function() {
+        $(this).next('.scm_hidden_content').slideToggle();
     });
 
 	$('.search_show').on('click', function() {
@@ -255,6 +265,8 @@ $('.vpr_gallery').slick({
   dots: true,
 });
 
+
+
 $('.main-rev-wrap').slick({
   centerMode: false,
   lazyLoad: 'ondemand',
@@ -273,6 +285,131 @@ $('.main-rev-wrap').slick({
 ]
 });
 
+
+$('.row_emp_cur').slick({
+  centerMode: false,
+  lazyLoad: 'ondemand',
+  slidesToShow: 1,
+  arrows: true,
+  prevArrow:'<div class="arrow_c arrow_prev_slick"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.5833 13H5.41667" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 5.4165L5.41667 12.9998L13 20.5832" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>',
+  nextArrow:'<div class="arrow_c arrow_next_slick"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.41663 13H20.5833" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 5.4165L20.5833 12.9998L13 20.5832" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>',
+  dots: true,
+  responsive: [
+    {
+      breakpoint: 990,
+      settings: {
+		slidesToShow: 2,
+		slidesToScroll: 2,
+      }
+    },
+	{
+      breakpoint: 640,
+      settings: {
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		arrows: true,
+      }
+    },
+]
+});
+
+	$('.c_page_text_more').click(function() {
+        $(this).prev('.text_box').css('height', 'auto').slideDown(300);
+        $(this).prev('.text_box').addClass('active');
+        $(this).hide();
+    });	
+	
+	
+	
+
+$('.row_odds_2_cur').slick({
+  centerMode: false,
+  lazyLoad: 'ondemand',
+  slidesToShow: 1,
+  arrows: true,
+  prevArrow:'<div class="arrow_c arrow_prev_slick"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.5833 13H5.41667" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 5.4165L5.41667 12.9998L13 20.5832" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>',
+  nextArrow:'<div class="arrow_c arrow_next_slick"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.41663 13H20.5833" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 5.4165L20.5833 12.9998L13 20.5832" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>',
+  dots: true,
+  responsive: [
+    {
+      breakpoint: 990,
+      settings: {
+		slidesToShow: 1,
+		slidesToScroll: 1,
+      }
+    },
+	{
+      breakpoint: 640,
+      settings: {
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		arrows: true,
+      }
+    },
+]
+});
+
+
+$('.row_odds_cur').slick({
+  centerMode: false,
+  lazyLoad: 'ondemand',
+  slidesToShow: 1,
+  arrows: true,
+  prevArrow:'<div class="arrow_c arrow_prev_slick"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.5833 13H5.41667" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 5.4165L5.41667 12.9998L13 20.5832" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>',
+  nextArrow:'<div class="arrow_c arrow_next_slick"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.41663 13H20.5833" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 5.4165L20.5833 12.9998L13 20.5832" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>',
+  dots: true,
+  responsive: [
+    {
+      breakpoint: 990,
+      settings: {
+		slidesToShow: 2,
+		slidesToScroll: 2,
+      }
+    },
+	{
+      breakpoint: 640,
+      settings: {
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		arrows: true,
+      }
+    },
+]
+});
+
+
+$('.project_modal_cur').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: false,
+  fade: true,
+  asNavFor: '.project_modal_cur_list'
+});
+
+$('.project_modal_cur_list').slick({
+  slidesToShow: 2,
+  slidesToScroll: 1,
+  asNavFor: '.project_modal_cur',
+  dots: false,
+  centerMode: false,
+  focusOnSelect: true
+});
+
+
+    // Fancybox
+    Fancybox.bind('[data-fancybox]', {
+      on: {
+        done: (fancybox, slide) => {
+          if (fancybox.isCurrentSlide(slide)) {
+        jQuery('.slick-slider').slick('resize');
+          } else {
+            console.log(
+              'revealed'
+            );
+          }
+        },
+      },
+    });
 
 $('.clients_row_cur').slick({
   centerMode: false,
@@ -419,8 +556,8 @@ $('.row_consist').slick({
     {
       breakpoint: 990,
       settings: {
-		slidesToShow: 2,
-		slidesToScroll: 2,
+		slidesToShow: 1,
+		slidesToScroll: 1,
 		arrows: true,
       }
     },
@@ -444,7 +581,7 @@ $('.row_reviews').slick({
       settings: {
 		slidesToShow: 1,
 		slidesToScroll: 1,
-		arrows: false,
+		arrows: true,
       }
     },
 ]
@@ -465,7 +602,7 @@ $('.row_achiev').slick({
       settings: {
 		slidesToShow: 1,
 		slidesToScroll: 1,
-		arrows: false,
+		arrows: true,
       }
     },
 ]

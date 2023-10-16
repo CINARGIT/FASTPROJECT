@@ -16,8 +16,9 @@ if(!is_archive()) {
 ?>
 <section class="section-common section-<?=$sectionclass?>">
     <div class="container">
-    <div class="row row_<?=$sectionclass?>">
+    
         <h2><?=highlightLastWord($section['title'])?></h2>
+		<div class="row row_<?=$sectionclass?>  <? if ( wp_is_mobile() ) echo 'mobile_cur_style_1 row_'.$sectionclass.'_cur simple_dots';  ?>">
         <?php
 		$countitems = count($section['items']);
 		$i = 0;

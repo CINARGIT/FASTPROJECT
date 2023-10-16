@@ -25,6 +25,7 @@ if(!is_archive()) {
             <div class="<?=$sectionclass?>_item_in">
                 <div class="<?=$sectionclass?>_item_img">
                     <img src="<?=$photo?>" alt="<?=$item['name'] ?>">
+					<div class="<?=$sectionclass?>_item_num">Этап<br>#<?=$i?></div>
                 </div>
                 <div class="<?=$sectionclass?>_item_wrap_text">
                      <?=$item['text'] ?>
