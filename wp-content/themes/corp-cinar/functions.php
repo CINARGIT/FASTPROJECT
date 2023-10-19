@@ -1,7 +1,5 @@
-<?php
+<?php get_template_part( 'parts/header-root-css'); 
 include get_template_directory() . '/style.php';
-include get_template_directory() . '/parts/show_more_category.php';
-
 function customtheme_add_woocommerce_support()
  {
 add_theme_support( 'woocommerce' );
@@ -12,24 +10,18 @@ add_action( 'after_setup_theme', 'customtheme_add_woocommerce_support' );
  function cinar_corp() {
 	// Add custom fonts, used in the main stylesheet.
 
-
+wp_enqueue_style( 'cinar-corp', get_stylesheet_uri(), '2230181230' );
 wp_enqueue_style( 'fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css', array( 'cinar-corp' ),  '20181230' );
 wp_enqueue_style( 'slick', get_template_directory_uri() . '/css/slick.css', array( 'cinar-corp' ),  '20181230' );
 wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array( 'cinar-corp' ),  '20181230' );
-wp_enqueue_style( 'config', get_template_directory_uri() . '/css/config.css', array( 'cinar-corp' ),  '20181230' );
-wp_enqueue_style( 'cinarmode', get_template_directory_uri() . '/css/cinar-mode.css', array( 'cinar-corp' ),  '2302324333181230' );
-wp_enqueue_style( 'calc', get_template_directory_uri() . '/css/calc.css', array( 'cinar-corp' ),  '2302324333181230' );
-wp_enqueue_style( 'cinarstyles', get_template_directory_uri() . '/css/cinar-styles.css', array( 'cinar-corp' ),  '2302324333181230' );
-wp_enqueue_style( 'blocks', get_template_directory_uri() . '/css/cinar-common-blocks.css', array( 'cinar-corp' ),  '2302324333181230' );
-wp_enqueue_style( 'cinar-corp', get_stylesheet_uri(), '2230181230' );
+wp_enqueue_style( 'cinar-config', get_template_directory_uri() . '/css/cinar-config.css', array( 'cinar-corp' ),  '20181230' );
+wp_enqueue_style( 'cinar-styles', get_template_directory_uri() . '/css/cinar-styles.css', array( 'cinar-corp' ),  '2302324333181230' );
+wp_enqueue_script( 'fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js', array( 'jquery' ), '20181230', true );
 wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ), '20181230', true );
 wp_enqueue_script( 'sweet-alert', get_template_directory_uri() . '/js/sweet-alert.js', array( 'jquery' ), '20181230', true );
 wp_enqueue_script( 'slick', get_template_directory_uri() . '/js/slick.min.js', array( 'jquery' ), '20181230', true );
-wp_enqueue_script( 'fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js', array( 'jquery' ), '20181230', true );
 wp_enqueue_script( 'script', get_template_directory_uri() . '/js/script.js', array( 'jquery' ), '20181230', true );
 
-	
-	
 	wp_localize_script(
 		'cinar-corp',
 		'screenReaderText',
@@ -947,8 +939,6 @@ if ($group_fields) {
 
 
 
-
-
 function custom_404_for_specific_category($template) {
     global $post;
 
@@ -972,3 +962,55 @@ function custom_404_for_specific_category($template) {
     return $template;
 }
 add_filter('template_include', 'custom_404_for_specific_category');
+
+
+function find_path($array, $value, $path = '') {
+    foreach ($array as $key => $item) {
+        $current_path = $path ? $path . '/' . $key : $key;
+        if ($item === $value) {
+            return $current_path;  // Возвращает путь, если значение найдено
+        } elseif (is_array($item)) {
+            $result = find_path($item, $value, $current_path);  // Продолжает рекурсивный поиск, если значение не найдено
+            if ($result) {
+                return $result;
+            }
+        }
+    }
+    return null;
+}
+
+function get_acf_with_append($acf_array, $value) {
+    $path = find_path($acf_array, $value);  // Получает путь к значению
+    if (!$path) {
+        return null;
+    }
+
+    $keys = explode('/', $path);
+    $field_name = end($keys);
+    $field_object = acf_get_field($field_name);
+
+    if (!$field_object) {
+        return null;
+    }
+
+    $append_value = isset($field_object['append']) ? $field_object['append'] : '';
+    return $value . $append_value;
+}
+
+
+function get_acf_field_key_by_value($value) {
+    global $wpdb;
+
+    $query = $wpdb->prepare(
+        "SELECT meta_key
+         FROM $wpdb->postmeta
+         WHERE meta_value = %s
+         AND meta_key LIKE 'field_%'",
+        $value
+    );
+
+    $acf_key = $wpdb->get_var($query);
+
+    return $acf_key;
+}
+

@@ -1,4 +1,38 @@
 <header>	
+<? 
+$hm = get_field('header_maker', 'option');
+?>
+
+<? if(!empty($hm['top_header_on'])) {  ?>
+	<style>
+		.top_header{
+			background-color: <?=$hm['top_header']['tools']['color_tools']["bg_color"]?>;
+			height: <?=get_acf_with_append($hm, $hm['top_header']['tools']['sizes_tools']["height"]);?>;
+			width: <?=get_acf_with_append($hm, $hm['top_header']['tools']['sizes_tools']["width"]);?>;
+		}
+	</style>
+	<div class="top_header">
+		<div class="container">
+		<?php $i=0; foreach ($hm['top_header']['items'] as $item) { $i++;?>
+			<? if($item['item'] == 'menu') { ?> 
+			<style>
+			.header_item_menu<?=$i?>{
+				display:flex;
+				flex-wrap:wrap;
+				width:<?=get_acf_with_append($hm, $item['menu_item']['tools']['sizes_tools']["width"]);?>
+			}
+			
+			
+			</style>
+				<div class="header_item header_item_menu header_item_menu_<?=$i?>">
+					<?php wp_nav_menu( array('menu' => $item['menu_item']['vyberite_menyu'], 'container_id'  => '','conatiner_class' => '','menu_class'  => 'topmenu','echo'  => true,'items_wrap'  => '<ul id="%1$s" class="%2$s">%3$s</ul>','depth'  => 10, 'walker' => new fluent_themes_custom_walker_nav_menu) ); ?>
+				</div>
+			<? } ?>
+		<? } ?>
+		</div>
+	</div>
+<? } ?>
+
 <?php if(get_field('top_contacts', 'option')): $i = 0;?>	
 <div class="bl_header_top">
 		<div class="container">
@@ -120,7 +154,7 @@
 					</div>
 					<? } ?>
 				<? } elseif($mhdcitem['object_type'] == 'modal_form_buttom') { ?>
-					<a class="bl_header_button datatextcopy" href="#fancy-modal-order-call" data-text="Перезвоним в течение 15 мину" data-fancybox="modal"><span><?=$mhdcitem['button']['text']?></span></a>
+					<a class="bl_header_button datatextcopy" href="#fancy-modal-order-call" data-text="Перезвоним в течение 15 минут" data-fancybox="modal"><span><?=$mhdcitem['button']['text']?></span></a>
 				<? } ?>	
 				</div>
 			<?php } ?>

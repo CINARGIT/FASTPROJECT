@@ -1,10 +1,9 @@
-<? function my_theme_add_editor_styles() {
+<? include get_template_directory() . '/parts/config/preview-config.php';
+
+ function my_theme_add_editor_styles() {
     add_editor_style( get_template_directory_uri() . '/css/editor-style.css?v=75' );
 }
-
 add_action( 'admin_init', 'my_theme_add_editor_styles' );
-
-add_filter( 'tiny_mce_before_init', 'disable_table_styles_tinymce' );
 
 function disable_table_styles_tinymce( $init ) {
     // Запрещаем добавление inline стилей
@@ -15,66 +14,7 @@ function disable_table_styles_tinymce( $init ) {
 
     return $init;
 }
-
-function wp_custom_trim_words($text, $num_words = 55, $more = '...') {
-    $words = preg_split("/[\n\r\t ]+/", $text, $num_words + 1, PREG_SPLIT_NO_EMPTY);
-    
-    if (count($words) > $num_words) {
-        array_pop($words);
-        $text = implode(' ', $words);
-        $text = $text . $more;
-    } else {
-        $text = implode(' ', $words);
-    }
-
-    return $text;
-}
-
-function my_custom_tinymce_button($buttons) {
-    array_push($buttons, "|", "mybutton");
-    array_push($buttons, "|", "mybutton2");
-    array_push($buttons, "|", "mybutton3");
-    array_push($buttons, "|", "mybutton4");
-    return $buttons;
-}
-
-function my_custom_tinymce_plugin($plugin_array) {
-    $plugin_array['mybutton'] = get_template_directory_uri() . '/js/my_button.js?v=533';
-    $plugin_array['mybutton2'] .= get_template_directory_uri() . '/js/my_button_2.js?v=533';
-    $plugin_array['mybutton3'] .= get_template_directory_uri() . '/js/my_button_3.js?v=5363';
-    $plugin_array['mybutton4'] .= get_template_directory_uri() . '/js/my_button_4.js?v=5363';
-    return $plugin_array;
-}
-
-function my_custom_tinymce() {
-    if (!current_user_can('edit_posts') && !current_user_can('edit_pages')) return;
-
-    if (get_user_option('rich_editing') == 'true') {
-        add_filter('mce_external_plugins', 'my_custom_tinymce_plugin');
-        add_filter('mce_buttons', 'my_custom_tinymce_button');
-    }
-}
-add_action('init', 'my_custom_tinymce');
-
-function refresh_on_new_category() {
-    if ( 'edit-category' === get_current_screen()->id ) {
-        echo '<script>
-            jQuery(document).ready(function($) {
-                $("#addtag").on("submit", function(e) {
-                    var form = $(this);
-                    e.preventDefault();
-
-                    $.post(ajaxurl, form.serialize(), function(response) {
-                        if (response) {
-                            location.reload();
-                        }
-                    });
-                });
-            });
-        </script>';
-    }
-}
-add_action('admin_footer', 'refresh_on_new_category');
+add_filter( 'tiny_mce_before_init', 'disable_table_styles_tinymce' );
 
 
 function custom_page_template($templates) {
@@ -101,19 +41,9 @@ function custom_page_template($templates) {
 }
 
 add_filter('theme_page_templates', 'custom_page_template');
-
 add_filter( "litespeed_media_ignore_remote_missing_sizes", "__return_true" );
 
 
-
-function remove_ls_characters($value, $post_id, $field) {
-    if (strpos($value, "\xe2\x80\xa8") !== false) {
-        $value = str_replace("\xe2\x80\xa8", "", $value);
-    }
-    return $value;
-}
-
-add_filter('acf/update_value', 'remove_ls_characters', 10, 3);
 
 function custom_excerpt_length($post, $word_count) {
     $excerpt = $post->post_excerpt;
@@ -147,34 +77,6 @@ function my_acf_prepare_field( $field ) {
         return false;
     } 
 }
-if( function_exists('acf_add_local_field_group') ):
-
-
-if( function_exists('acf_add_options_page') ) {
-	
-	
-	acf_add_options_page(array(
-		'page_title' 	=> 'Настройка темы', 
-		'menu_title'	=> 'Настройка темы',
-		'post_id' => 'options',
-		'menu_slug' 	=> 'theme-general-settings',
-		'capability'	=> 'edit_posts',
-		'redirect'		=> false
-	));
-	
-	
-
-}
-
-get_template_part( 'parts/acffunctions/common-setting'); 
-get_template_part( 'parts/cpt'); 
-get_template_part( 'parts/acfparts/main_theme_editor');
-get_template_part( 'parts/acfparts/main_section');  
-get_template_part( 'parts/acfparts/buttonsandinputs'); 
-get_template_part( 'parts/acfparts/titles'); 
-get_template_part( 'parts/acfparts/menu'); 
-
-endif;
 
 
 

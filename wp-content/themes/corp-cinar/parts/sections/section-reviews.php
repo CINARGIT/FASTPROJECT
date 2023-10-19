@@ -42,11 +42,22 @@ if(!is_archive()) {
 						<?=$item['text']?>
 					</div>
 					<div class="<?=$sectionclass?>_item_more">
-						<a href="#">Читать весь отзыв</a>
+						<a href="#review_modal_id_<?=$i?>" data-fancybox="reviews-ur-text">Читать весь отзыв</a>
 					</div>
                 </div>
             </div>
+			
+		<div class="review_modal" id="review_modal_id_<?=$i?>">
+			 <div class="<?=$sectionclass?>_item_title">
+				<?=$item['title']?>
+             </div>
+			 <div class="<?=$sectionclass?>_item_text">
+				<?=$item['text_full']?>
+			 </div>
+		</div>
         </div>
+		
+		
         <?php endforeach; ?>
 		</div>
 		<div class="more_link_box">

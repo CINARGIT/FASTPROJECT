@@ -15,9 +15,7 @@
 	<?php wp_head(); ?>
 	<? get_template_part( 'parts/header-root-css'); ?>
 </head>
-<body <?php body_class(); ?>>
-<? get_template_part( 'parts/header-mobile-menu'); ?>
+<body <?php body_class('front-page'); ?>>
 <div class="wrapper">
-
 <? get_template_part( 'parts/header-main'); ?>
 
