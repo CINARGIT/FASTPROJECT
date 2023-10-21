@@ -1,0 +1,7 @@
+body .acf-field-flexible-content[data-acfe-flexible-grid="1"] > .acf-input > .acf-flexible-content > .values > .layout > .acfe-fc-placeholder.acfe-fc-preview > .-preview {
+    word-break: normal;
+}
+
+.layout > .acfe-fc-placeholder:hover .acfe-fc-overlay {
+    z-index: 200;
+}

@@ -1,6 +1,4 @@
-<? include get_template_directory() . '/parts/config/preview-config.php';
-
- function my_theme_add_editor_styles() {
+<? function my_theme_add_editor_styles() {
     add_editor_style( get_template_directory_uri() . '/css/editor-style.css?v=75' );
 }
 add_action( 'admin_init', 'my_theme_add_editor_styles' );
@@ -77,9 +75,6 @@ function my_acf_prepare_field( $field ) {
         return false;
     } 
 }
-
-
-
 
 
 ?>

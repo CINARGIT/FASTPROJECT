@@ -1,4 +1,6 @@
 <?php
+define( 'WP_CACHE', true );
+
 /** Enable W3 Total Cache */
  // Added by WP Rocket
 define('FORCE_SSL_ADMIN', false);

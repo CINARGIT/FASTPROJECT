@@ -12,7 +12,7 @@
 					
 					<? if(get_sub_field('v_visually_impaired_on')) { ?>
 						<div class="top_header_item v_visually_impaired">
-							<div class="v_visually_btn" role="button"><img src="<?=get_sub_field('v_visually_impaired_group')['icon']['url']?>" alt="<?=get_sub_field('v_visually_impaired_group')['text']?>"><?=get_sub_field('v_visually_impaired_group')['text']?></div>
+							<div class="v_visually_btn" role="button"><img data-no-lazy="1" src="<?=get_sub_field('v_visually_impaired_group')['icon']['url']?>" alt="<?=get_sub_field('v_visually_impaired_group')['text']?>"><?=get_sub_field('v_visually_impaired_group')['text']?></div>
 						</div>
 					<? } ?>
 				</div>

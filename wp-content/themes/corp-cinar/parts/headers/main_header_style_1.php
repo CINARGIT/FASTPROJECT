@@ -3,7 +3,7 @@
 				<div class="main_header_header_row">
 					<div class="main_header_item main_header_item_logo">
 						<a href="/">
-							<img src="<?=get_sub_field('logo')['url']?>" alt="<?=get_bloginfo('name')?>">
+							<img data-no-lazy="1" src="<?=get_sub_field('logo')['url']?>" alt="<?=get_bloginfo('name')?>">
 							<span class="logo_description">
 								<span class="logo_description_text"><?=get_sub_field('logo_description')?></span> 
 								<span class="logo_description_someinfo"><?=get_sub_field('oppening_hours')?></span> 

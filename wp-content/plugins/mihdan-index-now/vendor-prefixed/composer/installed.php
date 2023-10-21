@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'mihdan/index-now',
-        'pretty_version' => '2.6.0',
-        'version' => '2.6.0.0',
-        'reference' => '118e11b4ec3f223c66a2dc30c2c0e70180908720',
+        'pretty_version' => '2.6.2',
+        'version' => '2.6.2.0',
+        'reference' => 'b5f751438367a1e248364ae13e0fed652bf71639',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -74,9 +74,9 @@
             'dev_requirement' => false,
         ),
         'mihdan/index-now' => array(
-            'pretty_version' => '2.6.0',
-            'version' => '2.6.0.0',
-            'reference' => '118e11b4ec3f223c66a2dc30c2c0e70180908720',
+            'pretty_version' => '2.6.2',
+            'version' => '2.6.2.0',
+            'reference' => 'b5f751438367a1e248364ae13e0fed652bf71639',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
