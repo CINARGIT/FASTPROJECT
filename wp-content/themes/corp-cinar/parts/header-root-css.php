@@ -1,7 +1,4 @@
-<?php //The function returns CSS variables from the admin panel "Theme Settings" to pass them into cinar-style.css.
-
-function add_custom_css() { ?>
-   <style> 
+<?php function add_custom_css() { ?><style> 
 		:root {
 			--main_color:<?=get_field('main_color', 'option')?>;
 			--main_color_hover:<?=get_field('main_color_hover', 'option')?>;
@@ -20,9 +17,7 @@ function add_custom_css() { ?>
 			--button_border_width: <?=get_field('button_border_width', 'option')?>px;
 			--button_border_color: <?=get_field('button_border_color', 'option')?>;
 		}
-	</style>
-    <?php
+	</style><?php
 }
-
 add_action('wp_head', 'add_custom_css');
-add_action('admin_head', 'add_custom_css');
+add_action('admin_head', 'add_custom_css'); ?>

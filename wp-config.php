@@ -26,16 +26,16 @@ define('FORCE_SSL_ADMIN', false);
 
 // ** Параметры MySQL: Эту информацию можно получить у вашего хостинг-провайдера ** //
 /** Имя базы данных для WordPress */
-define('DB_NAME', 'tt');
+define('DB_NAME', 'devmarket_beta');
 
 /** Имя пользователя MySQL */
-define('DB_USER', 'root');
+define('DB_USER', 'devmarket_beta');
 
 /** Пароль к базе данных MySQL */
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', 'cM0zN3jS4k');
 
 /** Имя сервера MySQL */
-define('DB_HOST', '127.0.0.1');
+define('DB_HOST', 'localhost');
 
 /** Кодировка базы данных для создания таблиц. */
 define('DB_CHARSET', 'utf8');
@@ -43,8 +43,8 @@ define('DB_CHARSET', 'utf8');
 /** Схема сопоставления. Не меняйте, если не уверены. */
 define('DB_COLLATE', '');
  
-define('WP_HOME','http://tat.local/');
-define('WP_SITEURL','http://tat.local/');
+define('WP_HOME','https://devmarket.cinar-studio.ru/');
+define('WP_SITEURL','https://devmarket.cinar-studio.ru/');
 
 /**#@+
  * Уникальные ключи и соли для аутентификации.
@@ -85,7 +85,7 @@ $table_prefix  = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', false);
+define('WP_DEBUG', true);
 
 /* Это всё, дальше не редактируем. Успехов! */
 
