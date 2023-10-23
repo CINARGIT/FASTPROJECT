@@ -1,25 +1,17 @@
 [
     {
-        "ID": 12023,
         "key": "group_65316fe91a7a8",
         "title": "Редактор блоков",
         "fields": [
             {
-                "ID": 12024,
                 "key": "field_65316fe9245b0",
                 "label": "Редактор",
                 "name": "flex_content",
                 "aria-label": "",
-                "prefix": "acf",
                 "type": "flexible_content",
-                "value": null,
-                "menu_order": 0,
                 "instructions": "",
                 "required": 0,
-                "id": "",
-                "class": "",
                 "conditional_logic": 0,
-                "parent": 12023,
                 "wrapper": {
                     "width": "",
                     "class": "",
@@ -153,7 +145,7 @@
                                 "append": ""
                             },
                             {
-                                "ID": 12025,
+                                "ID": 12072,
                                 "key": "field_65317530bc7cc",
                                 "label": "Главная секция",
                                 "name": "main_section_style_1_group",
@@ -167,7 +159,7 @@
                                 "id": "",
                                 "class": "",
                                 "conditional_logic": 0,
-                                "parent": 12024,
+                                "parent": 12071,
                                 "wrapper": {
                                     "width": "",
                                     "class": "",
@@ -190,7 +182,7 @@
                                 "parent_layout": "layout_652ee31433c0d",
                                 "sub_fields": [
                                     {
-                                        "ID": 12026,
+                                        "ID": 12073,
                                         "key": "field_65317562bc7cd",
                                         "label": "Заголовок",
                                         "name": "title",
@@ -204,7 +196,7 @@
                                         "id": "",
                                         "class": "",
                                         "conditional_logic": 0,
-                                        "parent": 12025,
+                                        "parent": 12072,
                                         "wrapper": {
                                             "width": "",
                                             "class": "",
@@ -228,7 +220,7 @@
                                         "_valid": 1
                                     },
                                     {
-                                        "ID": 12027,
+                                        "ID": 12074,
                                         "key": "field_65317573bc7ce",
                                         "label": "Подзаголовок",
                                         "name": "subtitle",
@@ -242,7 +234,7 @@
                                         "id": "",
                                         "class": "",
                                         "conditional_logic": 0,
-                                        "parent": 12025,
+                                        "parent": 12072,
                                         "wrapper": {
                                             "width": "",
                                             "class": "",
@@ -266,7 +258,7 @@
                                         "_valid": 1
                                     },
                                     {
-                                        "ID": 12028,
+                                        "ID": 12075,
                                         "key": "field_6531758fbc7cf",
                                         "label": "Преимщуества",
                                         "name": "odds",
@@ -280,7 +272,7 @@
                                         "id": "",
                                         "class": "",
                                         "conditional_logic": 0,
-                                        "parent": 12025,
+                                        "parent": 12072,
                                         "wrapper": {
                                             "width": "",
                                             "class": "",
@@ -300,7 +292,7 @@
                                         "_valid": 1,
                                         "sub_fields": [
                                             {
-                                                "ID": 12029,
+                                                "ID": 12076,
                                                 "key": "field_653175e9bc7d2",
                                                 "label": "Иконка",
                                                 "name": "icon",
@@ -314,7 +306,7 @@
                                                 "id": "",
                                                 "class": "",
                                                 "conditional_logic": 0,
-                                                "parent": 12028,
+                                                "parent": 12075,
                                                 "wrapper": {
                                                     "width": "",
                                                     "class": "",
@@ -340,7 +332,7 @@
                                                 "_valid": 1
                                             },
                                             {
-                                                "ID": 12030,
+                                                "ID": 12077,
                                                 "key": "field_653175a6bc7d0",
                                                 "label": "Название",
                                                 "name": "title",
@@ -354,7 +346,7 @@
                                                 "id": "",
                                                 "class": "",
                                                 "conditional_logic": 0,
-                                                "parent": 12028,
+                                                "parent": 12075,
                                                 "wrapper": {
                                                     "width": "",
                                                     "class": "",
@@ -373,7 +365,7 @@
                                                 "_valid": 1
                                             },
                                             {
-                                                "ID": 12031,
+                                                "ID": 12078,
                                                 "key": "field_653175b7bc7d1",
                                                 "label": "Подзаголовок",
                                                 "name": "subtitle",
@@ -387,7 +379,7 @@
                                                 "id": "",
                                                 "class": "",
                                                 "conditional_logic": 0,
-                                                "parent": 12028,
+                                                "parent": 12075,
                                                 "wrapper": {
                                                     "width": "",
                                                     "class": "",
@@ -406,7 +398,7 @@
                                                 "_valid": 1
                                             },
                                             {
-                                                "ID": 12032,
+                                                "ID": 12079,
                                                 "key": "field_65318cd7dd289",
                                                 "label": "Размер колонки",
                                                 "name": "col_size",
@@ -420,7 +412,7 @@
                                                 "id": "",
                                                 "class": "",
                                                 "conditional_logic": 0,
-                                                "parent": 12028,
+                                                "parent": 12075,
                                                 "wrapper": {
                                                     "width": "",
                                                     "class": "",
@@ -459,7 +451,7 @@
                                         ]
                                     },
                                     {
-                                        "ID": 12033,
+                                        "ID": 12080,
                                         "key": "field_65317649bc7d5",
                                         "label": "Имя эксперта",
                                         "name": "expert_name",
@@ -473,7 +465,7 @@
                                         "id": "",
                                         "class": "",
                                         "conditional_logic": 0,
-                                        "parent": 12025,
+                                        "parent": 12072,
                                         "wrapper": {
                                             "width": "",
                                             "class": "",
@@ -491,7 +483,7 @@
                                         "_valid": 1
                                     },
                                     {
-                                        "ID": 12034,
+                                        "ID": 12081,
                                         "key": "field_6531766abc7d6",
                                         "label": "Описание эксперта",
                                         "name": "expert_description",
@@ -505,7 +497,7 @@
                                         "id": "",
                                         "class": "",
                                         "conditional_logic": 0,
-                                        "parent": 12025,
+                                        "parent": 12072,
                                         "wrapper": {
                                             "width": "",
                                             "class": "",
@@ -529,7 +521,7 @@
                                         "_valid": 1
                                     },
                                     {
-                                        "ID": 12035,
+                                        "ID": 12082,
                                         "key": "field_65317785d443f",
                                         "label": "Фото эксперта",
                                         "name": "expert_photo",
@@ -543,7 +535,7 @@
                                         "id": "",
                                         "class": "",
                                         "conditional_logic": 0,
-                                        "parent": 12025,
+                                        "parent": 12072,
                                         "wrapper": {
                                             "width": "",
                                             "class": "",
@@ -574,7 +566,7 @@
                                         "_valid": 1
                                     },
                                     {
-                                        "ID": 12036,
+                                        "ID": 12083,
                                         "key": "field_6531767bbc7d7",
                                         "label": "Цвет фона",
                                         "name": "bg_color",
@@ -588,7 +580,7 @@
                                         "id": "",
                                         "class": "",
                                         "conditional_logic": 0,
-                                        "parent": 12025,
+                                        "parent": 12072,
                                         "wrapper": {
                                             "width": "",
                                             "class": "",
@@ -727,7 +719,7 @@
                                 "append": ""
                             },
                             {
-                                "ID": 12037,
+                                "ID": 12084,
                                 "key": "field_6533f9144a9cb",
                                 "label": "Заголовок",
                                 "name": "main_section_style_2_title",
@@ -741,7 +733,7 @@
                                 "id": "",
                                 "class": "",
                                 "conditional_logic": 0,
-                                "parent": 12024,
+                                "parent": 12071,
                                 "wrapper": {
                                     "width": "",
                                     "class": "",
@@ -877,7 +869,7 @@
                                 "append": ""
                             },
                             {
-                                "ID": 12038,
+                                "ID": 12085,
                                 "key": "field_6532e6fff1462",
                                 "label": "Слайдер",
                                 "name": "main_section_style_3_slider",
@@ -891,7 +883,7 @@
                                 "id": "",
                                 "class": "",
                                 "conditional_logic": 0,
-                                "parent": 12024,
+                                "parent": 12071,
                                 "wrapper": {
                                     "width": "",
                                     "class": "",
@@ -917,7 +909,7 @@
                                 "_valid": 1,
                                 "sub_fields": [
                                     {
-                                        "ID": 12039,
+                                        "ID": 12086,
                                         "key": "field_6532e71ef1463",
                                         "label": "Заголовок",
                                         "name": "title",
@@ -931,7 +923,7 @@
                                         "id": "",
                                         "class": "",
                                         "conditional_logic": 0,
-                                        "parent": 12038,
+                                        "parent": 12085,
                                         "wrapper": {
                                             "width": "",
                                             "class": "",
@@ -950,7 +942,7 @@
                                         "_valid": 1
                                     },
                                     {
-                                        "ID": 12040,
+                                        "ID": 12087,
                                         "key": "field_6532e72bf1464",
                                         "label": "Краткое описание",
                                         "name": "short_description",
@@ -964,7 +956,7 @@
                                         "id": "",
                                         "class": "",
                                         "conditional_logic": 0,
-                                        "parent": 12038,
+                                        "parent": 12085,
                                         "wrapper": {
                                             "width": "",
                                             "class": "",
@@ -984,7 +976,7 @@
                                         "_valid": 1
                                     },
                                     {
-                                        "ID": 12041,
+                                        "ID": 12088,
                                         "key": "field_6532e810e1922",
                                         "label": "Изображение",
                                         "name": "image",
@@ -998,7 +990,7 @@
                                         "id": "",
                                         "class": "",
                                         "conditional_logic": 0,
-                                        "parent": 12038,
+                                        "parent": 12085,
                                         "wrapper": {
                                             "width": "",
                                             "class": "",
@@ -1030,7 +1022,7 @@
                                         "_valid": 1
                                     },
                                     {
-                                        "ID": 12042,
+                                        "ID": 12089,
                                         "key": "field_6532e748f1465",
                                         "label": "Текст на 1 кнопки",
                                         "name": "text_button_1",
@@ -1044,7 +1036,7 @@
                                         "id": "",
                                         "class": "",
                                         "conditional_logic": 0,
-                                        "parent": 12038,
+                                        "parent": 12085,
                                         "wrapper": {
                                             "width": "50",
                                             "class": "",
@@ -1063,7 +1055,7 @@
                                         "_valid": 1
                                     },
                                     {
-                                        "ID": 12043,
+                                        "ID": 12090,
                                         "key": "field_6532e7bbf1468",
                                         "label": "Ссылка 1 кнопки",
                                         "name": "link_button_1",
@@ -1077,7 +1069,7 @@
                                         "id": "",
                                         "class": "",
                                         "conditional_logic": 0,
-                                        "parent": 12038,
+                                        "parent": 12085,
                                         "wrapper": {
                                             "width": "50",
                                             "class": "",
@@ -1102,7 +1094,7 @@
                                         "_valid": 1
                                     },
                                     {
-                                        "ID": 12044,
+                                        "ID": 12091,
                                         "key": "field_6532e7a4f1467",
                                         "label": "Текст на 2 кнопки",
                                         "name": "text_button_2",
@@ -1116,7 +1108,7 @@
                                         "id": "",
                                         "class": "",
                                         "conditional_logic": 0,
-                                        "parent": 12038,
+                                        "parent": 12085,
                                         "wrapper": {
                                             "width": "50",
                                             "class": "",
@@ -1141,7 +1133,7 @@
                                         "_valid": 1
                                     },
                                     {
-                                        "ID": 12045,
+                                        "ID": 12092,
                                         "key": "field_6532e7c5f1469",
                                         "label": "Ссылка 2 кнопки",
                                         "name": "link_button_2",
@@ -1155,7 +1147,7 @@
                                         "id": "",
                                         "class": "",
                                         "conditional_logic": 0,
-                                        "parent": 12038,
+                                        "parent": 12085,
                                         "wrapper": {
                                             "width": "50",
                                             "class": "",
@@ -1182,7 +1174,7 @@
                                 ]
                             },
                             {
-                                "ID": 12046,
+                                "ID": 12093,
                                 "key": "field_6532e837e1923",
                                 "label": "Градиент слайдера",
                                 "name": "main_section_style_3_slider_gradient_color",
@@ -1196,7 +1188,7 @@
                                 "id": "",
                                 "class": "",
                                 "conditional_logic": 0,
-                                "parent": 12024,
+                                "parent": 12071,
                                 "wrapper": {
                                     "width": "",
                                     "class": "",
@@ -1219,7 +1211,7 @@
                                 "parent_layout": "layout_6532e5224b8c6",
                                 "sub_fields": [
                                     {
-                                        "ID": 12047,
+                                        "ID": 12094,
                                         "key": "field_6532e869e1924",
                                         "label": "Цвет градиента 1",
                                         "name": "gradient_color_1",
@@ -1233,7 +1225,7 @@
                                         "id": "",
                                         "class": "",
                                         "conditional_logic": 0,
-                                        "parent": 12046,
+                                        "parent": 12093,
                                         "wrapper": {
                                             "width": "",
                                             "class": "",
@@ -1263,7 +1255,7 @@
                                         "_valid": 1
                                     },
                                     {
-                                        "ID": 12048,
+                                        "ID": 12095,
                                         "key": "field_6532e87fe1925",
                                         "label": "Цвет градиента 2",
                                         "name": "gradient_color_2",
@@ -1277,7 +1269,7 @@
                                         "id": "",
                                         "class": "",
                                         "conditional_logic": 0,
-                                        "parent": 12046,
+                                        "parent": 12093,
                                         "wrapper": {
                                             "width": "",
                                             "class": "",
@@ -1307,7 +1299,7 @@
                                         "_valid": 1
                                     },
                                     {
-                                        "ID": 12049,
+                                        "ID": 12096,
                                         "key": "field_6532e88ee1926",
                                         "label": "Цвет градиента 3",
                                         "name": "gradient_color_3",
@@ -1321,7 +1313,7 @@
                                         "id": "",
                                         "class": "",
                                         "conditional_logic": 0,
-                                        "parent": 12046,
+                                        "parent": 12093,
                                         "wrapper": {
                                             "width": "",
                                             "class": "",
@@ -1355,7 +1347,7 @@
                                 "_valid": 1
                             },
                             {
-                                "ID": 12050,
+                                "ID": 12097,
                                 "key": "field_6532f0c80de79",
                                 "label": "Цвет текста в слайдах",
                                 "name": "main_section_style_3_text_color",
@@ -1369,7 +1361,7 @@
                                 "id": "",
                                 "class": "",
                                 "conditional_logic": 0,
-                                "parent": 12024,
+                                "parent": 12071,
                                 "wrapper": {
                                     "width": "",
                                     "class": "",
@@ -1422,110 +1414,21 @@
                         "acfe_flexible_modal_edit_size": false,
                         "acfe_flexible_category": false
                     },
-                    "layout_6534163003a5b": {
-                        "key": "layout_6534163003a5b",
-                        "name": "main_section_style_4",
-                        "label": "Главная секция (стиль 4) без формы",
+                    "layout_653586c9ac176": {
+                        "key": "layout_653586c9ac176",
+                        "name": "services_section_style_3",
+                        "label": "Услуги (стиль 3)",
                         "display": "row",
                         "sub_fields": [
                             {
-                                "ID": 0,
-                                "key": "field_layout_6534163003a5b_col",
-                                "label": false,
-                                "name": "acfe_layout_col",
+                                "key": "field_65358709ac178",
+                                "label": "Услуги\/продукции",
+                                "name": "services_section_style_3_group",
                                 "aria-label": "",
-                                "prefix": "acf",
-                                "type": "acfe_hidden",
-                                "value": null,
-                                "menu_order": 0,
-                                "instructions": "",
-                                "required": false,
-                                "id": "",
-                                "class": "",
-                                "conditional_logic": false,
-                                "parent": "field_65316fe9245b0",
-                                "wrapper": {
-                                    "width": "",
-                                    "class": "",
-                                    "id": ""
-                                },
-                                "default_value": "12",
-                                "parent_layout": "layout_6534163003a5b",
-                                "_name": "acfe_layout_col",
-                                "_valid": 1
-                            },
-                            {
-                                "ID": 0,
-                                "key": "field_layout_6534163003a5b_toggle",
-                                "label": false,
-                                "name": "acfe_flexible_toggle",
-                                "aria-label": "",
-                                "prefix": "acf",
-                                "type": "acfe_hidden",
-                                "value": null,
-                                "menu_order": 0,
-                                "instructions": "",
-                                "required": false,
-                                "id": "",
-                                "class": "",
-                                "conditional_logic": false,
-                                "parent": "field_65316fe9245b0",
-                                "wrapper": {
-                                    "width": "",
-                                    "class": "",
-                                    "id": ""
-                                },
-                                "default_value": false,
-                                "parent_layout": "layout_6534163003a5b",
-                                "_name": "acfe_flexible_toggle",
-                                "_valid": 1
-                            },
-                            {
-                                "ID": 0,
-                                "key": "field_layout_6534163003a5b_title",
-                                "label": false,
-                                "name": "acfe_flexible_layout_title",
-                                "aria-label": "",
-                                "prefix": "acf",
-                                "type": "text",
-                                "value": null,
-                                "menu_order": 0,
-                                "instructions": "",
-                                "required": false,
-                                "id": "",
-                                "class": "",
-                                "conditional_logic": false,
-                                "parent": "field_65316fe9245b0",
-                                "wrapper": {
-                                    "width": "",
-                                    "class": "",
-                                    "id": ""
-                                },
-                                "maxlength": false,
-                                "default_value": "Главная секция (стиль 4) без формы",
-                                "placeholder": "Главная секция (стиль 4) без формы",
-                                "parent_layout": "layout_6534163003a5b",
-                                "_name": "acfe_flexible_layout_title",
-                                "_valid": 1,
-                                "prepend": "",
-                                "append": ""
-                            },
-                            {
-                                "ID": 12051,
-                                "key": "field_6534166803a5d",
-                                "label": "Заголовок",
-                                "name": "main_section_style_4",
-                                "aria-label": "",
-                                "prefix": "acf",
-                                "type": "text",
-                                "value": null,
-                                "menu_order": 0,
+                                "type": "group",
                                 "instructions": "",
                                 "required": 0,
-                                "id": "",
-                                "class": "",
                                 "conditional_logic": 0,
-                                "parent": 12024,
                                 "wrapper": {
                                     "width": "",
                                     "class": "",
@@ -1535,24 +1438,138 @@
                                 "hide_label": "",
                                 "hide_instructions": "",
                                 "hide_required": "",
-                                "default_value": "",
+                                "layout": "block",
+                                "acfe_seamless_style": 0,
+                                "acfe_group_modal": 0,
                                 "acfe_settings": "",
-                                "acfe_validate": "",
-                                "maxlength": "",
                                 "instruction_placement": "",
                                 "acfe_permissions": "",
-                                "placeholder": "",
-                                "prepend": "",
-                                "append": "",
                                 "acfe_field_group_condition": 0,
-                                "parent_layout": "layout_6534163003a5b",
-                                "_name": "main_section_style_4",
-                                "_valid": 1
+                                "sub_fields": [
+                                    {
+                                        "key": "field_65358878ac17b",
+                                        "label": "Текст над заголовком",
+                                        "name": "beforetitle",
+                                        "aria-label": "",
+                                        "type": "text",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "acfe_field_group_condition": 0,
+                                        "default_value": "",
+                                        "acfe_settings": "",
+                                        "acfe_validate": "",
+                                        "maxlength": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": ""
+                                    },
+                                    {
+                                        "key": "field_65358857ac17a",
+                                        "label": "Заголовок",
+                                        "name": "title",
+                                        "aria-label": "",
+                                        "type": "text",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "acfe_field_group_condition": 0,
+                                        "default_value": "",
+                                        "acfe_settings": "",
+                                        "acfe_validate": "",
+                                        "maxlength": "",
+                                        "placeholder": "",
+                                        "prepend": "",
+                                        "append": ""
+                                    },
+                                    {
+                                        "key": "field_65358889ac17c",
+                                        "label": "Краткое описание",
+                                        "name": "short_description",
+                                        "aria-label": "",
+                                        "type": "textarea",
+                                        "instructions": "",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "acfe_permissions": "",
+                                        "instruction_placement": "",
+                                        "hide_field": "",
+                                        "hide_label": "",
+                                        "hide_instructions": "",
+                                        "hide_required": "",
+                                        "acfe_field_group_condition": 0,
+                                        "default_value": "",
+                                        "acfe_textarea_code": 0,
+                                        "acfe_settings": "",
+                                        "acfe_validate": "",
+                                        "maxlength": "",
+                                        "rows": 4,
+                                        "placeholder": "",
+                                        "new_lines": "br"
+                                    },
+                                    {
+                                        "key": "field_6535875bac179",
+                                        "label": "Выберите услуги\/продукции",
+                                        "name": "items",
+                                        "aria-label": "",
+                                        "type": "taxonomy",
+                                        "instructions": "Будут отображаться подрубрики. Если не выбрано значение и блок выбран внутри родительской рубрики услуги, по умолчанию будет использована текущая рубрика. В иных ситуациях за основу будет взята рубрика выбранная на главной странице.",
+                                        "required": 0,
+                                        "conditional_logic": 0,
+                                        "wrapper": {
+                                            "width": "",
+                                            "class": "",
+                                            "id": ""
+                                        },
+                                        "acfe_permissions": "",
+                                        "instruction_placement": "",
+                                        "hide_field": "",
+                                        "hide_label": "",
+                                        "hide_instructions": "",
+                                        "hide_required": "",
+                                        "acfe_field_group_condition": 0,
+                                        "taxonomy": "category",
+                                        "add_term": 1,
+                                        "save_terms": 0,
+                                        "load_terms": 0,
+                                        "return_format": "id",
+                                        "field_type": "checkbox",
+                                        "acfe_bidirectional": {
+                                            "acfe_bidirectional_enabled": "0"
+                                        },
+                                        "min": "",
+                                        "max": "",
+                                        "acfe_settings": "",
+                                        "acfe_validate": "",
+                                        "bidirectional": 0,
+                                        "multiple": 0,
+                                        "allow_null": 0,
+                                        "bidirectional_target": []
+                                    }
+                                ],
+                                "acfe_group_modal_close": 0,
+                                "acfe_group_modal_button": "",
+                                "acfe_group_modal_size": "large"
                             }
                         ],
                         "min": "",
                         "max": "",
-                        "acfe_flexible_render_template": "",
+                        "acfe_flexible_render_template": "parts\/sections\/services_section_style_3.php",
                         "acfe_flexible_render_style": "",
                         "acfe_flexible_render_script": "",
                         "acfe_flexible_settings": "",
@@ -1582,9 +1599,7 @@
                 "acfe_field_group_condition": 0,
                 "acfe_flexible_hide_empty_message": false,
                 "acfe_flexible_empty_message": "",
-                "acfe_flexible_layouts_placeholder": false,
-                "_name": "flex_content",
-                "_valid": 1
+                "acfe_flexible_layouts_placeholder": false
             }
         ],
         "location": [
@@ -1613,7 +1628,6 @@
         "acfe_display_title": "",
         "acfe_permissions": "",
         "acfe_meta": "",
-        "acfe_note": "",
-        "_valid": true
+        "acfe_note": ""
     }
 ]

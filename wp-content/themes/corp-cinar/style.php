@@ -3,15 +3,19 @@
 }
 add_action( 'admin_init', 'my_theme_add_editor_styles' );
 
+
 function disable_table_styles_tinymce( $init ) {
-    // Запрещаем добавление inline стилей
-    $init['valid_styles'] = [ '*' => '' ];
-
-    // Запрещаем добавление классов к таблицам
-    $init['table_class_list'] = [];
-
+    $screen = get_current_screen();
+    
+    // Проверьте, зарегистрирован ли скрипт TinyMCE
+    if ( $screen && wp_script_is( 'editor', 'enqueued' ) ) {
+        $init['valid_styles'] = [ '*' => '' ];
+        $init['table_class_list'] = [];
+    }
+    
     return $init;
 }
+
 add_filter( 'tiny_mce_before_init', 'disable_table_styles_tinymce' );
 
 

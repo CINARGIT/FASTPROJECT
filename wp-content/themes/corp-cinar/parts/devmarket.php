@@ -15,19 +15,6 @@ function my_acf_layout_enqueue(){
 
 add_action('admin_head', 'my_acf_layout_enqueue');
 
-function hide_delete_button_for_specific_acf_group() {
-    ?>
-    <script type="text/javascript">
-        jQuery(document).ready(function($) {
-            $('div.row-actions:contains("group_65341863d56bf")').find('.trash').hide();
-            $('div.row-actions:contains("group_65341863d56bf")').find('.acfdeactivate').hide();
-            $('div.row-actions:contains("group_65341863d56bf")').find('.acfduplicate').hide();
-        });
-    </script>
-    <?php
-}
-
-add_action('admin_footer-edit.php', 'hide_delete_button_for_specific_acf_group');
 
 add_action('admin_menu', 'custom_acf_merge_menu');
 
@@ -272,3 +259,118 @@ function resetFileInput() {
 	
     <?php
 }
+
+//Вывести DevMarket в отдельный пунтк меню
+
+add_action('admin_menu', 'add_acf_menu_item');
+
+function add_acf_menu_item() {
+    add_menu_page(
+        'DevMarket',          // Название страницы
+        'DevMarket',          // Текст меню
+        'edit_posts',                // Требуемые права для доступа
+        'post.php?post=12070&action=edit',  // URL для страницы редактирования группы полей
+        '',
+        'dashicons-admin-customizer', // Иконка меню
+        75                            // Позиция в меню
+    );
+}
+
+
+
+add_filter('admin_body_class', 'add_acf_group_id_to_admin_body');
+
+function add_acf_group_id_to_admin_body($classes) {
+    global $post;
+
+    if ($post && 'acf-field-group' == get_post_type($post->ID)) {
+        // Добавляем ID группы полей ACF в виде класса
+        $classes .= ' acf-group-' . $post->ID;
+    }
+
+    return $classes;
+}
+
+
+
+
+function my_admin_inline_styles_devmarket() {
+
+
+	
+    echo '<style>
+        
+        .acf-group-12070 .acf-field-setting-fc_layout .acf-fc-meta .acf-fc-meta-right{
+			width:100%;
+			margin-left:0px;
+			margin-right:0px;
+		}
+		
+		#post-12070.iedit,
+        .acf-group-12070 .acf-field-setting-fc_layout .acf-fc-meta .acf-fc-meta-max,
+        .acf-group-12070 .acf-field-setting-fc_layout .acf-fc-meta .acf-fc-meta-max,
+        .acf-group-12070 .acf-field-setting-fc_layout .acf-fc-meta .acf-fc-meta-min,
+        .acf-group-12070 .acf-field-setting-fc_layout .acf-fc-meta .acf-fc-meta-left,
+        .acf-group-12070 #export-action,
+        .acf-group-12070 #major-publishing-actions,
+        .acf-group-12070 #delete-action,
+        .acf-group-12070 #acf-field-group-fields>.inside>.acf-field-list-wrap>.acf-tfoot,
+		.acf-group-12070 ul[data-name="acfe_flexible_render_style"],
+		.acf-group-12070 ul[data-name="acfe_flexible_render_script"],
+        .acf-group-12070 #submitpost .add-field{
+            display:none !important;
+        }
+		
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main{
+			padding-top:0px;
+		}
+		
+		.acf-group-12070 div[data-name="acfe_display_title"], 
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-tab-wrap .acf-settings-type-conditional-logic,
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-tab-wrap .acf-settings-type-presentation,
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-tab-wrap .acf-settings-type-validation,
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_settings,
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_grid_container,
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acfe-field-group-layout-block,
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_layouts_state,
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_remove_button,
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_add_actions,
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_layouts_locations,
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_layouts_settings,
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_layouts_thumbnails,
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_layouts_previews,
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_layouts_templates,
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_stylised_button,
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_advanced,
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_async,
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-setting-name,
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-setting-hide_field,
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-setting-type,
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.handle>.acf-tbody>.li-field-label>.row-options>.duplicate-field,
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.handle>.acf-tbody>.li-field-label>.row-options>.move-field,
+		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.handle>.acf-tbody>.li-field-label>.row-options>.delete-field{
+			display:none !important;
+		}
+		
+		.acf-group-12070 #misc-publishing-actions .dashicons,
+		.acf-group-12070 #acf-field-group-acfe-side{
+		.acf-group-12070 .acf-settings-type-presentation{
+			display:none !important;
+		}
+		
+		.acf-group-12070 .misc-pub-section.misc-pub-acfe-field-group-export{
+			font-size:20px;
+		}
+		
+    </style>
+	
+	<script>
+		
+	</script>
+	
+	';
+}
+
+add_action('admin_head', 'my_admin_inline_styles_devmarket');
+
+  

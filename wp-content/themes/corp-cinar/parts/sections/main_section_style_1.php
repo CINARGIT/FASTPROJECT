@@ -28,8 +28,6 @@
 			</div>
 		</div>
 			
-		<div class="<?=$prefixClass?>_phone"><?=$section['phone']?></div>
-		<div class="<?=$prefixClass?>_text_on_button"><?=$section['text_on_button']?></div>
 		<div class="<?=$prefixClass?>_form">
 			<?=do_shortcode('[contact-form-7 id="af7f556" title="Форма быстрого заказа (номер телефон) - Главный экран (стиль 1)"]')?>
 		</div>

@@ -1,1 +1,4 @@
 *.bak
+*.bk
+.htaccess
+wp-config.php

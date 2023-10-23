@@ -1,0 +1,107 @@
+
+/** common **/
+
+body.front-page, .acfe-fc-preview{
+	line-height:1.4;
+	color:#333;
+	font-family: var(--theme_font_family);
+}
+
+.acfe-fc-preview, .acfe-fc-preview *{
+	box-sizing: border-box;
+}
+
+header{
+	position:relative;
+	z-index:10;
+}
+
+/** common inputs**/
+
+.acfe-fc-preview input[type="text"],
+body.front-page input[type="text"],
+.acfe-fc-preview input[type="password"],
+body.front-page input[type="password"],
+.acfe-fc-preview textarea,
+body.front-page textarea{
+	border-style:solid;
+	outline:none !important;
+	width:100%;
+	height:var(--input_height);
+	border-color:var(--input_border_color);
+	border-radius:var(--input_border_radius);
+	font-size: 15px; 
+	padding-left:18px;
+}
+
+.acfe-fc-preview input[type="text"],
+body.front-page input[type="text"],
+body.front-page input[type="password"]{
+	display:flex;
+}
+
+.acfe-fc-preview textarea,
+body.front-page textarea{
+	height:240px;
+	resize:none !important;
+}
+
+/** common inputs end**/
+
+
+/** common buttons**/
+
+.order_button{
+	position:relative;
+	background-color: var(--main_color);
+	height: var(--button_height);
+	border-radius: var(--button_border_radius);
+	text-transform: var(--button_text_transform);
+	font-size: var(--button_font_size);
+	font-weight: var(--button_font_weight);
+	color: var(--button_color_text);
+	border-width: var(--button_border_width);
+	border-color: var(--button_border_color);
+	width:100%;
+	display:flex;
+	text-decoration:none !important;
+	outline:none !important;
+	align-items:center;
+	justify-content:center;
+	text-align:center;
+}
+
+.order_button:hover{
+	background-color: var(--main_color_hover);
+}
+
+.order_button.order_button_style_2{
+	background-color: var(--second_color);
+}
+
+.order_button.order_button_style_2:hover{
+	background-color: var(--second_color_hover);
+}
+
+.order_button.order_button_style_3{
+	background-color: transparent;
+	border:2px solid #fff;
+	color:#fff;
+}
+
+.order_button.order_button_style_3:hover{
+	background-color: #fff;
+	color:#000;
+}
+
+/** common buttons end**/
+
+/** common modal**/
+
+.fancy-modal{
+	display:none;
+}
+
+/** common modal end**/
+
+/** common end**/
