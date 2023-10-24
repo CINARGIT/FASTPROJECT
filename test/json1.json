@@ -1,0 +1,212 @@
+{
+    "key": "group_6537167707957",
+    "title": "Шапка сайта (копировать)",
+    "fields": [
+        {
+            "ID": 12633,
+            "key": "field_65371677097bd",
+            "label": "Шапка сайта",
+            "name": "flex_head",
+            "aria-label": "",
+            "prefix": "acf",
+            "type": "flexible_content",
+            "value": null,
+            "menu_order": 0,
+            "instructions": "",
+            "required": 0,
+            "id": "",
+            "class": "",
+            "conditional_logic": 0,
+            "parent": 12632,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_flexible_advanced": 1,
+            "acfe_flexible_stylised_button": 1,
+            "acfe_flexible_layouts_templates": 1,
+            "acfe_flexible_layouts_previews": 1,
+            "acfe_flexible_layouts_thumbnails": 1,
+            "acfe_flexible_layouts_settings": 1,
+            "acfe_flexible_layouts_locations": 1,
+            "acfe_flexible_async": [],
+            "acfe_flexible_add_actions": [
+                "title",
+                "toggle",
+                "copy",
+                "close"
+            ],
+            "acfe_flexible_remove_button": [],
+            "acfe_flexible_layouts_state": "user",
+            "acfe_flexible_modal_edit": {
+                "acfe_flexible_modal_edit_enabled": "0",
+                "acfe_flexible_modal_edit_size": "large"
+            },
+            "acfe_flexible_modal": {
+                "acfe_flexible_modal_enabled": "1",
+                "acfe_flexible_modal_title": "Маркет блоков - шапки сайта",
+                "acfe_flexible_modal_size": "full",
+                "acfe_flexible_modal_col": "4",
+                "acfe_flexible_modal_categories": "0"
+            },
+            "acfe_flexible_grid": {
+                "acfe_flexible_grid_enabled": "1",
+                "acfe_flexible_grid_align": "center",
+                "acfe_flexible_grid_valign": "stretch",
+                "acfe_flexible_grid_wrap": "0"
+            },
+            "acfe_flexible_grid_container": "",
+            "layouts": {
+                "layout_652ee31433c0d": {
+                    "key": "layout_652ee31433c0d",
+                    "name": "top_header_style_1",
+                    "label": "Верхняя шапка (стиль 1)",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "ID": 0,
+                            "key": "field_layout_652ee31433c0d_col",
+                            "label": false,
+                            "name": "acfe_layout_col",
+                            "aria-label": "",
+                            "prefix": "acf",
+                            "type": "acfe_hidden",
+                            "value": null,
+                            "menu_order": 0,
+                            "instructions": "",
+                            "required": false,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": false,
+                            "parent": "field_65371677097bd",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "12",
+                            "parent_layout": "layout_652ee31433c0d",
+                            "_name": "acfe_layout_col",
+                            "_valid": 1
+                        },
+                        {
+                            "ID": 0,
+                            "key": "field_layout_652ee31433c0d_toggle",
+                            "label": false,
+                            "name": "acfe_flexible_toggle",
+                            "aria-label": "",
+                            "prefix": "acf",
+                            "type": "acfe_hidden",
+                            "value": null,
+                            "menu_order": 0,
+                            "instructions": "",
+                            "required": false,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": false,
+                            "parent": "field_65371677097bd",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": false,
+                            "parent_layout": "layout_652ee31433c0d",
+                            "_name": "acfe_flexible_toggle",
+                            "_valid": 1
+                        },
+                        {
+                            "ID": 0,
+                            "key": "field_layout_652ee31433c0d_title",
+                            "label": false,
+                            "name": "acfe_flexible_layout_title",
+                            "aria-label": "",
+                            "prefix": "acf",
+                            "type": "text",
+                            "value": null,
+                            "menu_order": 0,
+                            "instructions": "",
+                            "required": false,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": false,
+                            "parent": "field_65371677097bd",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": false,
+                            "default_value": "Верхняя шапка (стиль 1)",
+                            "placeholder": "Верхняя шапка (стиль 1)",
+                            "parent_layout": "layout_652ee31433c0d",
+                            "_name": "acfe_flexible_layout_title",
+                            "_valid": 1,
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "ID": 12634,
+                            "key": "field_653716770ace8",
+                            "label": "Выберите меню",
+                            "name": "menu_id",
+                            "aria-label": "",
+                            "prefix": "acf",
+                            "type": "menu",
+                            "value": null,
+                            "menu_order": 0,
+                            "instructions": "",
+                            "required": 0,
+                            "id": "",
+                            "class": "",
+                            "conditional_logic": 0,
+                            "parent": 12633,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "parent_layout": "layout_652ee31433c0d",
+                            "return_format": "id",
+                            "allow_null": 0,
+                            "acfe_field_group_condition": 0,
+                            "_name": "menu_id",
+                            "_valid": 1
+                        }
+                    ],
+                    "min": "",
+                    "max": "",
+                    "acfe_flexible_render_template": "parts\/headers\/top_header_style_1.php",
+                    "acfe_flexible_render_style": "",
+                    "acfe_flexible_render_script": "",
+                    "acfe_flexible_settings": "",
+                    "acfe_flexible_settings_size": "medium",
+                    "acfe_layout_col": "12",
+                    "acfe_layout_allowed_col": "",
+                    "acfe_layout_locations": [
+                        [
+                            {
+                                "param": "options_page",
+                                "operator": "==",
+                                "value": "header_set"
+                            }
+                        ]
+                    ],
+                    "acfe_flexible_thumbnail": "11655",
+                    "acfe_flexible_modal_edit_size": false,
+                    "acfe_flexible_category": false
+                }
+            },
+            "min": "",
+            "max": "",
+            "button_label": "Добавить",
+            "acfe_field_group_condition": 0,
+            "acfe_flexible_hide_empty_message": false,
+            "acfe_flexible_empty_message": "",
+            "acfe_flexible_layouts_placeholder": false,
+            "_name": "flex_head",
+            "_valid": 1
+        }
+    ]
+}

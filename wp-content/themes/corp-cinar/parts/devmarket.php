@@ -3,7 +3,9 @@
 //Подключить основные CSS переменные и передать их во FRONT и в АДМИН панель
 get_template_part( 'parts/header-root-css'); 
 
+
 //Подключить основные стили и передать их в АДМИН панель
+add_action('admin_head', 'my_acf_layout_enqueue');
 function my_acf_layout_enqueue(){
     wp_enqueue_style('slick', get_stylesheet_directory_uri() . '/css/slick.css');
     wp_enqueue_style('bootstrap-grid', get_stylesheet_directory_uri() . '/css/bootstrap-grid.min.css');
@@ -13,7 +15,24 @@ function my_acf_layout_enqueue(){
 	wp_enqueue_script('slick', get_template_directory_uri() . '/js/slick.min.js', array( 'jquery' ), '20181230', true );
 }
 
-add_action('admin_head', 'my_acf_layout_enqueue');
+
+function get_acf_group_id_by_key($key) {
+    // Используем WP_Query для поиска поста с указанным post_name и post_type
+    $args = array(
+        'name'        => $key,
+        'post_type'   => 'acf-field-group',
+        'post_status' => 'publish',
+        'numberposts' => 1
+    );
+
+    $my_posts = get_posts($args);
+
+    if ($my_posts) {
+        return $my_posts[0]->ID;  // Если нашли, возвращаем ID
+    }
+
+    return null;  // Если не нашли, возвращаем null
+}
 
 
 add_action('admin_menu', 'custom_acf_merge_menu');
@@ -30,12 +49,36 @@ function custom_acf_merge_menu() {
     );
 }
 
+
+function custom_acf_exporter() {
+    // Задайте ключ группы полей
+    $group_key = 'group_6537167707957';
+    
+    // Получите группу полей по ключу
+    $field_group = acf_get_field_group($group_key);
+    if( !$field_group ) {
+        wp_send_json_error(array('message' => 'ACF группа полей не найдена.'));
+        return;
+    }
+    
+    // Получите все поля для этой группы
+    $fields = acf_get_fields($group_key);
+    $field_group['fields'] = $fields;
+    
+    // Отправьте данные в формате JSON
+    wp_send_json_success($field_group);
+}
+
+add_action('wp_ajax_custom_acf_export', 'custom_acf_exporter');
+add_action('wp_ajax_nopriv_custom_acf_export', 'custom_acf_exporter');
+
 function custom_acf_merge_page() {
     ?>
     <div class="wrap">
         <h1 class="wp-heading-inline" style="margin-bottom:20px;">Импорт блоков в DevMarket</h1>
 			<div class="postbox">
 				<div class="inside">
+		
 					<?php display_json_content(); ?>
 
     <form method="post" action="">
@@ -80,27 +123,14 @@ function custom_acf_merge_page() {
     <?php
 }
 
+
 function get_acf_group_as_json($field_group_key) {
-    $fields = acf_get_fields($field_group_key);
-
-    if (!$fields) {
-        return false;
-    }
-
-    // Получаем информацию о группе полей.
-    $field_group = acf_get_field_group($field_group_key);
-    
-    // Создаем новый массив с ключом и названием.
-    $data = array(
-        "key" => $field_group_key,
-        "title" => $field_group['title'],
-        "fields" => $fields
-    );
-
-    $json_data = json_encode($data, JSON_PRETTY_PRINT);
-
+	$json_path = get_stylesheet_directory() . '/acf-json/'.$field_group_key.'.json';
+	$json_data = file_get_contents($json_path);
+    // Применяем фильтр для 
     return $json_data;
 }
+
 
 function merge_and_save_layouts() {
    	if(empty($_POST['data_selector'])) { 
@@ -108,35 +138,33 @@ function merge_and_save_layouts() {
 	} else {
 		$field_group_key = $_POST['data_selector'];
 	}
+
     $current_acf_data = get_acf_group_as_json($field_group_key);
-    $current_layouts = json_decode($current_acf_data, true)['fields'][0]['layouts'];
+    $current_data_array = json_decode($current_acf_data, true);
+    $current_layouts = $current_data_array['fields'][0]['layouts'];
 
     if(isset($_FILES['import_json_file'])) {
         $json_file = $_FILES['import_json_file']['tmp_name'];
         $json_data = file_get_contents($json_file);
         $imported_array = json_decode($json_data, true);
-        $imported_layouts = $imported_array[0]['fields'][0]['layouts'];
 
+    
+        $imported_layouts = $imported_array[0]['fields'][0]['layouts'];
         $new_layouts = array_diff_key($imported_layouts, $current_layouts);
         
         if(!empty($new_layouts)) {
             // Объединяем текущие и новые layouts
             $merged_layouts = array_merge($current_layouts, $new_layouts);
-
             // Обновляем поля в импортированном массиве
             $imported_array[0]['fields'][0]['layouts'] = $merged_layouts;
-
             // Сохраняем измененные данные
-            // Замените этот код на ваш код для сохранения данных, если он отличается
             save_acf_group_from_json($field_group_key, json_encode($imported_array));
-
             echo '<p>Layouts успешно объединены и сохранены!</p>';
         } else {
             echo '<p>Нет новых Layouts для объединения.</p>';
         }
     }
 }
-
 
 function display_json_content() {
 	if(empty($_POST['data_selector'])) { 
@@ -148,6 +176,8 @@ function display_json_content() {
     $current_layouts = json_decode($current_acf_data, true)['fields'][0]['layouts'];
     $upload_dir = wp_upload_dir();
     $merged_json_file = $upload_dir['basedir'] . '/merged_acf_layouts.json'; 
+	//$merged_json_file =  get_stylesheet_directory() . '/acf-json/'.$field_group_key.'.json';	
+	
 
     if(isset($_FILES['import_json_file'])) {
         $json_file = $_FILES['import_json_file']['tmp_name'];
@@ -164,6 +194,7 @@ function display_json_content() {
         $imported_array[0]['fields'][0]['layouts'] = $merged_layouts;
 
         // Сохраняем объединенный JSON
+		
         $merged_json = json_encode($imported_array, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
         // Сохраняем объединенный JSON в файле
@@ -175,11 +206,17 @@ function display_json_content() {
 	<?php
     // Отображаем кнопку "Внедрить" только если файл был загружен
 		if (isset($_FILES['import_json_file']) && file_exists($merged_json_file)) {
+		file_put_contents($merged_json_file, $merged_json);
 	?>
 	<form method="post" action="" enctype="multipart/form-data">
 		<input type="submit" name="import_merged_json" class="button button-secondary" value="Внедрить новые блоки в DevMarket">
 		<button type="button" onclick="resetFileInput();" class="button button-primary">Сбросить</button>
 	</form>
+	
+	<?php       // Отображение объединенного JSON
+        echo '<h3>Объединенный JSON:</h3>';
+        echo '<textarea style="width:100%; height:400px;">' . $merged_json . '</textarea>';
+	?>	
 	<?php } ?>	
 		
 		<?php	
@@ -193,16 +230,21 @@ function display_json_content() {
     if (isset($_POST['import_merged_json']) && file_exists($merged_json_file)) {
         // Удаляем старую группу полей перед импортом новой
         $field_group = acf_get_field_group($field_group_key);
-        if ($field_group) {
-            acf_delete_field_group($field_group['ID']);
-        }
+        $field_group_id = get_acf_group_id_by_key($field_group_key);
+        acf_delete_field_group($field_group_id);
+      
 
         // Теперь импортируем объединенный JSON
         $merged_json_data = file_get_contents($merged_json_file);
         $merged_array = json_decode($merged_json_data, true);
+		$merged_json_file_final =  get_stylesheet_directory() . '/acf-json/'.$field_group_key.'.json';	
+		file_put_contents($merged_json_file_final, $merged_json_data);		
+		
+		file_put_contents($merged_json_file, $merged_json_data);
         foreach ($merged_array as $field_group) {
             acf_import_field_group($field_group);
         }
+		
         echo '<div class="updated notice notice-success is-dismissible"><p>Данные успешно импортированы в ACF!</p></div>';
     }
 
@@ -265,11 +307,12 @@ function resetFileInput() {
 add_action('admin_menu', 'add_acf_menu_item');
 
 function add_acf_menu_item() {
-    add_menu_page(
+    $devmarketid = get_acf_group_id_by_key('group_65316fe91a7a8');
+	add_menu_page(
         'DevMarket',          // Название страницы
         'DevMarket',          // Текст меню
         'edit_posts',                // Требуемые права для доступа
-        'post.php?post=12070&action=edit',  // URL для страницы редактирования группы полей
+        'post.php?post='.$devmarketid.'&action=edit',  // URL для страницы редактирования группы полей
         '',
         'dashicons-admin-customizer', // Иконка меню
         75                            // Позиция в меню
@@ -292,85 +335,111 @@ function add_acf_group_id_to_admin_body($classes) {
 }
 
 
+function add_acf_key_to_admin_body_class($classes) {
+    global $post;
+
+    // Проверяем, является ли это ACF группой полей
+    if (isset($post) && 'acf-field-group' == $post->post_type) {
+        // Добавляем post_name (ключ ACF группы) к классам body
+        $classes .= ' ' . sanitize_html_class($post->post_name);
+    }
+
+    return $classes;
+}
+
+add_filter('admin_body_class', 'add_acf_key_to_admin_body_class');
+
 
 
 function my_admin_inline_styles_devmarket() {
 
-
+	$devmarketid = get_acf_group_id_by_key('group_65316fe91a7a8');
 	
     echo '<style>
         
-        .acf-group-12070 .acf-field-setting-fc_layout .acf-fc-meta .acf-fc-meta-right{
+        .group_65316fe91a7a8 #acf-field-group-fields>.inside>.acf-field-list-wrap>.acf-thead,
+        .group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.handle{
+			display:none;
+		}
+		
+        .group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings{
+			display:block !important;
+		}
+		
+        .group_65316fe91a7a8 .acf-field-setting-fc_layout .acf-fc-meta .acf-fc-meta-right{
 			width:100%;
 			margin-left:0px;
 			margin-right:0px;
 		}
 		
-		#post-12070.iedit,
-        .acf-group-12070 .acf-field-setting-fc_layout .acf-fc-meta .acf-fc-meta-max,
-        .acf-group-12070 .acf-field-setting-fc_layout .acf-fc-meta .acf-fc-meta-max,
-        .acf-group-12070 .acf-field-setting-fc_layout .acf-fc-meta .acf-fc-meta-min,
-        .acf-group-12070 .acf-field-setting-fc_layout .acf-fc-meta .acf-fc-meta-left,
-        .acf-group-12070 #export-action,
-        .acf-group-12070 #major-publishing-actions,
-        .acf-group-12070 #delete-action,
-        .acf-group-12070 #acf-field-group-fields>.inside>.acf-field-list-wrap>.acf-tfoot,
-		.acf-group-12070 ul[data-name="acfe_flexible_render_style"],
-		.acf-group-12070 ul[data-name="acfe_flexible_render_script"],
-        .acf-group-12070 #submitpost .add-field{
+		#post-'.$devmarketid.'.iedit,
+        .group_65316fe91a7a8 .acf-field-setting-fc_layout .acf-fc-meta .acf-fc-meta-max,
+        .group_65316fe91a7a8 .acf-field-setting-fc_layout .acf-fc-meta .acf-fc-meta-max,
+        .group_65316fe91a7a8 .acf-field-setting-fc_layout .acf-fc-meta .acf-fc-meta-min,
+        .group_65316fe91a7a8 .acf-field-setting-fc_layout .acf-fc-meta .acf-fc-meta-left,
+        .group_65316fe91a7a8 #export-action,
+        .group_65316fe91a7a8 #major-publishing-actions,
+        .group_65316fe91a7a8 #delete-action,
+        .group_65316fe91a7a8 #acf-field-group-fields>.inside>.acf-field-list-wrap>.acf-tfoot,
+		.group_65316fe91a7a8 ul[data-name="acfe_flexible_render_style"],
+		.group_65316fe91a7a8 ul[data-name="acfe_flexible_render_script"],
+        .group_65316fe91a7a8 #submitpost .add-field{
             display:none !important;
         }
 		
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main{
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main{
 			padding-top:0px;
 		}
 		
-		.acf-group-12070 div[data-name="acfe_display_title"], 
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-tab-wrap .acf-settings-type-conditional-logic,
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-tab-wrap .acf-settings-type-presentation,
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-tab-wrap .acf-settings-type-validation,
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_settings,
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_grid_container,
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acfe-field-group-layout-block,
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_layouts_state,
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_remove_button,
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_add_actions,
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_layouts_locations,
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_layouts_settings,
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_layouts_thumbnails,
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_layouts_previews,
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_layouts_templates,
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_stylised_button,
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_advanced,
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_async,
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-setting-name,
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-setting-hide_field,
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-setting-type,
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.handle>.acf-tbody>.li-field-label>.row-options>.duplicate-field,
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.handle>.acf-tbody>.li-field-label>.row-options>.move-field,
-		.acf-group-12070 div[data-key="field_65316fe9245b0"]>.handle>.acf-tbody>.li-field-label>.row-options>.delete-field{
+		.group_65316fe91a7a8 div[data-name="acfe_display_title"], 
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-tab-wrap,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-tab-wrap .acf-settings-type-conditional-logic,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-tab-wrap .acf-settings-type-presentation,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-tab-wrap .acf-settings-type-validation,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_settings,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_grid_container,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acfe-field-group-layout-block,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_layouts_state,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_remove_button,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_add_actions,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_layouts_locations,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_layouts_settings,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_layouts_thumbnails,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_layouts_previews,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_layouts_templates,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_stylised_button,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_advanced,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-type-settings>.acf-field-setting-acfe_flexible_async,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-setting-name,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-setting-hide_field,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.settings>.acf-field-editor>.acf-field-settings>.acf-field-settings-main>.acf-field-setting-type,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.handle>.acf-tbody>.li-field-label>.row-options>.duplicate-field,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.handle>.acf-tbody>.li-field-label>.row-options>.move-field,
+		.group_65316fe91a7a8 div[data-key="field_65316fe9245b0"]>.handle>.acf-tbody>.li-field-label>.row-options>.delete-field{
 			display:none !important;
 		}
 		
-		.acf-group-12070 #misc-publishing-actions .dashicons,
-		.acf-group-12070 #acf-field-group-acfe-side{
-		.acf-group-12070 .acf-settings-type-presentation{
+		.group_65316fe91a7a8 #misc-publishing-actions .dashicons,
+		.group_65316fe91a7a8 #acf-field-group-acfe-side{
+		.group_65316fe91a7a8 .acf-settings-type-presentation{
 			display:none !important;
 		}
 		
-		.acf-group-12070 .misc-pub-section.misc-pub-acfe-field-group-export{
+		.group_65316fe91a7a8 .misc-pub-section.misc-pub-acfe-field-group-export{
 			font-size:20px;
 		}
 		
     </style>
 	
 	<script>
-		
 	</script>
-	
 	';
 }
 
 add_action('admin_head', 'my_admin_inline_styles_devmarket');
 
   
+function my_acf_json_save_point( $path ) {
+    return get_stylesheet_directory() . '/acf-json';
+}
+add_filter( 'acf/settings/save_json', 'my_acf_json_save_point' );
