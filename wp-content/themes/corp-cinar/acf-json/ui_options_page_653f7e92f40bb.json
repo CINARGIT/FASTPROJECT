@@ -1,0 +1,23 @@
+{
+    "key": "ui_options_page_653f7e92f40bb",
+    "title": "Подвал сайта",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Подвал сайта",
+    "menu_slug": "footer_set",
+    "parent_slug": "option",
+    "advanced_configuration": 0,
+    "icon_url": "",
+    "menu_title": "",
+    "position": "",
+    "redirect": false,
+    "description": "",
+    "update_button": "Обновить",
+    "updated_message": "Настройки были обновлены",
+    "capability": "edit_posts",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": 0,
+    "_parent": 11639,
+    "modified": 1698660000
+}

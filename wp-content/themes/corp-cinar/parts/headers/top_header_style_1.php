@@ -2,6 +2,11 @@
 			.top_header .menu_list ul li a{
 				color:<?=get_sub_field('menu_color')?>;
 			}
+			
+			.top_header .v_visually_btn {
+				cursor:pointer;
+				color:<?=get_sub_field('v_visually_impaired_group')['text_color']?>;
+			}
 		</style>
 		<div class="top_header top_header_style_1 <?php echo ($is_preview) ? 'is-preview' : ''; ?>" style="background-color:<?=get_sub_field('bg_color')?>;">
 			<div class="container">
@@ -12,7 +17,7 @@
 					
 					<? if(get_sub_field('v_visually_impaired_on')) { ?>
 						<div class="top_header_item v_visually_impaired">
-							<div class="v_visually_btn" role="button"><img data-no-lazy="1" src="<?=get_sub_field('v_visually_impaired_group')['icon']['url']?>" alt="<?=get_sub_field('v_visually_impaired_group')['text']?>"><?=get_sub_field('v_visually_impaired_group')['text']?></div>
+							<div class="v_visually_btn bvi-open" role="button"><img data-no-lazy="1" src="<?=get_sub_field('v_visually_impaired_group')['icon']['url']?>" alt="<?=get_sub_field('v_visually_impaired_group')['text']?>"><?=get_sub_field('v_visually_impaired_group')['text']?></div>
 						</div>
 					<? } ?>
 				</div>

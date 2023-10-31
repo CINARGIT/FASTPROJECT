@@ -20,7 +20,14 @@ if(!empty($section['items'])) {
 if(!empty($terms)) {
 ?>
 
-<section class="section-common section_coso_style_3_coomon section-<?=$prefixClass?>">
+
+
+<section class="section-common section_coso_style_3_common section-<?=$prefixClass?>">
+<style>
+	.<?=$prefixClass?>_item_title{
+		font-size:<?=$section['items_title_font_size']?>px;
+	}
+</style>
 	<div class="container">
 	
 	<? if(!empty($section['beforetitle'])) { ?>
@@ -30,7 +37,7 @@ if(!empty($terms)) {
 		<h2><?=highlightLastWord($section['title'])?></h2>
 	<? } ?>
 	<? if(!empty($section['short_description'])) { ?>
-		<div class="<?=$prefixClass?>_short_description"><?=$section['short_description']?></div>
+		<div class="short_description"><?=$section['short_description']?></div>
 	<? } ?>
 	
 	<div class="row su_row">
@@ -72,3 +79,5 @@ if(!empty($terms)) {
 	</div>
 </section>
 <? } ?>	
+
+

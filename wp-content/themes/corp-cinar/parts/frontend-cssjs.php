@@ -6,7 +6,7 @@ wp_enqueue_style( 'fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/di
 wp_enqueue_style( 'slick', get_template_directory_uri() . '/css/slick.css', array( 'cinar-corp' ),  '20181230' );
 wp_enqueue_style( 'bootstrap-grid', get_template_directory_uri() . '/css/bootstrap-grid.min.css', array( 'cinar-corp' ),  '20181230' );
 wp_enqueue_style( 'cinar-config', get_template_directory_uri() . '/css/cinar-config.css', array( 'cinar-corp' ),  '20181230' );
-wp_enqueue_style( 'cinar-styles', get_template_directory_uri() . '/css/cinar-styles.css', array( 'cinar-corp' ),  '2302324333181230' );
+wp_enqueue_style( 'cinar-styles', get_template_directory_uri() . '/css/cinar-styles.css', array( 'cinar-corp' ),  time() );
 wp_enqueue_script( 'fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js', array( 'jquery' ), '20181230', true );
 wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ), '20181230', true );
 wp_enqueue_script( 'sweet-alert', get_template_directory_uri() . '/js/sweet-alert.js', array( 'jquery' ), '20181230', true );

@@ -67,6 +67,25 @@ $('.datatextcopy').on('click', function(){
 	$('.init_box').text(datatext);
 });
 
-
+    // Fancybox
+    Fancybox.bind('[data-fancybox]', {
+	  hideScrollbar: true,
+	  arrows: false,
+	   // Disable image zoom animation on opening and closing
+  Images: {
+    zoom: false,
+  },
+      on: {
+        done: (fancybox, slide) => {
+          if (fancybox.isCurrentSlide(slide)) {
+        jQuery('.slick-slider').slick('resize');
+          } else {
+            console.log(
+              'revealed'
+            );
+          }
+        },
+      },
+    });
 
 });

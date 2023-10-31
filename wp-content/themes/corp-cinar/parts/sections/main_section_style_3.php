@@ -7,7 +7,36 @@
 	.<?=$prefixClass?>_slide_bg_overaly{
 		padding-top:96px;
 		height:752px;
+		position:relative;
+		background-color:rgba(0, 0, 0, 0.5);
+	}
+	
+	.<?=$prefixClass?>_slide_bg_overaly:before,
+	.<?=$prefixClass?>_slide_bg_overaly:after{
 		background: linear-gradient(94deg, <?=$gradient['gradient_color_1']?> 3.21%, <?=$gradient['gradient_color_2']?> 49.95%, <?=$gradient['gradient_color_3']?> 100%); 
+		position:absolute;
+		height:100%;
+		width:100%;
+		left:0px;
+		top:0px;
+		content:'';
+		display:block;
+	}
+	
+	.<?=$prefixClass?>_slide_bg_overaly:before{
+		opacity: 0.1;
+		background: linear-gradient(360deg, <?=$gradient['gradient_color_1']?> 30.21%, <?=$gradient['gradient_color_2']?> 59.95%, <?=$gradient['gradient_color_3']?> 100%); 
+
+	}
+	
+	.<?=$prefixClass?>_slide_bg_overaly:after{
+		opacity: 0.4; 
+		mix-blend-mode: soft-light; 
+	}
+	
+	.<?=$prefixClass?>_slide_bg_overaly .container{
+		position:relative;
+		z-index:10;
 	}
 	
 	.<?=$prefixClass?>{
@@ -20,6 +49,11 @@
 	
 	.<?=$prefixClass?> .arrow_c svg path{
 		stroke:<?=get_sub_field('main_section_style_3_text_color')?>;
+	}
+	
+	
+	.<?=$prefixClass?>.theme_color_style_2 ul.slick-dots li.slick-active button{
+		 background-color: var(--main_color);
 	}
 	
 </style>
@@ -50,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 
-<section class="main-slider <?=$prefixClass?>">
+<section class="main-slider <?=$prefixClass?> <? if(empty(get_sub_field('main_section_style_3_button_theme_style_color_switcher'))) { ?>theme_color_style_2<? } ?>">
 		<div class="<?=$prefixClass?>_slider">
 			<?php $i = 0; foreach( $items as $item ): $i++; ?>
 			<div class="<?=$prefixClass?>_slide">
@@ -61,10 +95,10 @@ document.addEventListener('DOMContentLoaded', function(){
 					<div class="<?=$prefixClass?>_slide_text"><?=$item['short_description']?></div>
 					<div class="<?=$prefixClass?>_buttons_group">
 						<div class="<?=$prefixClass?>_button_item">
-							<a href="<?=$item['link_button_1']?>" class="<?=$prefixClass?>_btn_1 order_button order_button_style_2"><?=$item['text_button_1']?></a>
+							<a href="<?=$item['link_button_1']?>" class="<?=$prefixClass?>_btn_1 order_button <? if(!empty(get_sub_field('main_section_style_3_button_theme_style_color_switcher'))) { ?>order_button_style_2<? } ?>"><?=$item['text_button_1']?></a>
 						</div>
 						<div class="<?=$prefixClass?>_button_item">
-							<a href="<?=$item['link_button_2']?>" class="<?=$prefixClass?>_btn_2 order_button order_button_style_3"><?=$item['text_button_2']?></a>
+							<a class="<?=$prefixClass?>_btn_2 datatextcopy order_button order_button_style_3" data-fancybox="" href="#fancy-modal-order-call" data-text="<?=$item['text_button_2']?>"><?=$item['text_button_2']?></a>
 						</div>
 					</div>
 					</div>
