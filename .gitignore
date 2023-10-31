@@ -1,6 +1,7 @@
 *.bak
 *.bk
 *.wordpress
+*.wpress
 *.zip
 .htaccess
 wp-config.php

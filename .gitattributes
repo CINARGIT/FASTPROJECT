@@ -1,0 +1,4 @@
+git config filter.excludebigfiles.clean 'git-lfs clean -- %f'
+git config filter.excludebigfiles.smudge 'git-lfs smudge -- %f'
+git config filter.excludebigfiles.required false
+git config filter.excludebigfiles.process 'git-lfs filter-process'
